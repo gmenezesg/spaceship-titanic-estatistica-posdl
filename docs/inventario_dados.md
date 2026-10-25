@@ -3,7 +3,7 @@
 - **Ticket Relacionado (Jira):** [KAN-10 — Criar inventário e dicionário de dados](https://megamatic.atlassian.net/browse/KAN-10)
 - **Fonte Oficial dos Dados:** [Kaggle — Spaceship Titanic Competition](https://www.kaggle.com/competitions/spaceship-titanic)
 - **Dicionário de Dados Complementar:** [`docs/dicionario_dados.md`](dicionario_dados.md)
-- **Notebook de Referência:** [`notebooks/01_preparacao_dados.ipynb`](../notebooks/01_preparacao_dados.ipynb)
+- **Notebook de Referência:** [`notebooks/00_projeto_final_estatistica.ipynb`](../notebooks/00_projeto_final_estatistica.ipynb)
 - **Responsável Principal:** Gustavo
 - **Revisor Dedicado:** Helton
 
