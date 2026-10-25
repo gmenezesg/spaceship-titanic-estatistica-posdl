@@ -1,0 +1,128 @@
+flowchart TD
+    %% =====================================================================
+    %% MAPA DE DEPENDÊNCIAS, ESTADOS E RESPONSÁVEIS — JIRA (PROJETO KAN)
+    %% Compatível com: GitHub Markdown, Draw.io (Arrange > Insert > Mermaid),
+    %% Lucidchart, Mermaid Live Editor (https://mermaid.live) e VS Code.
+    %% =====================================================================
+
+    classDef concluido fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2.5px,color:#0F172A;
+    classDef revisao fill:#FEF7E0,stroke:#F29900,stroke-width:2.5px,color:#0F172A;
+    classDef progresso fill:#E8F0FE,stroke:#1967D2,stroke-width:2.5px,color:#0F172A;
+    classDef afazer fill:#F8FAFC,stroke:#64748B,stroke-width:1.8px,color:#0F172A;
+    classDef cancelado fill:#F1F5F9,stroke:#94A3B8,stroke-width:1.8px,stroke-dasharray: 5 5,color:#64748B;
+
+    subgraph FASE1["FASE 1 — Governança (GitHub, Jira e Alinhamento)"]
+        KAN-4["<b>KAN-4</b> [CONCLUÍDO]<br/>Preparar criação do repositório GitHub<br/><i>Atual: Gustavo | Rev: Todos os membros</i>"]:::concluido
+        KAN-5["<b>KAN-5</b> [EM REVISÃO]<br/>Configurar estrutura inicial do repositório<br/><i>Atual: Helton | Rev: Helton</i>"]:::revisao
+        KAN-6["<b>KAN-6</b> [CONCLUÍDO]<br/>Definir fluxo de branches, commits e pull requests<br/><i>Atual: Gustavo | Rev: Renatta</i>"]:::concluido
+        KAN-7["<b>KAN-7</b> [CONCLUÍDO]<br/>Criar e configurar o projeto Jira<br/><i>Atual: Gustavo | Rev: Luciana</i>"]:::concluido
+        KAN-8["<b>KAN-8</b> [CONCLUÍDO]<br/>Importar e validar os cards no Jira<br/><i>Atual: Gustavo | Rev: Daniela</i>"]:::concluido
+        KAN-9["<b>KAN-9</b> [CANCELADO]<br/>Preparar a Reunião 1 de 25 de outubro<br/><i>Atual: Gustavo | Rev: Todos os membros</i>"]:::cancelado
+    end
+
+    subgraph FASE2["FASE 2 — Preparação de Dados (Notebook 01) e Base Teórica"]
+        KAN-10["<b>KAN-10</b> [EM REVISÃO]<br/>Criar inventário e dicionário de dados<br/><i>Atual: Helton | Rev: Helton</i>"]:::revisao
+        KAN-11["<b>KAN-11</b> [A FAZER]<br/>Analisar valores ausentes e duplicados<br/><i>Atual: Gustavo | Rev: Helton</i>"]:::afazer
+        KAN-12["<b>KAN-12</b> [A FAZER]<br/>Criar variáveis derivadas do Spaceship Titanic<br/><i>Atual: Gustavo | Rev: Helton</i>"]:::afazer
+        KAN-19["<b>KAN-19</b> [A FAZER]<br/>Estudar variáveis aleatórias e distribuições<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::afazer
+    end
+
+    subgraph FASE3["FASE 3 — Trilhas Analíticas Paralelas"]
+        subgraph T0["Trilha 0: Preparação (Gustavo)"]
+            KAN-13["<b>KAN-13</b> [A FAZER]<br/>Publicar conclusões de preparação em Markdown<br/><i>Atual: Gustavo | Rev: Helton</i>"]:::afazer
+        end
+        subgraph T1["Trilha 1: Estatística Descritiva (Helton)"]
+            KAN-14["<b>KAN-14</b> [A FAZER]<br/>Produzir resumos de variáveis categóricas<br/><i>Atual: Helton | Rev: Luciana</i>"]:::afazer
+            KAN-15["<b>KAN-15</b> [A FAZER]<br/>Produzir resumos de variáveis quantitativas<br/><i>Atual: Helton | Rev: Luciana</i>"]:::afazer
+            KAN-16["<b>KAN-16</b> [A FAZER]<br/>Criar gráficos descritivos candidatos ao relatório<br/><i>Atual: Helton | Rev: Luciana</i>"]:::afazer
+            KAN-17["<b>KAN-17</b> [A FAZER]<br/>Documentar valores extremos sem remoção automática<br/><i>Atual: Helton | Rev: Luciana</i>"]:::afazer
+            KAN-18["<b>KAN-18</b> [A FAZER]<br/>Publicar conclusões descritivas em Markdown<br/><i>Atual: Helton | Rev: Luciana</i>"]:::afazer
+        end
+        subgraph T2["Trilha 2: Distribuições e QQ-Plots (Luciana)"]
+            KAN-20["<b>KAN-20</b> [A FAZER]<br/>Analisar distribuições de idade e despesas<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::afazer
+            KAN-21["<b>KAN-21</b> [A FAZER]<br/>Criar e interpretar QQ-plots<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::afazer
+            KAN-22["<b>KAN-22</b> [A FAZER]<br/>Relacionar distribuições com a escolha dos testes inferenciais<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::afazer
+            KAN-23["<b>KAN-23</b> [A FAZER]<br/>Publicar conclusões de distribuições em Markdown<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::afazer
+        end
+        subgraph T3["Trilha 3: Testes de Hipóteses (Daniela)"]
+            KAN-24["<b>KAN-24</b> [A FAZER]<br/>Definir hipóteses estatísticas antes dos testes<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::afazer
+            KAN-25["<b>KAN-25</b> [A FAZER]<br/>Testar associação entre variáveis categóricas<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::afazer
+            KAN-26["<b>KAN-26</b> [A FAZER]<br/>Comparar TotalSpend por Transported<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::afazer
+            KAN-27["<b>KAN-27</b> [A FAZER]<br/>Comparar TotalSpend entre planetas de origem<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::afazer
+            KAN-28["<b>KAN-28</b> [A FAZER]<br/>Criar tabela-resumo dos testes de hipóteses<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::afazer
+            KAN-29["<b>KAN-29</b> [A FAZER]<br/>Publicar conclusões dos testes em Markdown<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::afazer
+        end
+        subgraph T4["Trilha 4: Correlação e Regressões (Renatta)"]
+            KAN-30["<b>KAN-30</b> [A FAZER]<br/>Analisar correlações e diagramas de dispersão<br/><i>Atual: Renatta | Rev: Gustavo</i>"]:::afazer
+            KAN-31["<b>KAN-31</b> [A FAZER]<br/>Desenvolver regressão linear para TotalSpend<br/><i>Atual: Renatta | Rev: Gustavo</i>"]:::afazer
+            KAN-32["<b>KAN-32</b> [A FAZER]<br/>Criar baseline para classificação de Transported<br/><i>Atual: Renatta | Rev: Gustavo</i>"]:::afazer
+            KAN-33["<b>KAN-33</b> [A FAZER]<br/>Desenvolver regressão logística para Transported<br/><i>Atual: Renatta | Rev: Gustavo</i>"]:::afazer
+            KAN-34["<b>KAN-34</b> [A FAZER]<br/>Avaliar e interpretar o modelo logístico<br/><i>Atual: Renatta | Rev: Gustavo</i>"]:::afazer
+            KAN-35["<b>KAN-35</b> [A FAZER]<br/>Publicar conclusões de correlação e regressões<br/><i>Atual: Renatta | Rev: Gustavo</i>"]:::afazer
+        end
+    end
+
+    subgraph FASE4["FASE 4 — Consolidação, Validação Cruzada e Entrega Final"]
+        KAN-36["<b>KAN-36</b> [A FAZER]<br/>Preparar apresentações cruzadas da Reunião 2<br/><i>Atual: Gustavo | Rev: Pares de Revisão Cruzada</i>"]:::afazer
+        KAN-37["<b>KAN-37</b> [A FAZER]<br/>Consolidar os notebooks num notebook final<br/><i>Atual: Gustavo | Rev: Todos os membros</i>"]:::afazer
+        KAN-38["<b>KAN-38</b> [A FAZER]<br/>Selecionar tabelas e gráficos do relatório<br/><i>Atual: Helton | Rev: Luciana e Daniela</i>"]:::afazer
+        KAN-39["<b>KAN-39</b> [A FAZER]<br/>Consolidar texto técnico do relatório<br/><i>Atual: Daniela | Rev: Luciana e Gustavo</i>"]:::afazer
+        KAN-40["<b>KAN-40</b> [A FAZER]<br/>Rever coerência metodológica do relatório<br/><i>Atual: Luciana | Rev: Daniela e Renatta</i>"]:::afazer
+        KAN-41["<b>KAN-41</b> [A FAZER]<br/>Executar validação numérica cruzada<br/><i>Atual: Daniela | Rev: Todos os membros</i>"]:::afazer
+        KAN-42["<b>KAN-42</b> [A FAZER]<br/>Gerar e rever o PDF final<br/><i>Atual: Renatta | Rev: Todos os membros</i>"]:::afazer
+        KAN-43["<b>KAN-43</b> [A FAZER]<br/>Preparar pacote final de entrega<br/><i>Atual: Gustavo | Rev: Todos os membros</i>"]:::afazer
+    end
+
+    %% Arestas de Dependência (Origem --> Destino)
+    KAN-4 --> KAN-5
+    KAN-5 --> KAN-6
+    KAN-7 --> KAN-8
+    KAN-6 --> KAN-9
+    KAN-8 --> KAN-9
+    KAN-9 --> KAN-10
+    KAN-10 --> KAN-11
+    KAN-11 --> KAN-12
+    KAN-12 --> KAN-13
+    KAN-12 --> KAN-14
+    KAN-12 --> KAN-15
+    KAN-14 --> KAN-16
+    KAN-15 --> KAN-16
+    KAN-15 --> KAN-17
+    KAN-16 --> KAN-18
+    KAN-17 --> KAN-18
+    KAN-9 --> KAN-19
+    KAN-12 --> KAN-20
+    KAN-19 --> KAN-20
+    KAN-20 --> KAN-21
+    KAN-21 --> KAN-22
+    KAN-22 --> KAN-23
+    KAN-12 --> KAN-24
+    KAN-24 --> KAN-25
+    KAN-22 --> KAN-26
+    KAN-24 --> KAN-26
+    KAN-22 --> KAN-27
+    KAN-24 --> KAN-27
+    KAN-25 --> KAN-28
+    KAN-26 --> KAN-28
+    KAN-27 --> KAN-28
+    KAN-28 --> KAN-29
+    KAN-12 --> KAN-30
+    KAN-30 --> KAN-31
+    KAN-12 --> KAN-32
+    KAN-32 --> KAN-33
+    KAN-33 --> KAN-34
+    KAN-34 --> KAN-35
+    KAN-31 --> KAN-35
+    KAN-13 --> KAN-36
+    KAN-18 --> KAN-36
+    KAN-23 --> KAN-36
+    KAN-29 --> KAN-36
+    KAN-35 --> KAN-36
+    KAN-36 --> KAN-37
+    KAN-36 --> KAN-38
+    KAN-37 --> KAN-39
+    KAN-38 --> KAN-39
+    KAN-39 --> KAN-40
+    KAN-40 --> KAN-41
+    KAN-41 --> KAN-42
+    KAN-42 --> KAN-43
