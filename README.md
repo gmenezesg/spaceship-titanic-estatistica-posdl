@@ -70,13 +70,16 @@ pip install -r requirements.txt
 
 ---
 
-## Fluxo de Trabalho (Git & Governança)
+## Fluxo de Trabalho (Git & Governança — `KAN-6`)
 
-1. **Padrão de Branches:** `tipo/nome-membro-descricao`
-   - Exemplos: `feature/helton-descritiva-visual`, `docs/daniela-testes-hipoteses`, `chore/gustavo-estrutura-inicial`
-2. **Padrão de Commits:** Mensagens em português no formato `[Ticket-ID] Descrição clara da alteração`
-   - Exemplo: `[KAN-5] Configurar estrutura inicial de pastas e ambiente Python`
-3. **Pull Requests:** Toda alteração na branch `main` deve ser integrada via Pull Request com revisão em pares.
+Consulte o guia detalhado em [`CONTRIBUTING.md`](CONTRIBUTING.md). Em resumo:
+
+1. **Proteção da `main`:** A branch `main` é protegida. Toda alteração exige abertura de Pull Request com pelo menos **1 aprovação** do revisor dedicado.
+2. **Padrão de Branches:** `tipo/nome-membro-descricao`
+   - Exemplos: `feature/helton-descritiva-visual`, `docs/daniela-testes-hipoteses`, `docs/gustavo-fluxo-git-pr-teste`
+3. **Padrão de Commits:** Mensagens em português no formato `[Ticket-ID] Descrição clara da alteração`
+   - Exemplo: `[KAN-6] Padronizar fluxo de branches, commits e pull requests`
+4. **Pull Requests:** Utilize o template automático (`.github/pull_request_template.md`) e solicite revisão ao membro designado no card do Jira.
 
 ---
 
