@@ -7,9 +7,9 @@ digraph JiraDependencyMap {
     node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10, margin="0.18,0.12", penwidth=2.0];
     edge [color="#475569", penwidth=1.4, arrowsize=0.8];
 
-    "KAN-4" [label="KAN-4 [EM REVISÃO]\nPreparar criação do repositório GitHub\nAtual: Gustavo | Rev: Todos os membros", fillcolor="#FEF7E0", color="#F29900", style="rounded,filled"];
+    "KAN-4" [label="KAN-4 [CONCLUÍDO]\nPreparar criação do repositório GitHub\nAtual: Gustavo | Rev: Todos os membros", fillcolor="#E6F4EA", color="#1E8E3E", style="rounded,filled"];
     "KAN-5" [label="KAN-5 [EM REVISÃO]\nConfigurar estrutura inicial do repositório\nAtual: Helton | Rev: Helton", fillcolor="#FEF7E0", color="#F29900", style="rounded,filled"];
-    "KAN-6" [label="KAN-6 [EM REVISÃO]\nDefinir fluxo de branches, commits e pull requests\nAtual: Gustavo | Rev: Renatta", fillcolor="#FEF7E0", color="#F29900", style="rounded,filled"];
+    "KAN-6" [label="KAN-6 [CONCLUÍDO]\nDefinir fluxo de branches, commits e pull requests\nAtual: Gustavo | Rev: Renatta", fillcolor="#E6F4EA", color="#1E8E3E", style="rounded,filled"];
     "KAN-7" [label="KAN-7 [CONCLUÍDO]\nCriar e configurar o projeto Jira\nAtual: Gustavo | Rev: Luciana", fillcolor="#E6F4EA", color="#1E8E3E", style="rounded,filled"];
     "KAN-8" [label="KAN-8 [CONCLUÍDO]\nImportar e validar os cards no Jira\nAtual: Gustavo | Rev: Daniela", fillcolor="#E6F4EA", color="#1E8E3E", style="rounded,filled"];
     "KAN-9" [label="KAN-9 [CANCELADO]\nPreparar a Reunião 1 de 25 de outubro\nAtual: Gustavo | Rev: Todos os membros", fillcolor="#F1F5F9", color="#94A3B8", style="rounded,filled,dashed"];

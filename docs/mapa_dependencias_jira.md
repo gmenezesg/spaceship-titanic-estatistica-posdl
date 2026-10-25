@@ -35,9 +35,9 @@ flowchart TD
     classDef cancelado fill:#F1F5F9,stroke:#94A3B8,stroke-width:1.8px,stroke-dasharray: 5 5,color:#64748B;
 
     subgraph FASE1["FASE 1 — Governança (GitHub, Jira e Alinhamento)"]
-        KAN-4["<b>KAN-4</b> [EM REVISÃO]<br/>Preparar criação do repositório GitHub<br/><i>Atual: Gustavo | Rev: Todos os membros</i>"]:::revisao
+        KAN-4["<b>KAN-4</b> [CONCLUÍDO]<br/>Preparar criação do repositório GitHub<br/><i>Atual: Gustavo | Rev: Todos os membros</i>"]:::concluido
         KAN-5["<b>KAN-5</b> [EM REVISÃO]<br/>Configurar estrutura inicial do repositório<br/><i>Atual: Helton | Rev: Helton</i>"]:::revisao
-        KAN-6["<b>KAN-6</b> [EM REVISÃO]<br/>Definir fluxo de branches, commits e pull requests<br/><i>Atual: Gustavo | Rev: Renatta</i>"]:::revisao
+        KAN-6["<b>KAN-6</b> [CONCLUÍDO]<br/>Definir fluxo de branches, commits e pull requests<br/><i>Atual: Gustavo | Rev: Renatta</i>"]:::concluido
         KAN-7["<b>KAN-7</b> [CONCLUÍDO]<br/>Criar e configurar o projeto Jira<br/><i>Atual: Gustavo | Rev: Luciana</i>"]:::concluido
         KAN-8["<b>KAN-8</b> [CONCLUÍDO]<br/>Importar e validar os cards no Jira<br/><i>Atual: Gustavo | Rev: Daniela</i>"]:::concluido
         KAN-9["<b>KAN-9</b> [CANCELADO]<br/>Preparar a Reunião 1 de 25 de outubro<br/><i>Atual: Gustavo | Rev: Todos os membros</i>"]:::cancelado
@@ -165,7 +165,7 @@ flowchart TD
 
 ### Opção B — Importar no Draw.io (`app.diagrams.net`)
 1. Abra o [Draw.io (diagrams.net)](https://app.diagrams.net/).
-2. No menu superior, clique em **Arrange (Organizar) $ightarrow$ Insert (Inserir) $ightarrow$ Advanced (Avançado) $ightarrow$ Mermaid...** (ou **From Text / DOT**).
+2. No menu superior, clique em **Arrange (Organizar) $\rightarrow$ Insert (Inserir) $\rightarrow$ Advanced (Avançado) $\rightarrow$ Mermaid...** (ou **From Text / DOT**).
 3. Cole o conteúdo de [`docs/mapa_dependencias_jira.mmd`](mapa_dependencias_jira.mmd) (para Mermaid) ou [`docs/mapa_dependencias_jira.dot`](mapa_dependencias_jira.dot) (para Graphviz DOT) e clique em **Insert**. Todos os blocos e conectores serão convertidos em objetos editáveis!
 
 ### Opção C — Editar no Mermaid Live Editor ou Lucidchart
@@ -175,7 +175,7 @@ flowchart TD
   - `:::progresso` (Azul / Em Progresso)
   - `:::afazer` (Cinza / A Fazer)
   - `:::cancelado` (Tracejado / Cancelado)
-- **Lucidchart:** Clique em **Insert $ightarrow$ Mermaid** e cole o conteúdo de [`docs/mapa_dependencias_jira.mmd`](mapa_dependencias_jira.mmd).
+- **Lucidchart:** Clique em **Insert $\rightarrow$ Mermaid** e cole o conteúdo de [`docs/mapa_dependencias_jira.mmd`](mapa_dependencias_jira.mmd).
 
 ---
 
@@ -183,9 +183,9 @@ flowchart TD
 
 | Ticket | Resumo da Tarefa | Estado Atual | Assignee Atual (Jira) | Responsável Principal | Revisor Dedicado | Dependências Diretas |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| [`KAN-4`](https://megamatic.atlassian.net/browse/KAN-4) | Preparar criação do repositório GitHub | **In Review** | Gustavo | Gustavo | Todos os membros (Confirmação de Acesso) | — |
+| [`KAN-4`](https://megamatic.atlassian.net/browse/KAN-4) | Preparar criação do repositório GitHub | **Concluído** | Gustavo | Gustavo | Todos os membros (Confirmação de Acesso) | — |
 | [`KAN-5`](https://megamatic.atlassian.net/browse/KAN-5) | Configurar estrutura inicial do repositório | **In Review** | Helton | Gustavo | Helton | `KAN-4` |
-| [`KAN-6`](https://megamatic.atlassian.net/browse/KAN-6) | Definir fluxo de branches, commits e pull requests | **In Review** | Gustavo | Gustavo | Renatta | `KAN-5` |
+| [`KAN-6`](https://megamatic.atlassian.net/browse/KAN-6) | Definir fluxo de branches, commits e pull requests | **Concluído** | Gustavo | Gustavo | Renatta | `KAN-5` |
 | [`KAN-7`](https://megamatic.atlassian.net/browse/KAN-7) | Criar e configurar o projeto Jira | **Concluído** | Gustavo | Gustavo | Luciana | — |
 | [`KAN-8`](https://megamatic.atlassian.net/browse/KAN-8) | Importar e validar os cards no Jira | **Concluído** | Gustavo | Gustavo | Daniela | `KAN-7` |
 | [`KAN-9`](https://megamatic.atlassian.net/browse/KAN-9) | Preparar a Reunião 1 de 25 de outubro | **Cancelado** | Gustavo | Gustavo | Todos os membros | `KAN-6`, `KAN-8` |

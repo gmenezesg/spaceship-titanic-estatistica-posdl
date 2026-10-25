@@ -4,7 +4,7 @@ Gerador Automatizado do Mapa de Dependências, Estados e Responsáveis do Jira (
 
 Este script gera:
 1. docs/mapa_dependencias_jira.png (Imagem em alta resolução 200 DPI)
-2. docs/mapa_dependencias_jira.mmd (DSL Mermaid.js para GitHub, Draw.io, Lucidchart, Mermaid Live)
+2. docs/mapa_dependencias_jira.mmd (DSL Mermaid.js para GitHub, Draw.io, Lucidchart, Mermaid Live. Use a extensão https://marketplace.visualstudio.com/items?itemName=MermaidChart.vscode-mermaid-chart para visualizar o arquivo .md)
 3. docs/mapa_dependencias_jira.dot (DSL Graphviz DOT para Draw.io, Graphviz, Gephi)
 
 Uso:
@@ -18,7 +18,7 @@ import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 
 TICKETS_JIRA = {'KAN-4': {'summary': 'Preparar criação do repositório GitHub',
-           'status': 'In Review',
+           'status': 'Concluído',
            'assignee': 'Gustavo',
            'resp': 'Gustavo',
            'rev': 'Todos os membros (Confirmação de Acesso)',
@@ -30,7 +30,7 @@ TICKETS_JIRA = {'KAN-4': {'summary': 'Preparar criação do repositório GitHub'
            'rev': 'Helton',
            'deps': ['KAN-4']},
  'KAN-6': {'summary': 'Definir fluxo de branches, commits e pull requests',
-           'status': 'In Review',
+           'status': 'Concluído',
            'assignee': 'Gustavo',
            'resp': 'Gustavo',
            'rev': 'Renatta',
@@ -422,8 +422,219 @@ def gerar_png(docs_dir: Path) -> Path:
     return out_file
 
 
+def _mmd_node(key: str) -> str:
+    info = TICKETS_JIRA[key]
+    status_map = {
+        'Concluído': ('CONCLUÍDO', 'concluido'),
+        'In Review': ('EM REVISÃO', 'revisao'),
+        'Em Progresso': ('EM PROGRESSO', 'progresso'),
+        'A fazer': ('A FAZER', 'afazer'),
+        'Cancelado': ('CANCELADO', 'cancelado'),
+    }
+    badge, cls = status_map.get(info['status'], ('A FAZER', 'afazer'))
+    rev_short = info['rev'].split('(')[0].strip()
+    return (
+        f'{key}["<b>{key}</b> [{badge}]<br/>'
+        f'{info["summary"]}<br/>'
+        f'<i>Atual: {info["assignee"]} | Rev: {rev_short}</i>"]:::{cls}'
+    )
+
+
+def gerar_mmd(docs_dir: Path) -> str:
+    lines = [
+        "flowchart TD",
+        "    %% =====================================================================",
+        "    %% MAPA DE DEPENDÊNCIAS, ESTADOS E RESPONSÁVEIS — JIRA (PROJETO KAN)",
+        "    %% Compatível com: GitHub Markdown, Draw.io (Arrange > Insert > Mermaid),",
+        "    %% Lucidchart, Mermaid Live Editor (https://mermaid.live) e VS Code.",
+        "    %% =====================================================================",
+        "",
+        "    classDef concluido fill:#E6F4EA,stroke:#1E8E3E,stroke-width:2.5px,color:#0F172A;",
+        "    classDef revisao fill:#FEF7E0,stroke:#F29900,stroke-width:2.5px,color:#0F172A;",
+        "    classDef progresso fill:#E8F0FE,stroke:#1967D2,stroke-width:2.5px,color:#0F172A;",
+        "    classDef afazer fill:#F8FAFC,stroke:#64748B,stroke-width:1.8px,color:#0F172A;",
+        "    classDef cancelado fill:#F1F5F9,stroke:#94A3B8,stroke-width:1.8px,stroke-dasharray: 5 5,color:#64748B;",
+        "",
+        '    subgraph FASE1["FASE 1 — Governança (GitHub, Jira e Alinhamento)"]',
+    ]
+    for k in ['KAN-4', 'KAN-5', 'KAN-6', 'KAN-7', 'KAN-8', 'KAN-9']:
+        lines.append(f"        {_mmd_node(k)}")
+    lines += [
+        "    end",
+        "",
+        '    subgraph FASE2["FASE 2 — Preparação de Dados (Notebook 01) e Base Teórica"]',
+    ]
+    for k in ['KAN-10', 'KAN-11', 'KAN-12', 'KAN-19']:
+        lines.append(f"        {_mmd_node(k)}")
+    lines += [
+        "    end",
+        "",
+        '    subgraph FASE3["FASE 3 — Trilhas Analíticas Paralelas"]',
+        '        subgraph T0["Trilha 0: Preparação (Gustavo)"]',
+        f"            {_mmd_node('KAN-13')}",
+        "        end",
+        '        subgraph T1["Trilha 1: Estatística Descritiva (Helton)"]',
+    ]
+    for k in ['KAN-14', 'KAN-15', 'KAN-16', 'KAN-17', 'KAN-18']:
+        lines.append(f"            {_mmd_node(k)}")
+    lines += [
+        "        end",
+        '        subgraph T2["Trilha 2: Distribuições e QQ-Plots (Luciana)"]',
+    ]
+    for k in ['KAN-20', 'KAN-21', 'KAN-22', 'KAN-23']:
+        lines.append(f"            {_mmd_node(k)}")
+    lines += [
+        "        end",
+        '        subgraph T3["Trilha 3: Testes de Hipóteses (Daniela)"]',
+    ]
+    for k in ['KAN-24', 'KAN-25', 'KAN-26', 'KAN-27', 'KAN-28', 'KAN-29']:
+        lines.append(f"            {_mmd_node(k)}")
+    lines += [
+        "        end",
+        '        subgraph T4["Trilha 4: Correlação e Regressões (Renatta)"]',
+    ]
+    for k in ['KAN-30', 'KAN-31', 'KAN-32', 'KAN-33', 'KAN-34', 'KAN-35']:
+        lines.append(f"            {_mmd_node(k)}")
+    lines += [
+        "        end",
+        "    end",
+        "",
+        '    subgraph FASE4["FASE 4 — Consolidação, Validação Cruzada e Entrega Final"]',
+    ]
+    for k in ['KAN-36', 'KAN-37', 'KAN-38', 'KAN-39', 'KAN-40', 'KAN-41', 'KAN-42', 'KAN-43']:
+        lines.append(f"        {_mmd_node(k)}")
+    lines += [
+        "    end",
+        "",
+        "    %% Arestas de Dependência (Origem --> Destino)",
+    ]
+    for target_key, info in TICKETS_JIRA.items():
+        for src_key in info['deps']:
+            lines.append(f"    {src_key} --> {target_key}")
+
+    content = "\n".join(lines) + "\n"
+    (docs_dir / "mapa_dependencias_jira.mmd").write_text(content, encoding="utf-8")
+    return content
+
+
+def gerar_dot(docs_dir: Path) -> Path:
+    dot_styles = {
+        'Concluído': ('CONCLUÍDO', '#E6F4EA', '#1E8E3E', 'rounded,filled'),
+        'In Review': ('EM REVISÃO', '#FEF7E0', '#F29900', 'rounded,filled'),
+        'Em Progresso': ('EM PROGRESSO', '#E8F0FE', '#1967D2', 'rounded,filled'),
+        'A fazer': ('A FAZER', '#F8FAFC', '#64748B', 'rounded,filled'),
+        'Cancelado': ('CANCELADO', '#F1F5F9', '#94A3B8', 'rounded,filled,dashed'),
+    }
+    lines = [
+        "digraph JiraDependencyMap {",
+        "    rankdir=TB;",
+        "    splines=ortho;",
+        "    nodesep=0.45;",
+        "    ranksep=0.65;",
+        '    fontname="Helvetica";',
+        '    node [shape=box, style="rounded,filled", fontname="Helvetica", fontsize=10, margin="0.18,0.12", penwidth=2.0];',
+        '    edge [color="#475569", penwidth=1.4, arrowsize=0.8];',
+        "",
+    ]
+    for key, info in TICKETS_JIRA.items():
+        badge, fill, border, style = dot_styles.get(info['status'], dot_styles['A fazer'])
+        rev_short = info['rev'].split('(')[0].strip()
+        label = f"{key} [{badge}]\\n{info['summary']}\\nAtual: {info['assignee']} | Rev: {rev_short}"
+        lines.append(f'    "{key}" [label="{label}", fillcolor="{fill}", color="{border}", style="{style}"];')
+    lines.append("")
+    for target_key, info in TICKETS_JIRA.items():
+        for src_key in info['deps']:
+            lines.append(f'    "{src_key}" -> "{target_key}";')
+    lines.append("}\n")
+    out_file = docs_dir / "mapa_dependencias_jira.dot"
+    out_file.write_text("\n".join(lines), encoding="utf-8")
+    return out_file
+
+
+def gerar_md(docs_dir: Path, mmd_content: str) -> Path:
+    rows = []
+    for key, info in TICKETS_JIRA.items():
+        deps_str = ", ".join(f"`{d}`" for d in info['deps']) if info['deps'] else "—"
+        rows.append(
+            f"| [`{key}`](https://megamatic.atlassian.net/browse/{key}) "
+            f"| {info['summary']} "
+            f"| **{info['status']}** "
+            f"| {info['assignee']} "
+            f"| {info['resp']} "
+            f"| {info['rev']} "
+            f"| {deps_str} |"
+        )
+    table_body = "\n".join(rows)
+    md_content = f"""# Mapa de Dependências, Estados e Responsáveis — Jira (`KAN`)
+
+Este documento consolida a arquitetura de dependências (DAG), o estado atual e a governança de responsáveis/revisores dos **40 tickets operacionais (`KAN-4` a `KAN-43`)** do projeto **Spaceship Titanic — Estatística (CIn/UFPE)**.
+
+- **Painel Oficial no Jira:** [https://megamatic.atlassian.net/jira/software/projects/KAN/boards](https://megamatic.atlassian.net/jira/software/projects/KAN/boards)
+- **Arquivos DSL Open-Source para Edição e Visualização:**
+  - **Mermaid.js DSL (`.mmd`):** [`docs/mapa_dependencias_jira.mmd`](mapa_dependencias_jira.mmd) *(compatível nativamente com GitHub, Draw.io / diagrams.net, Lucidchart, Mermaid Live Editor, Notion e VS Code)*
+  - **Graphviz DOT DSL (`.dot`):** [`docs/mapa_dependencias_jira.dot`](mapa_dependencias_jira.dot) *(compatível com Graphviz, Draw.io, Gephi e WebGraphviz)*
+  - **Gerador Automatizado em Python:** [`src/gerar_mapa_dependencias.py`](../src/gerar_mapa_dependencias.py) *(regenera `.png`, `.mmd` e `.dot` com um único comando)*
+
+---
+
+## 1. Visualização Gráfica de Alta Resolução (PNG)
+
+![Mapa de Dependências do Jira](mapa_dependencias_jira.png)
+
+---
+
+## 2. Diagrama Interativo em Mermaid.js (Renderização Nativa GitHub)
+
+O bloco abaixo utiliza a DSL **Mermaid (`flowchart TD`)** e é renderizado interativamente pelo próprio GitHub.
+
+```mermaid
+{mmd_content.rstrip()}
+```
+
+---
+
+## 3. Como Atualizar ou Importar em Ferramentas Visuais (Draw.io, Lucidchart, Mermaid)
+
+### Opção A — Atualizar via Script Python (Recomendado)
+1. Edite o estado (`status`) ou responsável (`assignee`) do ticket no dicionário `TICKETS_JIRA` dentro de [`src/gerar_mapa_dependencias.py`](../src/gerar_mapa_dependencias.py).
+2. Execute na raiz do repositório:
+   ```bash
+   python src/gerar_mapa_dependencias.py
+   ```
+   O script atualizará automaticamente a imagem `docs/mapa_dependencias_jira.png` e os arquivos DSL `docs/mapa_dependencias_jira.mmd` e `docs/mapa_dependencias_jira.dot`.
+
+### Opção B — Importar no Draw.io (`app.diagrams.net`)
+1. Abra o [Draw.io (diagrams.net)](https://app.diagrams.net/).
+2. No menu superior, clique em **Arrange (Organizar) $\\rightarrow$ Insert (Inserir) $\\rightarrow$ Advanced (Avançado) $\\rightarrow$ Mermaid...** (ou **From Text / DOT**).
+3. Cole o conteúdo de [`docs/mapa_dependencias_jira.mmd`](mapa_dependencias_jira.mmd) (para Mermaid) ou [`docs/mapa_dependencias_jira.dot`](mapa_dependencias_jira.dot) (para Graphviz DOT) e clique em **Insert**. Todos os blocos e conectores serão convertidos em objetos editáveis!
+
+### Opção C — Editar no Mermaid Live Editor ou Lucidchart
+- **Mermaid Live Editor:** Acesse [https://mermaid.live](https://mermaid.live) e cole o conteúdo de [`docs/mapa_dependencias_jira.mmd`](mapa_dependencias_jira.mmd). Para mudar a cor/estado de um ticket, basta trocar o sufixo da classe no final do nó:
+  - `:::concluido` (Verde)
+  - `:::revisao` (Laranja / Em Revisão)
+  - `:::progresso` (Azul / Em Progresso)
+  - `:::afazer` (Cinza / A Fazer)
+  - `:::cancelado` (Tracejado / Cancelado)
+- **Lucidchart:** Clique em **Insert $\\rightarrow$ Mermaid** e cole o conteúdo de [`docs/mapa_dependencias_jira.mmd`](mapa_dependencias_jira.mmd).
+
+---
+
+## 4. Tabela Completa de Rastreabilidade dos Tickets (`KAN-4` a `KAN-43`)
+
+| Ticket | Resumo da Tarefa | Estado Atual | Assignee Atual (Jira) | Responsável Principal | Revisor Dedicado | Dependências Diretas |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+{table_body}
+"""
+    out_file = docs_dir / "mapa_dependencias_jira.md"
+    out_file.write_text(md_content, encoding="utf-8")
+    return out_file
+
+
 if __name__ == "__main__":
     root_dir = Path(__file__).resolve().parent.parent
     docs_dir = root_dir / "docs"
-    out = gerar_png(docs_dir)
-    print(f"Mapa gerado com sucesso em: {out}")
+    out_png = gerar_png(docs_dir)
+    mmd_str = gerar_mmd(docs_dir)
+    out_dot = gerar_dot(docs_dir)
+    out_md = gerar_md(docs_dir, mmd_str)
+    print(f"Arquivos gerados com sucesso em: {docs_dir}")
