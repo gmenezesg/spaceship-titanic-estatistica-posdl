@@ -398,7 +398,7 @@ def gerar_png(docs_dir: Path) -> Path:
             x0 + box_w - 0.03, y0 + box_h - 0.12, st['label'], fontsize=7.2, fontweight='bold', color=st['badge_fg'],
             ha='right', va='center', bbox=dict(boxstyle='round,pad=0.22', facecolor=st['badge_bg'], edgecolor='none'), zorder=4
         )
-        wrapped_summary = "\n".join(textwrap.wrap(info['summary'], width=28)[:2])
+        wrapped_summary = "\n".join(textwrap.wrap(info['summary'], width=28))
         ax.text(cx, cy + 0.04, wrapped_summary, fontsize=8.6, fontweight='bold', color='#1E293B', ha='center', va='center', zorder=4)
 
         assignee_name = info['assignee']
