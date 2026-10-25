@@ -1,6 +1,9 @@
-# Inventário de Dados — Spaceship Titanic (`KAN-10`)
+# Inventário de Dados — Spaceship Titanic (`KAN-10`, `KAN-11` e `KAN-12`)
 
-- **Ticket Relacionado (Jira):** [KAN-10 — Criar inventário e dicionário de dados](https://megamatic.atlassian.net/browse/KAN-10)
+- **Tickets Relacionados (Jira):**
+  - [KAN-10 — Criar inventário e dicionário de dados](https://megamatic.atlassian.net/browse/KAN-10)
+  - [KAN-11 — Analisar valores ausentes e duplicados](https://megamatic.atlassian.net/browse/KAN-11)
+  - [KAN-12 — Criar variáveis derivadas do Spaceship Titanic](https://megamatic.atlassian.net/browse/KAN-12)
 - **Fonte Oficial dos Dados:** [Kaggle — Spaceship Titanic Competition](https://www.kaggle.com/competitions/spaceship-titanic)
 - **Dicionário de Dados Complementar:** [`docs/dicionario_dados.md`](dicionario_dados.md)
 - **Notebook de Referência:** [`notebooks/00_projeto_final_estatistica.ipynb`](../notebooks/00_projeto_final_estatistica.ipynb)
@@ -9,15 +12,24 @@
 
 ---
 
-## 1. Catálogo de Ativos de Dados (`data/raw/`)
+## 1. Catálogo de Ativos de Dados (`data/raw/` e `data/processed/`)
 
-O inventário de dados cataloga todos os arquivos brutos provenientes da competição oficial do Kaggle **Spaceship Titanic**, garantindo rastreabilidade, controle de integridade e padronização de leitura pelos notebooks do projeto.
+O inventário de dados cataloga todos os arquivos brutos provenientes da competição oficial do Kaggle **Spaceship Titanic** (`data/raw/`) e os ativos limpos e enriquecidos com variáveis derivadas (`data/processed/`), garantindo rastreabilidade, controle de integridade e padronização de leitura pelos notebooks do projeto.
+
+### 1.1. Ativos Brutos Originais (`data/raw/` — Imutáveis)
 
 | Ativo de Dados | Localização | Formato | Codificação | Separador | Registros ($n$) | Variáveis ($p$) | Tamanho em Disco | Papel no Projeto |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
 | **`train.csv`** | `data/raw/train.csv` | CSV | UTF-8 | Vírgula (`,`) | 8.693 | 14 | 805.421 bytes (~787 KB) | Base principal de análise exploratória, inferência estatística, testes de hipóteses e treino supervisionado (contém o alvo `Transported`). |
 | **`test.csv`** | `data/raw/test.csv` | CSV | UTF-8 | Vírgula (`,`) | 4.277 | 13 | 372.487 bytes (~364 KB) | Base de avaliação sem rótulo (`Transported` omitido), utilizada para avaliação final de generalização na competição Kaggle. |
 | **`sample_submission.csv`** | `data/raw/sample_submission.csv` | CSV | UTF-8 | Vírgula (`,`) | 4.277 | 2 | 59.902 bytes (~59 KB) | Arquivo modelo de submissão contendo `PassengerId` e predição padrão para `Transported`. |
+
+### 1.2. Ativos Limpos e Enriquecidos (`data/processed/` — `KAN-11` e `KAN-12`)
+
+| Ativo de Dados | Localização | Formato | Codificação | Separador | Registros ($n$) | Variáveis ($p$) | Células Ausentes (`NaN`) | Tamanho em Disco | Papel no Projeto |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **`spaceship_titanic_clean.csv`** | `data/processed/spaceship_titanic_clean.csv` | CSV | UTF-8 | Vírgula (`,`) | 8.693 | 22 (14 originais + 8 derivadas) | 0 (0,00%) | 1.092.085 bytes (~1,04 MB) | Dataset oficial de treino saneado e enriquecido para as trilhas de Estatística Descritiva (`KAN-14`/`KAN-15`), Distribuições (`KAN-20`), Testes de Hipóteses (`KAN-24`) e Regressões (`KAN-30`/`KAN-32`). |
+| **`spaceship_titanic_test_clean.csv`** | `data/processed/spaceship_titanic_test_clean.csv` | CSV | UTF-8 | Vírgula (`,`) | 4.277 | 21 (13 originais + 8 derivadas) | 0 (0,00%) | 513.565 bytes (~502 KB) | Dataset de teste tratado sem vazamento de dados (*zero data leakage*) e enriquecido com as mesmas 8 variáveis derivadas. |
 
 ---
 
@@ -57,14 +69,29 @@ O inventário de dados cataloga todos os arquivos brutos provenientes da competi
 | 13 | `Name` | Categórica Estruturada | Nominal | `object` / `str` | 8.493 | 200 | 2,30% | 8.473 | 4.183 | 94 | 2,20% | 4.176 |
 | 14 | `Transported` | Categórica Nominal (Alvo) | Nominal | `bool` | 8.693 | 0 | 0,00% | 2 | — | — | — | — |
 
+### 3.1. Inventário Técnico das 8 Variáveis Derivadas (`KAN-12` — `data/processed/`)
+
+Após o pipeline de imputação sem vazamento de dados (`KAN-11`), as 8 variáveis derivadas do ticket `KAN-12` foram geradas com **100% de completude (`0` ausentes)** em `spaceship_titanic_clean.csv` e `spaceship_titanic_test_clean.csv`:
+
+| Ordem | Variável Derivada | Variável de Origem | Tipologia Estatística (`KAN-12`) | Escala | Dtype (`pandas`) | Preenchidos (`train`) | Ausentes (`train`) | Cardinalidade (`train`) | Preenchidos (`test`) | Ausentes (`test`) | Cardinalidade (`test`) |
+| :---: | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 15 | `Group` | `PassengerId` (`gggg_pp`) | Categórica Estruturada | Nominal | `object` / `str` | 8.693 | 0 | 6.217 | 4.277 | 0 | 3.063 |
+| 16 | `GroupSize` | `Group` | Quantitativa Discreta | Razão | `int64` | 8.693 | 0 | 8 (`1`–`8`) | 4.277 | 0 | 8 (`1`–`8`) |
+| 17 | `IsAlone` | `GroupSize` | Categórica Nominal (Binária) | Nominal | `bool` | 8.693 | 0 | 2 | 4.277 | 0 | 2 |
+| 18 | `CabinDeck` | `Cabin` (`deck/num/side`) | Categórica Nominal / Ordinal | Nominal / Ordinal | `object` / `str` | 8.693 | 0 | 8 (`A`–`G`, `T`) | 4.277 | 0 | 8 (`A`–`G`, `T`) |
+| 19 | `CabinNum` | `Cabin` (`deck/num/side`) | Quantitativa Discreta | Intervalar / Posicional | `int64` | 8.693 | 0 | 1.817 | 4.277 | 0 | 1.506 |
+| 20 | `CabinSide` | `Cabin` (`deck/num/side`) | Categórica Nominal (Binária) | Nominal | `object` / `str` | 8.693 | 0 | 2 (`P`, `S`) | 4.277 | 0 | 2 (`P`, `S`) |
+| 21 | `TotalSpend` | 5 Despesas de Bordo | Quantitativa Contínua | Razão | `float64` | 8.693 | 0 | 2.325 | 4.277 | 0 | 1.434 |
+| 22 | `HasSpent` | `TotalSpend` | Categórica Nominal (Binária) | Nominal | `bool` | 8.693 | 0 | 2 | 4.277 | 0 | 2 |
+
 ---
 
-## 4. Resumo por Grupo Tipológico (`train.csv`)
+## 4. Resumo por Grupo Tipológico (`spaceship_titanic_clean.csv` — 22 Colunas)
 
-| Tipologia Estatística | Quantidade de Colunas | Colunas Associadas | Escala de Medida |
-| :--- | :---: | :--- | :---: |
-| **Categórica Nominal** | 5 | `HomePlanet`, `Destination`, `CryoSleep`, `VIP`, `Transported` | Nominal |
-| **Categórica Estruturada** | 3 | `PassengerId`, `Cabin`, `Name` | Nominal (Composta) |
-| **Quantitativa Discreta** | 1 | `Age` | Razão (Inteiros de 0 a 79) |
-| **Quantitativa Contínua** | 5 | `RoomService`, `FoodCourt`, `ShoppingMall`, `Spa`, `VRDeck` | Razão ($\ge 0,0$) |
-| **Total** | **14** | **Todas as 14 colunas originais mapeadas** | — |
+| Tipologia Estatística | Colunas Originais (`KAN-10`) | Variáveis Derivadas (`KAN-12`) | Total de Colunas | Colunas Associadas | Escala de Medida |
+| :--- | :---: | :---: | :---: | :--- | :---: |
+| **Categórica Nominal / Ordinal** | 5 | 4 | **9** | Originais: `HomePlanet`, `Destination`, `CryoSleep`, `VIP`, `Transported`<br>Derivadas: `IsAlone`, `CabinDeck`, `CabinSide`, `HasSpent` | Nominal / Ordinal |
+| **Categórica Estruturada** | 3 | 1 | **4** | Originais: `PassengerId`, `Cabin`, `Name`<br>Derivada: `Group` | Nominal (Composta / Código) |
+| **Quantitativa Discreta** | 1 | 2 | **3** | Original: `Age`<br>Derivadas: `GroupSize`, `CabinNum` | Razão / Intervalar |
+| **Quantitativa Contínua** | 5 | 1 | **6** | Originais: `RoomService`, `FoodCourt`, `ShoppingMall`, `Spa`, `VRDeck`<br>Derivada: `TotalSpend` | Razão ($\ge 0,0$) |
+| **Total** | **14** | **8** | **22** | **14 variáveis originais preservadas + 8 variáveis derivadas validadas** | — |

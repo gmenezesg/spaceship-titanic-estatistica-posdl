@@ -45,8 +45,8 @@ flowchart TD
 
     subgraph FASE2["FASE 2 — Preparação de Dados (Notebook 01) e Base Teórica"]
         KAN-10["<b>KAN-10</b> [EM REVISÃO]<br/>Criar inventário e dicionário de dados<br/><i>Atual: Helton | Rev: Helton</i>"]:::revisao
-        KAN-11["<b>KAN-11</b> [A FAZER]<br/>Analisar valores ausentes e duplicados<br/><i>Atual: Gustavo | Rev: Helton</i>"]:::afazer
-        KAN-12["<b>KAN-12</b> [A FAZER]<br/>Criar variáveis derivadas do Spaceship Titanic<br/><i>Atual: Gustavo | Rev: Helton</i>"]:::afazer
+        KAN-11["<b>KAN-11</b> [EM REVISÃO]<br/>Analisar valores ausentes e duplicados<br/><i>Atual: Helton | Rev: Helton</i>"]:::revisao
+        KAN-12["<b>KAN-12</b> [EM REVISÃO]<br/>Criar variáveis derivadas do Spaceship Titanic<br/><i>Atual: Helton | Rev: Helton</i>"]:::revisao
         KAN-19["<b>KAN-19</b> [A FAZER]<br/>Estudar variáveis aleatórias e distribuições<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::afazer
     end
 
@@ -190,8 +190,8 @@ flowchart TD
 | [`KAN-8`](https://megamatic.atlassian.net/browse/KAN-8) | Importar e validar os cards no Jira | **Concluído** | Gustavo | Gustavo | Daniela | `KAN-7` |
 | [`KAN-9`](https://megamatic.atlassian.net/browse/KAN-9) | Preparar a Reunião 1 de 25 de outubro | **Cancelado** | Gustavo | Gustavo | Todos os membros | `KAN-6`, `KAN-8` |
 | [`KAN-10`](https://megamatic.atlassian.net/browse/KAN-10) | Criar inventário e dicionário de dados | **In Review** | Helton | Gustavo | Helton | `KAN-9` |
-| [`KAN-11`](https://megamatic.atlassian.net/browse/KAN-11) | Analisar valores ausentes e duplicados | **A fazer** | Gustavo | Gustavo | Helton | `KAN-10` |
-| [`KAN-12`](https://megamatic.atlassian.net/browse/KAN-12) | Criar variáveis derivadas do Spaceship Titanic | **A fazer** | Gustavo | Gustavo | Helton | `KAN-11` |
+| [`KAN-11`](https://megamatic.atlassian.net/browse/KAN-11) | Analisar valores ausentes e duplicados | **In Review** | Helton | Gustavo | Helton | `KAN-10` |
+| [`KAN-12`](https://megamatic.atlassian.net/browse/KAN-12) | Criar variáveis derivadas do Spaceship Titanic | **In Review** | Helton | Gustavo | Helton | `KAN-11` |
 | [`KAN-13`](https://megamatic.atlassian.net/browse/KAN-13) | Publicar conclusões de preparação em Markdown | **A fazer** | Gustavo | Gustavo | Helton | `KAN-12` |
 | [`KAN-14`](https://megamatic.atlassian.net/browse/KAN-14) | Produzir resumos de variáveis categóricas | **A fazer** | Helton | Helton | Luciana | `KAN-12` |
 | [`KAN-15`](https://megamatic.atlassian.net/browse/KAN-15) | Produzir resumos de variáveis quantitativas | **A fazer** | Helton | Helton | Luciana | `KAN-12` |
