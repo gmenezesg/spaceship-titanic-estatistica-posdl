@@ -61,8 +61,8 @@ Define each question with its variables, unit of analysis, H0, H1, planned test 
 
 1. `HomePlanet` and `Transported`: independence versus association; chi-square in KAN-25.
 2. `CryoSleep` and `Transported`: independence versus association; chi-square in KAN-25.
-3. `TotalSpend` by `Transported`: equal location/central tendency versus difference; Welch t and Mann-Whitney in KAN-26 because the spending distribution is zero-inflated and right-skewed.
-4. `TotalSpend` by `HomePlanet`: equal location/central tendency across Earth, Europa, and Mars versus at least one group differing; Welch ANOVA and Kruskal-Wallis in KAN-27.
+3. `TotalSpend` by `Transported`: primary test Welch t for mean difference ($\mu_1 = \mu_2$) guided by CLT, and complementary test Mann-Whitney U for ordinal/distributional robustness in KAN-26 due to zero-inflation and skewness.
+4. `TotalSpend` by `HomePlanet`: primary test One-Way Welch ANOVA for mean differences across Earth, Europa, and Mars, with complementary Kruskal-Wallis in KAN-27; pre-registered Games-Howell post-hoc pairwise testing with FWER control at alpha=0.05 (and Dunn-Bonferroni/Holm as non-parametric alternative).
 
 - [ ] **Step 6: Add an explicit scope-boundary cell**
 
