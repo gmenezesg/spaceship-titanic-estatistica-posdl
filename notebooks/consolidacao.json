@@ -1,35 +1,231 @@
 {
   "titulo": "Spaceship Titanic — Projeto Final de Análise Estatística (Pós-Graduação em Deep Learning - CIn/UFPE)",
+  "referencia_t3": "docs/T3 Projeto Final Estatística PosDL.docx",
   "saida": "notebooks/00_projeto_final_estatistica.ipynb",
+  "script_consolidador": "src/consolidar_notebooks.py",
+  "ticket_consolidacao": "KAN-37",
+  "criterios_avaliacao_t3": {
+    "qualidade_tecnica_analise": "30%",
+    "clareza_objetividade_relatorio": "50%",
+    "organizacao_qualidade_notebook": "20%"
+  },
   "secoes": [
     {
-      "titulo": "1. Configuração, Saneamento e Engenharia de Atributos",
+      "id": "secao_1",
+      "titulo": "1. Contexto do Problema, Saneamento e Engenharia de Atributos",
+      "objetivo_t3": "Contexto do Problema e do Dataset: fonte, estrutura (linhas, colunas, tipos de dados), tratamento de valores faltantes/duplicados, engenharia de atributos e limitações.",
       "tickets": ["KAN-10", "KAN-11", "KAN-12"],
-      "notebooks": ["notebooks/01_preparacao_dados.ipynb"]
+      "ticket_conclusao": "KAN-13",
+      "conclusao_markdown": "docs/conclusoes/01_ambiente_dados.md",
+      "notebooks": [
+        "notebooks/01_preparacao_dados.ipynb"
+      ],
+      "mapeamento_tickets": {
+        "KAN-10": {
+          "resumo": "Criar inventário e dicionário de dados",
+          "notebook": "notebooks/01_preparacao_dados.ipynb",
+          "artefatos_extras": ["docs/inventario_dados.md", "docs/dicionario_dados.md"]
+        },
+        "KAN-11": {
+          "resumo": "Analisar valores ausentes e duplicados",
+          "notebook": "notebooks/01_preparacao_dados.ipynb",
+          "artefatos_extras": []
+        },
+        "KAN-12": {
+          "resumo": "Criar variáveis derivadas do Spaceship Titanic",
+          "notebook": "notebooks/01_preparacao_dados.ipynb",
+          "artefatos_extras": ["data/processed/spaceship_titanic_clean.csv", "data/processed/spaceship_titanic_test_clean.csv"]
+        }
+      }
     },
     {
-      "titulo": "2. Estatística Descritiva e Visualização",
+      "id": "secao_2",
+      "titulo": "2. Análise Descritiva e Visualização",
+      "objetivo_t3": "Análise Descritiva e Visual: estatísticas descritivas (categóricas e quantitativas), histogramas, boxplots, gráficos de barras, padrões observados, outliers e interpretação clara orientada ao cliente.",
       "tickets": ["KAN-14", "KAN-15", "KAN-16", "KAN-17"],
+      "ticket_conclusao": "KAN-18",
+      "conclusao_markdown": "docs/conclusoes/02_descritiva_visual.md",
       "notebooks": [
         "notebooks/04_kan15_resumos_quantitativos.ipynb",
         "notebooks/03_kan17_valores_extremos.ipynb",
         "notebooks/02_estatistica_descritiva.ipynb"
-      ]
+      ],
+      "mapeamento_tickets": {
+        "KAN-14": {
+          "resumo": "Produzir resumos de variáveis categóricas",
+          "notebook": "notebooks/02_estatistica_descritiva.ipynb",
+          "artefatos_extras": []
+        },
+        "KAN-15": {
+          "resumo": "Produzir resumos de variáveis quantitativas",
+          "notebook": "notebooks/04_kan15_resumos_quantitativos.ipynb",
+          "artefatos_extras": []
+        },
+        "KAN-16": {
+          "resumo": "Criar gráficos descritivos candidatos ao relatório",
+          "notebook": "notebooks/02_estatistica_descritiva.ipynb",
+          "artefatos_extras": ["report/figures/"]
+        },
+        "KAN-17": {
+          "resumo": "Documentar valores extremos sem remoção automática",
+          "notebook": "notebooks/03_kan17_valores_extremos.ipynb",
+          "artefatos_extras": []
+        }
+      }
     },
     {
+      "id": "secao_3",
       "titulo": "3. Probabilidade e Distribuições",
-      "tickets": ["KAN-20", "KAN-21", "KAN-22"],
-      "notebooks": ["notebooks/03_probabilidade_distribuicoes.ipynb"]
+      "objetivo_t3": "Probabilidade e Distribuições: investigar modelos teóricos e empíricos das variáveis quantitativas e discretas, evidências visuais (histogramas, QQ-plots), testes formais (Shapiro-Wilk / Kolmogorov-Smirnov) e implicações para a escolha dos testes inferenciais.",
+      "tickets": ["KAN-19", "KAN-20", "KAN-21", "KAN-22"],
+      "ticket_conclusao": "KAN-23",
+      "conclusao_markdown": "docs/conclusoes/03_probabilidade_distribuicoes.md",
+      "notebooks": [
+        "notebooks/05_kan19_variaveis_aleatorias_distribuicoes.ipynb",
+        "notebooks/03_probabilidade_distribuicoes.ipynb"
+      ],
+      "mapeamento_tickets": {
+        "KAN-19": {
+          "resumo": "Estudar variáveis aleatórias e distribuições",
+          "notebook": "notebooks/05_kan19_variaveis_aleatorias_distribuicoes.ipynb",
+          "artefatos_extras": ["docs/conclusoes/kan19_fichamento_distribuicoes.md"]
+        },
+        "KAN-20": {
+          "resumo": "Analisar distribuições de idade e despesas",
+          "notebook": "notebooks/03_probabilidade_distribuicoes.ipynb",
+          "artefatos_extras": []
+        },
+        "KAN-21": {
+          "resumo": "Criar e interpretar QQ-plots",
+          "notebook": "notebooks/03_probabilidade_distribuicoes.ipynb",
+          "artefatos_extras": []
+        },
+        "KAN-22": {
+          "resumo": "Relacionar distribuições com a escolha dos testes inferenciais",
+          "notebook": "notebooks/03_probabilidade_distribuicoes.ipynb",
+          "artefatos_extras": []
+        }
+      }
     },
     {
+      "id": "secao_4",
       "titulo": "4. Testes de Hipóteses e ANOVA",
+      "objetivo_t3": "Testes de Hipóteses ou ANOVA: formulação prévia de H0/H1, relação entre categorias (Qui-Quadrado e V de Cramér), comparação entre 2 grupos (Welch e Mann-Whitney), comparação entre >2 grupos (ANOVA de Welch e Kruskal-Wallis com post-hoc), p-valor, tamanho de efeito e tradução prática para o cliente.",
       "tickets": ["KAN-24", "KAN-25", "KAN-26", "KAN-27", "KAN-28"],
-      "notebooks": ["notebooks/04_testes_hipoteses_anova.ipynb"]
+      "ticket_conclusao": "KAN-29",
+      "conclusao_markdown": "docs/conclusoes/04_testes_hipoteses_anova.md",
+      "notebooks": [
+        "notebooks/04_testes_hipoteses_anova.ipynb"
+      ],
+      "mapeamento_tickets": {
+        "KAN-24": {
+          "resumo": "Definir hipóteses estatísticas antes dos testes",
+          "notebook": "notebooks/04_testes_hipoteses_anova.ipynb",
+          "artefatos_extras": []
+        },
+        "KAN-25": {
+          "resumo": "Testar associação entre variáveis categóricas",
+          "notebook": "notebooks/04_testes_hipoteses_anova.ipynb",
+          "artefatos_extras": []
+        },
+        "KAN-26": {
+          "resumo": "Comparar TotalSpend por Transported",
+          "notebook": "notebooks/04_testes_hipoteses_anova.ipynb",
+          "artefatos_extras": []
+        },
+        "KAN-27": {
+          "resumo": "Comparar TotalSpend entre planetas de origem",
+          "notebook": "notebooks/04_testes_hipoteses_anova.ipynb",
+          "artefatos_extras": []
+        },
+        "KAN-28": {
+          "resumo": "Criar tabela-resumo dos testes de hipóteses",
+          "notebook": "notebooks/04_testes_hipoteses_anova.ipynb",
+          "artefatos_extras": []
+        }
+      }
     },
     {
-      "titulo": "5. Correlação e Regressões Preditivas",
+      "id": "secao_5",
+      "titulo": "5. Correlação, Regressão e Modelos Preditivos",
+      "objetivo_t3": "Correlação e Regressão: matrizes de correlação (Pearson e Spearman), explicação das relações mais fortes, Regressão Linear para TotalSpend, Baseline e Regressão Logística para Transported, métricas preditivas, interpretação de Odds Ratios e recomendações práticas.",
       "tickets": ["KAN-30", "KAN-31", "KAN-32", "KAN-33", "KAN-34"],
-      "notebooks": ["notebooks/05_correlacao_regressoes.ipynb"]
+      "ticket_conclusao": "KAN-35",
+      "conclusao_markdown": "docs/conclusoes/05_correlacao_regressoes.md",
+      "notebooks": [
+        "notebooks/05_correlacao_regressoes.ipynb"
+      ],
+      "mapeamento_tickets": {
+        "KAN-30": {
+          "resumo": "Analisar correlações e diagramas de dispersão",
+          "notebook": "notebooks/05_correlacao_regressoes.ipynb",
+          "artefatos_extras": []
+        },
+        "KAN-31": {
+          "resumo": "Desenvolver regressão linear para TotalSpend",
+          "notebook": "notebooks/05_correlacao_regressoes.ipynb",
+          "artefatos_extras": []
+        },
+        "KAN-32": {
+          "resumo": "Criar baseline para classificação de Transported",
+          "notebook": "notebooks/05_correlacao_regressoes.ipynb",
+          "artefatos_extras": []
+        },
+        "KAN-33": {
+          "resumo": "Desenvolver regressão logística para Transported",
+          "notebook": "notebooks/05_correlacao_regressoes.ipynb",
+          "artefatos_extras": []
+        },
+        "KAN-34": {
+          "resumo": "Avaliar e interpretar o modelo logístico",
+          "notebook": "notebooks/05_correlacao_regressoes.ipynb",
+          "artefatos_extras": []
+        }
+      }
     }
-  ]
+  ],
+  "mapa_tickets_notebooks": {
+    "KAN-10": "notebooks/01_preparacao_dados.ipynb",
+    "KAN-11": "notebooks/01_preparacao_dados.ipynb",
+    "KAN-12": "notebooks/01_preparacao_dados.ipynb",
+    "KAN-14": "notebooks/02_estatistica_descritiva.ipynb",
+    "KAN-15": "notebooks/04_kan15_resumos_quantitativos.ipynb",
+    "KAN-16": "notebooks/02_estatistica_descritiva.ipynb",
+    "KAN-17": "notebooks/03_kan17_valores_extremos.ipynb",
+    "KAN-19": "notebooks/05_kan19_variaveis_aleatorias_distribuicoes.ipynb",
+    "KAN-20": "notebooks/03_probabilidade_distribuicoes.ipynb",
+    "KAN-21": "notebooks/03_probabilidade_distribuicoes.ipynb",
+    "KAN-22": "notebooks/03_probabilidade_distribuicoes.ipynb",
+    "KAN-24": "notebooks/04_testes_hipoteses_anova.ipynb",
+    "KAN-25": "notebooks/04_testes_hipoteses_anova.ipynb",
+    "KAN-26": "notebooks/04_testes_hipoteses_anova.ipynb",
+    "KAN-27": "notebooks/04_testes_hipoteses_anova.ipynb",
+    "KAN-28": "notebooks/04_testes_hipoteses_anova.ipynb",
+    "KAN-30": "notebooks/05_correlacao_regressoes.ipynb",
+    "KAN-31": "notebooks/05_correlacao_regressoes.ipynb",
+    "KAN-32": "notebooks/05_correlacao_regressoes.ipynb",
+    "KAN-33": "notebooks/05_correlacao_regressoes.ipynb",
+    "KAN-34": "notebooks/05_correlacao_regressoes.ipynb",
+    "KAN-37": "notebooks/00_projeto_final_estatistica.ipynb"
+  },
+  "mapa_outros_tickets": {
+    "KAN-4": {"tipo": "governanca", "alvo": "README.md", "resumo": "Preparar criação do repositório GitHub"},
+    "KAN-5": {"tipo": "governanca", "alvo": "README.md", "resumo": "Configurar estrutura inicial do repositório"},
+    "KAN-6": {"tipo": "governanca", "alvo": "CONTRIBUTING.md", "resumo": "Definir fluxo de branches, commits e pull requests"},
+    "KAN-7": {"tipo": "governanca", "alvo": "docs/mapa_dependencias_jira.md", "resumo": "Criar e configurar o projeto Jira"},
+    "KAN-8": {"tipo": "governanca", "alvo": "docs/mapa_dependencias_jira.md", "resumo": "Importar e validar os cards no Jira"},
+    "KAN-9": {"tipo": "governanca", "alvo": "docs/ata_reuniao_01.md", "resumo": "Preparar a Reunião 1 de 25 de outubro (Cancelado)"},
+    "KAN-13": {"tipo": "conclusao_markdown", "alvo": "docs/conclusoes/01_ambiente_dados.md", "notebook_origem": "notebooks/01_preparacao_dados.ipynb", "resumo": "Publicar conclusões de preparação em Markdown"},
+    "KAN-18": {"tipo": "conclusao_markdown", "alvo": "docs/conclusoes/02_descritiva_visual.md", "notebook_origem": "notebooks/02_estatistica_descritiva.ipynb", "resumo": "Publicar conclusões descritivas em Markdown"},
+    "KAN-23": {"tipo": "conclusao_markdown", "alvo": "docs/conclusoes/03_probabilidade_distribuicoes.md", "notebook_origem": "notebooks/03_probabilidade_distribuicoes.ipynb", "resumo": "Publicar conclusões de distribuições em Markdown"},
+    "KAN-29": {"tipo": "conclusao_markdown", "alvo": "docs/conclusoes/04_testes_hipoteses_anova.md", "notebook_origem": "notebooks/04_testes_hipoteses_anova.ipynb", "resumo": "Publicar conclusões dos testes em Markdown"},
+    "KAN-35": {"tipo": "conclusao_markdown", "alvo": "docs/conclusoes/05_correlacao_regressoes.md", "notebook_origem": "notebooks/05_correlacao_regressoes.ipynb", "resumo": "Publicar conclusões de correlação e regressões"},
+    "KAN-36": {"tipo": "reuniao", "alvo": "docs/ata_reuniao_02.md", "resumo": "Preparar apresentações cruzadas da Reunião 2"},
+    "KAN-38": {"tipo": "relatorio", "alvo": "report/figures/", "resumo": "Selecionar tabelas e gráficos do relatório"},
+    "KAN-39": {"tipo": "relatorio", "alvo": "report/relatorio_final.md", "resumo": "Consolidar texto técnico do relatório"},
+    "KAN-40": {"tipo": "relatorio", "alvo": "report/relatorio_final.md", "resumo": "Rever coerência metodológica do relatório"},
+    "KAN-41": {"tipo": "validacao", "alvo": "report/relatorio_final.md", "resumo": "Executar validação numérica cruzada"},
+    "KAN-42": {"tipo": "relatorio", "alvo": "report/relatorio_final_estatistica.pdf", "resumo": "Gerar e rever o PDF final"},
+    "KAN-43": {"tipo": "entrega", "alvo": "notebooks/00_projeto_final_estatistica.ipynb", "resumo": "Preparar pacote final de entrega"}
+  }
 }
