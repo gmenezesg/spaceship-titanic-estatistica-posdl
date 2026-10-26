@@ -1,0 +1,35 @@
+{
+  "titulo": "Spaceship Titanic — Projeto Final de Análise Estatística (Pós-Graduação em Deep Learning - CIn/UFPE)",
+  "saida": "notebooks/00_projeto_final_estatistica.ipynb",
+  "secoes": [
+    {
+      "titulo": "1. Configuração, Saneamento e Engenharia de Atributos",
+      "tickets": ["KAN-10", "KAN-11", "KAN-12"],
+      "notebooks": ["notebooks/01_preparacao_dados.ipynb"]
+    },
+    {
+      "titulo": "2. Estatística Descritiva e Visualização",
+      "tickets": ["KAN-14", "KAN-15", "KAN-16", "KAN-17"],
+      "notebooks": [
+        "notebooks/04_kan15_resumos_quantitativos.ipynb",
+        "notebooks/03_kan17_valores_extremos.ipynb",
+        "notebooks/02_estatistica_descritiva.ipynb"
+      ]
+    },
+    {
+      "titulo": "3. Probabilidade e Distribuições",
+      "tickets": ["KAN-20", "KAN-21", "KAN-22"],
+      "notebooks": ["notebooks/03_probabilidade_distribuicoes.ipynb"]
+    },
+    {
+      "titulo": "4. Testes de Hipóteses e ANOVA",
+      "tickets": ["KAN-24", "KAN-25", "KAN-26", "KAN-27", "KAN-28"],
+      "notebooks": ["notebooks/04_testes_hipoteses_anova.ipynb"]
+    },
+    {
+      "titulo": "5. Correlação e Regressões Preditivas",
+      "tickets": ["KAN-30", "KAN-31", "KAN-32", "KAN-33", "KAN-34"],
+      "notebooks": ["notebooks/05_correlacao_regressoes.ipynb"]
+    }
+  ]
+}
