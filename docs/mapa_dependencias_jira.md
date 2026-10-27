@@ -62,10 +62,10 @@ flowchart TD
             KAN-18["<b>KAN-18</b> [A FAZER]<br/>Publicar conclusões descritivas em Markdown<br/><i>Atual: Helton | Rev: Luciana</i>"]:::afazer
         end
         subgraph T2["Trilha 2: Distribuições e QQ-Plots (Luciana)"]
-            KAN-20["<b>KAN-20</b> [A FAZER]<br/>Analisar distribuições de idade e despesas<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::afazer
-            KAN-21["<b>KAN-21</b> [A FAZER]<br/>Criar e interpretar QQ-plots<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::afazer
-            KAN-22["<b>KAN-22</b> [A FAZER]<br/>Relacionar distribuições com a escolha dos testes inferenciais<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::afazer
-            KAN-23["<b>KAN-23</b> [A FAZER]<br/>Publicar conclusões de distribuições em Markdown<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::afazer
+            KAN-20["<b>KAN-20</b> [CONCLUÍDO]<br/>Analisar distribuições de idade e despesas<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::concluido
+            KAN-21["<b>KAN-21</b> [CONCLUÍDO]<br/>Criar e interpretar QQ-plots<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::concluido
+            KAN-22["<b>KAN-22</b> [CONCLUÍDO]<br/>Relacionar distribuições com a escolha dos testes inferenciais<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::concluido
+            KAN-23["<b>KAN-23</b> [CONCLUÍDO]<br/>Publicar conclusões de distribuições em Markdown<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::concluido
         end
         subgraph T3["Trilha 3: Testes de Hipóteses (Daniela)"]
             KAN-24["<b>KAN-24</b> [EM REVISÃO]<br/>Definir hipóteses estatísticas antes dos testes<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::revisao
@@ -199,10 +199,10 @@ flowchart TD
 | [`KAN-17`](https://megamatic.atlassian.net/browse/KAN-17) | Documentar valores extremos sem remoção automática | **Concluído** | Helton | Helton | Luciana | `KAN-15` |
 | [`KAN-18`](https://megamatic.atlassian.net/browse/KAN-18) | Publicar conclusões descritivas em Markdown | **A fazer** | Helton | Helton | Luciana | `KAN-16`, `KAN-17` |
 | [`KAN-19`](https://megamatic.atlassian.net/browse/KAN-19) | Estudar variáveis aleatórias e distribuições | **Concluído** | Luciana | Luciana | Daniela | `KAN-9` |
-| [`KAN-20`](https://megamatic.atlassian.net/browse/KAN-20) | Analisar distribuições de idade e despesas | **A fazer** | Luciana | Luciana | Daniela | `KAN-12`, `KAN-19` |
-| [`KAN-21`](https://megamatic.atlassian.net/browse/KAN-21) | Criar e interpretar QQ-plots | **A fazer** | Luciana | Luciana | Daniela | `KAN-20` |
-| [`KAN-22`](https://megamatic.atlassian.net/browse/KAN-22) | Relacionar distribuições com a escolha dos testes inferenciais | **A fazer** | Luciana | Luciana | Daniela | `KAN-21` |
-| [`KAN-23`](https://megamatic.atlassian.net/browse/KAN-23) | Publicar conclusões de distribuições em Markdown | **A fazer** | Luciana | Luciana | Daniela | `KAN-22` |
+| [`KAN-20`](https://megamatic.atlassian.net/browse/KAN-20) | Analisar distribuições de idade e despesas | **Concluído** | Luciana | Luciana | Daniela | `KAN-12`, `KAN-19` |
+| [`KAN-21`](https://megamatic.atlassian.net/browse/KAN-21) | Criar e interpretar QQ-plots | **Concluído** | Luciana | Luciana | Daniela | `KAN-20` |
+| [`KAN-22`](https://megamatic.atlassian.net/browse/KAN-22) | Relacionar distribuições com a escolha dos testes inferenciais | **Concluído** | Luciana | Luciana | Daniela | `KAN-21` |
+| [`KAN-23`](https://megamatic.atlassian.net/browse/KAN-23) | Publicar conclusões de distribuições em Markdown | **Concluído** | Luciana | Luciana | Daniela | `KAN-22` |
 | [`KAN-24`](https://megamatic.atlassian.net/browse/KAN-24) | Definir hipóteses estatísticas antes dos testes | **In Review** | Daniela | Daniela | Renatta | `KAN-12` |
 | [`KAN-25`](https://megamatic.atlassian.net/browse/KAN-25) | Testar associação entre variáveis categóricas | **In Review** | Daniela | Daniela | Renatta | `KAN-24` |
 | [`KAN-26`](https://megamatic.atlassian.net/browse/KAN-26) | Comparar TotalSpend por Transported | **In Review** | Daniela | Daniela | Renatta | `KAN-22`, `KAN-24` |
