@@ -74,3 +74,29 @@ Todas as mensagens de commit devem ser escritas em **português** e iniciar com 
    - Preencher o template de PR, vincular o ticket `KAN-XX` e atribuir o **Revisor Dedicado** conforme indicado na seção de Governança do card no Jira.
 6. **Revisão e Merge:**
    - Após a aprovação pelo revisor dedicado, realizar o merge (`Squash and merge` ou `Merge pull request`) para a `main`.
+
+---
+
+## 5. Consolidação Obrigatória Antes do PR
+
+O notebook final [`notebooks/00_projeto_final_estatistica.ipynb`](notebooks/00_projeto_final_estatistica.ipynb) é **gerado automaticamente** e **nunca deve ser editado à mão**. Antes de abrir ou atualizar um Pull Request:
+
+1. **Implemente a alteração apenas no notebook de origem do ticket.** Consulte o mapeamento com:
+   ```bash
+   python src/consolidar_notebooks.py --ticket KAN-XX
+   ```
+2. **Valide o manifesto de tickets e notebooks:**
+   ```bash
+   python src/consolidar_notebooks.py --validar-mapa
+   ```
+3. **Consolide e execute o notebook final do início ao fim:**
+   ```bash
+   python src/consolidar_notebooks.py --permitir-faltantes --forcar --executar
+   ```
+   Na entrega final, quando todos os notebooks das trilhas estiverem presentes, remova `--permitir-faltantes`:
+   ```bash
+   python src/consolidar_notebooks.py --forcar --executar
+   ```
+4. **Confira o relatório de conformidade:** zero erros de execução, zero caminhos absolutos nas células e nas saídas, semente fixada (`seed(42)` / `random_state=42`) e toda saída acompanhada de interpretação em Markdown.
+
+Consulte o passo a passo completo em [`docs/guia_consolidacao.md`](docs/guia_consolidacao.md) e as regras em [`.agents/skills/consolidar-notebooks/SKILL.md`](.agents/skills/consolidar-notebooks/SKILL.md).

@@ -26,8 +26,8 @@ Esta skill garante que o arquivo principal [`notebooks/00_projeto_final_estatist
 Antes ou logo após implementar um ticket `KAN-XX`, consulte e valide o manifesto `notebooks/consolidacao.json`:
 
 ```bash
-.venv/bin/python src/consolidar_notebooks.py --ticket KAN-XX
-.venv/bin/python src/consolidar_notebooks.py --validar-mapa
+python src/consolidar_notebooks.py --ticket KAN-XX
+python src/consolidar_notebooks.py --validar-mapa
 ```
 
 - Se um novo notebook específico foi criado para o ticket, atualize `notebooks/consolidacao.json` (em `secoes[].notebooks`, `secoes[].mapeamento_tickets` e `mapa_tickets_notebooks`) e rode `--validar-mapa` novamente até obter código de saída `0`.
@@ -37,10 +37,10 @@ Gere e execute o notebook consolidado oficial `notebooks/00_projeto_final_estati
 
 ```bash
 # Durante o desenvolvimento das trilhas (quando nem todas as branches foram mescladas):
-.venv/bin/python src/consolidar_notebooks.py --permitir-faltantes --forcar --executar
+python src/consolidar_notebooks.py --permitir-faltantes --forcar --executar
 
 # Na entrega final (KAN-37 / KAN-43, exigindo 100% dos notebooks presentes):
-.venv/bin/python src/consolidar_notebooks.py --forcar --executar
+python src/consolidar_notebooks.py --forcar --executar
 ```
 
 ### Passo 3: Auditar o Relatório de Conformidade T3

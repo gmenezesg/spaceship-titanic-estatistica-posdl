@@ -1,6 +1,6 @@
 # Rule: Padrão de Criação e Manutenção de Rules e Skills Multi-Agente
 
-Toda criação ou atualização de **Rules** e **Skills** neste repositório deve seguir o princípio de **Fonte Única da Verdade (*Single Source of Truth*)** em [`.agents/`](../.agents/) e [`AGENTS.md`](../../AGENTS.md), garantindo compatibilidade integral entre **Linux, macOS e Windows** e zero duplicação de conteúdo entre agentes.
+Toda criação ou atualização de **Rules** e **Skills** neste repositório deve seguir o princípio de **Fonte Única da Verdade (*Single Source of Truth*)** em [`.agents/`](../../.agents/) e [`AGENTS.md`](../../AGENTS.md), garantindo compatibilidade integral entre **Linux, macOS e Windows** e zero duplicação de conteúdo entre agentes.
 
 ## Diretrizes Obrigatórias
 
@@ -20,4 +20,4 @@ Toda criação ou atualização de **Rules** e **Skills** neste repositório dev
 3. **Checklist ao Criar ou Editar uma Rule ou Skill:**
    - [ ] Criar/editar o arquivo canônico em `.agents/rules/<nome>.md` ou `.agents/skills/<nome>/SKILL.md`;
    - [ ] Registrar a referência na lista de fontes de `AGENTS.md`;
-   - [ ] Adicionar a linha `@.agents/...` nos stubs `CLAUDE.md`, `GEMINI.md`, `.windsurfrules`, `.github/copilot-instructions.md` e (para rules) criar o stub de 6 linhas em `.cursor/rules/<nome>.mdc`.
+   - [ ] Adicionar a linha `@.agents/...` nos stubs `CLAUDE.md`, `GEMINI.md`, `.windsurfrules`, `.github/copilot-instructions.md` e (para rules) criar o stub de 7 linhas (frontmatter + referência) em `.cursor/rules/<nome>.mdc`.

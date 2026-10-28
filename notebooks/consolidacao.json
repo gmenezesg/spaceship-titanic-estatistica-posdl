@@ -205,8 +205,7 @@
     "KAN-31": "notebooks/05_correlacao_regressoes.ipynb",
     "KAN-32": "notebooks/05_correlacao_regressoes.ipynb",
     "KAN-33": "notebooks/05_correlacao_regressoes.ipynb",
-    "KAN-34": "notebooks/05_correlacao_regressoes.ipynb",
-    "KAN-37": "notebooks/00_projeto_final_estatistica.ipynb"
+    "KAN-34": "notebooks/05_correlacao_regressoes.ipynb"
   },
   "mapa_outros_tickets": {
     "KAN-4": {"tipo": "governanca", "alvo": "README.md", "resumo": "Preparar criação do repositório GitHub"},
@@ -221,6 +220,7 @@
     "KAN-29": {"tipo": "conclusao_markdown", "alvo": "docs/conclusoes/04_testes_hipoteses_anova.md", "notebook_origem": "notebooks/04_testes_hipoteses_anova.ipynb", "resumo": "Publicar conclusões dos testes em Markdown"},
     "KAN-35": {"tipo": "conclusao_markdown", "alvo": "docs/conclusoes/05_correlacao_regressoes.md", "notebook_origem": "notebooks/05_correlacao_regressoes.ipynb", "resumo": "Publicar conclusões de correlação e regressões"},
     "KAN-36": {"tipo": "reuniao", "alvo": "docs/ata_reuniao_02.md", "resumo": "Preparar apresentações cruzadas da Reunião 2"},
+    "KAN-37": {"tipo": "consolidacao", "alvo": "notebooks/00_projeto_final_estatistica.ipynb", "resumo": "Consolidar os notebooks no notebook final"},
     "KAN-38": {"tipo": "relatorio", "alvo": "report/figures/", "resumo": "Selecionar tabelas e gráficos do relatório"},
     "KAN-39": {"tipo": "relatorio", "alvo": "report/relatorio_final.md", "resumo": "Consolidar texto técnico do relatório"},
     "KAN-40": {"tipo": "relatorio", "alvo": "report/relatorio_final.md", "resumo": "Rever coerência metodológica do relatório"},

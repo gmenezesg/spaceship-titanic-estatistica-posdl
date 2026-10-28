@@ -45,6 +45,12 @@ PADRAO_CAMINHO_ABSOLUTO = re.compile(
     r"""["'](?:[A-Za-z]:[\\/]|/home/|/Users/|/mnt/|/content/drive/)"""
 )
 
+# Caminhos absolutos em textos de saída não vêm necessariamente entre aspas
+# (ex.: "Diretório resolvido: /home/usuario/projeto/data").
+PADRAO_CAMINHO_ABSOLUTO_TEXTO = re.compile(
+    r"(?:(?<![A-Za-z0-9])[A-Za-z]:[\\/]|/home/|/Users/|/mnt/|/content/drive/)"
+)
+
 # Padrão de semente aleatória para auditoria de reprodutibilidade (KAN-37 / T3).
 PADRAO_SEMENTE = re.compile(r"(?:seed\s*\(\s*42\s*\)|random_state\s*=\s*42)")
 
@@ -223,6 +229,47 @@ def normalizar_codigo_para_dedup(fonte: str) -> str:
     return "\n".join(linhas)
 
 
+def registrar_caminho_absoluto(relatorio: dict, ocorrencia: str) -> None:
+    """Registra um caminho absoluto evitando avisos duplicados no relatório."""
+    if ocorrencia not in relatorio["caminhos_absolutos"]:
+        relatorio["caminhos_absolutos"].append(ocorrencia)
+
+
+def _juntar_texto(valor) -> str:
+    """Converte campos de saída (str ou lista de str) em um único texto."""
+    if isinstance(valor, list):
+        return "".join(str(parte) for parte in valor)
+    return str(valor or "")
+
+
+def _texto_de_saida(saida) -> str:
+    """Extrai o texto auditável de uma saída de célula do Jupyter."""
+    tipo = saida.get("output_type")
+    if tipo == "stream":
+        return _juntar_texto(saida.get("text", ""))
+    if tipo in ("execute_result", "display_data", "update_display_data"):
+        dados = saida.get("data", {})
+        return "\n".join(
+            _juntar_texto(dados.get(chave, "")) for chave in ("text/plain", "text/html")
+        )
+    if tipo == "error":
+        return _juntar_texto(saida.get("traceback", []))
+    return ""
+
+
+def auditar_caminhos_nas_saidas(celulas, relatorio: dict, rotulo: str) -> None:
+    """Audita caminhos absolutos nas saídas das células (inclusive sem aspas)."""
+    for celula in celulas:
+        if getattr(celula, "cell_type", None) != "code":
+            continue
+        for saida in getattr(celula, "outputs", []) or []:
+            for linha in _texto_de_saida(saida).splitlines():
+                if PADRAO_CAMINHO_ABSOLUTO_TEXTO.search(linha):
+                    registrar_caminho_absoluto(
+                        relatorio, f"{rotulo} (saída): {linha.strip()}"
+                    )
+
+
 def celula_cabecalho_geral(manifesto: dict) -> nbformat.NotebookNode:
     linhas = [
         f"# {manifesto.get('titulo', 'Projeto Final')}",
@@ -295,7 +342,9 @@ def copiar_celulas(
 
             for linha in fonte.splitlines():
                 if PADRAO_CAMINHO_ABSOLUTO.search(linha):
-                    relatorio["caminhos_absolutos"].append(f"{caminho.name}: {linha.strip()}")
+                    registrar_caminho_absoluto(
+                        relatorio, f"{caminho.name} (código): {linha.strip()}"
+                    )
             if PADRAO_SEMENTE.search(fonte):
                 relatorio["sementes_fixadas"] += 1
 
@@ -321,6 +370,11 @@ def copiar_celulas(
             copiadas.append(new_markdown_cell(texto))
             relatorio["total_markdown"] += 1
         # células "raw" são descartadas: não fazem parte da análise
+
+    if preservar_saidas:
+        # As saídas copiadas também precisam ser auditadas: caminhos absolutos
+        # podem aparecer em prints/DataFrames e quebrar a reprodutibilidade.
+        auditar_caminhos_nas_saidas(copiadas, relatorio, caminho.name)
 
     relatorio["por_notebook"][caminho.name] = len(copiadas)
     return copiadas
@@ -496,10 +550,6 @@ def main() -> int:
         print("AVISO: Notebooks ainda não disponíveis nesta branch (seções marcadas como parciais):")
         for faltante in relatorio["faltantes"]:
             print(f"  - {faltante}")
-    if relatorio["caminhos_absolutos"]:
-        print("AVISO: Possíveis caminhos absolutos (quebram a reprodutibilidade):")
-        for ocorrencia in relatorio["caminhos_absolutos"]:
-            print(f"  - {ocorrencia}")
 
     if args.executar:
         print("Executando o notebook do início ao fim (Restart & Run All)...")
@@ -509,6 +559,13 @@ def main() -> int:
             print(f"ERRO na execução: {erro}", file=sys.stderr)
             return 1
         print("Execução concluída sem erros.")
+        # Audita as saídas geradas pela execução (prints, DataFrames etc.).
+        auditar_caminhos_nas_saidas(nb.cells, relatorio, "notebook final")
+
+    if relatorio["caminhos_absolutos"]:
+        print("AVISO: Possíveis caminhos absolutos (quebram a reprodutibilidade):")
+        for ocorrencia in relatorio["caminhos_absolutos"]:
+            print(f"  - {ocorrencia}")
 
     saida.parent.mkdir(parents=True, exist_ok=True)
     nbformat.write(nb, saida)

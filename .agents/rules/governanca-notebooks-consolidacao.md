@@ -5,7 +5,7 @@ Esta regra garante que cada funcionalidade do Jira tenha como alvo seu próprio 
 ## Diretrizes Obrigatórias
 
 1. **Mapeamento Ticket $\rightarrow$ Notebook (`notebooks/consolidacao.json`):**
-   - Toda alteração de análise ou código referente a um ticket do Jira (`KAN-10` a `KAN-34`) deve ser realizada **exclusivamente** no notebook de origem mapeado em `notebooks/consolidacao.json`.
+   - Toda alteração de análise ou código referente a um ticket do Jira (`KAN-4` a `KAN-43`) deve ser realizada **exclusivamente** no notebook de origem mapeado em `notebooks/consolidacao.json`.
    - Caso um novo notebook por ticket seja criado, ele deve ser registrado em `secoes` (`notebooks` e `mapeamento_tickets`) e em `mapa_tickets_notebooks` dentro de `notebooks/consolidacao.json`.
 
 2. **Bloqueio de Edição Manual em `notebooks/00_projeto_final_estatistica.ipynb`:**
