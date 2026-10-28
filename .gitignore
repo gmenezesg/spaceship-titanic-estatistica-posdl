@@ -56,3 +56,4 @@ Thumbs.db
 # Dados locais pesados ou temporários (preservando estrutura .gitkeep)
 *.tmp
 *.bak
+notebooks/_previa*.ipynb

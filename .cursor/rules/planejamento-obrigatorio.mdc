@@ -1,0 +1,7 @@
+---
+description: Regra obrigatória para planejar sempre antes de executar qualquer tarefa no projeto Spaceship Titanic.
+globs: "**/*"
+alwaysApply: true
+---
+
+@.agents/rules/planejamento-obrigatorio.md

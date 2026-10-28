@@ -1,0 +1,7 @@
+---
+description: Padrão de criação e manutenção de rules e skills com fonte única em .agents/ e compatibilidade Linux, macOS e Windows sem duplicação.
+globs: "**/*"
+alwaysApply: true
+---
+
+@.agents/rules/padrao-rules-e-skills.md

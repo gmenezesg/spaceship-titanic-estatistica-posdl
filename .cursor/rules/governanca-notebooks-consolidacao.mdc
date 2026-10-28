@@ -1,0 +1,7 @@
+---
+description: Governança de notebooks por ticket Jira e proteção estrita do notebook consolidado 00_projeto_final_estatistica.ipynb.
+globs: "**/*"
+alwaysApply: true
+---
+
+@.agents/rules/governanca-notebooks-consolidacao.md

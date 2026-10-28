@@ -1,0 +1,7 @@
+---
+description: Exige que toda implementação observe os Objetivos Gerais, Entregáveis e Critérios de Avaliação de docs/T3 Projeto Final Estatística PosDL.docx.
+globs: "**/*"
+alwaysApply: true
+---
+
+@.agents/rules/objetivos-gerais-t3.md

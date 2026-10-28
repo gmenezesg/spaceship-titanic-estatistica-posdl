@@ -1,0 +1,10 @@
+# Configuração para Windsurf (`.windsurfrules`)
+
+As regras e skills deste repositório são mantidas em fonte única em `AGENTS.md` e na pasta `.agents/`. Consulte e aplique integralmente:
+
+@AGENTS.md
+@.agents/rules/planejamento-obrigatorio.md
+@.agents/rules/governanca-notebooks-consolidacao.md
+@.agents/rules/objetivos-gerais-t3.md
+@.agents/rules/padrao-rules-e-skills.md
+@.agents/skills/consolidar-notebooks/SKILL.md
