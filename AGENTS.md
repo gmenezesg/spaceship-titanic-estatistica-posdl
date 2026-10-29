@@ -24,24 +24,19 @@ Este repositório possui regras obrigatórias de governança para todos os agent
 
 ---
 
-## Regra 2: Isolamento por Notebook e Consolidação Estrita (`notebooks/00_projeto_final_estatistica.ipynb`)
+## Regra 2: Isolamento por Notebook, Conformidade por Commit e Consolidação Sob Demanda (`notebooks/00_projeto_final_estatistica.ipynb`)
 
-1. **Cada Ticket Jira Altera Apenas Seu Próprio Notebook de Origem:**
-   - Toda implementação de funcionalidade ou análise estatística vinda do Jira (`https://megamatic.atlassian.net/jira/software/projects/KAN/boards/2`) deve ter como alvo **exclusivamente** o seu próprio arquivo de notebook mapeado em [`notebooks/consolidacao.json`](notebooks/consolidacao.json).
+1. **Cada Ticket Jira Altera Apenas Seu Próprio Notebook/Artefato de Origem:**
+   - Toda implementação de funcionalidade ou análise estatística vinda do Jira (`https://megamatic.atlassian.net/jira/software/projects/KAN/boards/2`) deve ter como alvo **exclusivamente** o seu próprio arquivo mapeado em [`notebooks/consolidacao.json`](notebooks/consolidacao.json).
    - Notebooks das trilhas analíticas (Seções 2 a 5) devem consumir apenas a base tratada `data/processed/spaceship_titanic_clean.csv`, sem repetir o pipeline de limpeza da Seção 1 (`notebooks/01_preparacao_dados.ipynb`).
 
-2. **Proibição Absoluta de Edição Manual do `notebooks/00_projeto_final_estatistica.ipynb`:**
-   - O arquivo principal [`notebooks/00_projeto_final_estatistica.ipynb`](notebooks/00_projeto_final_estatistica.ipynb) **NUNCA** deve ser editado diretamente (nem por ferramentas de edição de arquivo/notebook, nem manualmente).
-   - O arquivo `notebooks/00_projeto_final_estatistica.ipynb` **só pode ser alterado pela Skill `consolidar-notebooks` (através do script [`src/consolidar_notebooks.py`](src/consolidar_notebooks.py))**.
+2. **Proibição Absoluta de Edição Manual ou Alteração Prematura de `notebooks/00_projeto_final_estatistica.ipynb`:**
+   - O arquivo principal [`notebooks/00_projeto_final_estatistica.ipynb`](notebooks/00_projeto_final_estatistica.ipynb) **NUNCA** deve ser editado diretamente (nem por ferramentas de edição de arquivo/notebook, nem manualmente) e **não deve ser modificado nos commits/PRs de tickets individuais das trilhas**.
+   - O arquivo `notebooks/00_projeto_final_estatistica.ipynb` **só pode ser gerado/atualizado sob demanda pela Skill `consolidar-notebooks` (através do script [`src/consolidar_notebooks.py`](src/consolidar_notebooks.py))**.
 
-3. **Consolidação e Lembrete Obrigatórios ao Final de Todo Ticket Jira:**
-   - Ao final da implementação de **qualquer ticket do Jira**, o agente deve obrigatoriamente:
-     1. Acionar a Skill **`consolidar-notebooks`** (localizada em [`.agents/skills/consolidar-notebooks/SKILL.md`](.agents/skills/consolidar-notebooks/SKILL.md)) para validar os mapeamentos e consolidar o notebook principal:
-        ```bash
-        python src/consolidar_notebooks.py --validar-mapa
-        python src/consolidar_notebooks.py --permitir-faltantes --forcar --executar
-        ```
-     2. **Lembrar explicitamente o usuário** na resposta final de executar a Skill `consolidar-notebooks` / `src/consolidar_notebooks.py` antes de abrir ou atualizar o Pull Request.
+3. **Conformidade Obrigatória em Todos os Commits e Consolidação Sob Demanda no Final do Projeto (`KAN-37`):**
+   - **Em todo commit/ticket Jira:** garanta que o notebook de origem esteja 100% pronto para a consolidação futura (zero caminhos absolutos no código e nas saídas/prints, `seed(42)` fixada, execução limpa *Restart & Run All* do próprio notebook e manifesto validado com `python src/consolidar_notebooks.py --validar-mapa`).
+   - **Execução da Skill `consolidar-notebooks` apenas sob demanda:** a consolidação oficial (`python src/consolidar_notebooks.py --forcar --executar`) **só deve ser executada no final do projeto (`KAN-37` / `KAN-43`) ou quando explicitamente solicitada pelo usuário**, garantindo que ocorra de uma só vez e sem conflitos entre PRs.
 
 ---
 

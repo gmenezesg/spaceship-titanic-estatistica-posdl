@@ -7,9 +7,9 @@ O notebook final `notebooks/00_projeto_final_estatistica.ipynb` é **gerado excl
 ## Regras de Governança
 
 1. **Cada ticket Jira (`KAN-XX`) tem como alvo seu próprio notebook de origem** mapeado em `notebooks/consolidacao.json`. Todos os notebooks das trilhas analíticas (Seções 2 a 5) leem apenas a base tratada `data/processed/spaceship_titanic_clean.csv` e nunca repetem a preparação dos dados.
-2. **Proibido editar `notebooks/00_projeto_final_estatistica.ipynb` manualmente.** Qualquer alteração ou correção deve ser feita no notebook de origem do ticket correspondente e consolidada via Skill `consolidar-notebooks` / `src/consolidar_notebooks.py`.
-3. **Mapeamento centralizado em `notebooks/consolidacao.json`.** Para consultar, incluir ou reordenar o mapeamento entre tickets Jira e notebooks, utilize o manifesto `notebooks/consolidacao.json`.
-4. **Consolidação obrigatória ao fim de cada ticket Jira.** Ao concluir a implementação de qualquer ticket do Jira, execute a Skill `consolidar-notebooks` (ou o comando abaixo) para atualizar e validar o `00_projeto_final_estatistica.ipynb`.
+2. **Proibido editar `notebooks/00_projeto_final_estatistica.ipynb` manualmente ou alterá-lo em PRs de tickets individuais.** Qualquer implementação ou correção deve ser feita apenas no notebook de origem do ticket correspondente.
+3. **Mapeamento centralizado em `notebooks/consolidacao.json`.** Para consultar, incluir ou reordenar o mapeamento entre tickets Jira e notebooks, utilize o manifesto `notebooks/consolidacao.json` e valide com `python src/consolidar_notebooks.py --validar-mapa`.
+4. **Conformidade em todos os commits e consolidação sob demanda no final do projeto (`KAN-37`).** Cada commit de notebook de origem deve estar 100% conforme (zero caminhos absolutos no código e nas saídas, semente `42` fixada e execução limpa *Restart & Run All*). A geração do `00_projeto_final_estatistica.ipynb` via Skill `consolidar-notebooks` ocorre **apenas sob demanda** no fechamento do projeto (`KAN-37` / `KAN-43`) ou quando solicitada explicitamente, garantindo uma consolidação única e sem conflitos.
 
 ---
 
@@ -34,7 +34,7 @@ Na raiz do repositório, com o ambiente virtual ativo (`.venv`):
 | Consultar o notebook-alvo de um ticket Jira específico | `python src/consolidar_notebooks.py --ticket KAN-19` |
 | Validar integridade e completude do `notebooks/consolidacao.json` | `python src/consolidar_notebooks.py --validar-mapa` |
 | Prévia com os notebooks já existentes (sem tocar no `00_`) | `python src/consolidar_notebooks.py --permitir-faltantes --saida notebooks/_previa_consolidado.ipynb` |
-| Atualizar e executar o `00_projeto_final_estatistica.ipynb` com os notebooks disponíveis | `python src/consolidar_notebooks.py --permitir-faltantes --forcar --executar` |
+| Prévia executada com os notebooks disponíveis (sem tocar no `00_`) | `python src/consolidar_notebooks.py --permitir-faltantes --forcar --executar --saida notebooks/_previa_consolidado.ipynb` |
 | Gerar o notebook final oficial completo (exige todos os notebooks presentes) | `python src/consolidar_notebooks.py --forcar --executar` |
 
 Arquivos de prévia (`notebooks/_previa*.ipynb`) servem apenas para conferência local e já estão ignorados no `.gitignore`.
