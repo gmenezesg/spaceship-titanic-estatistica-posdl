@@ -30,7 +30,7 @@ digraph JiraDependencyMap {
     "KAN-24" [label="KAN-24 [EM REVISÃO]\nDefinir hipóteses estatísticas antes dos testes\nAtual: Daniela | Rev: Renatta", fillcolor="#FEF7E0", color="#F29900", style="rounded,filled"];
     "KAN-25" [label="KAN-25 [EM REVISÃO]\nTestar associação entre variáveis categóricas\nAtual: Daniela | Rev: Renatta", fillcolor="#FEF7E0", color="#F29900", style="rounded,filled"];
     "KAN-26" [label="KAN-26 [EM REVISÃO]\nComparar TotalSpend por Transported\nAtual: Daniela | Rev: Renatta", fillcolor="#FEF7E0", color="#F29900", style="rounded,filled"];
-    "KAN-27" [label="KAN-27 [A FAZER]\nComparar TotalSpend entre planetas de origem\nAtual: Daniela | Rev: Renatta", fillcolor="#F8FAFC", color="#64748B", style="rounded,filled"];
+    "KAN-27" [label="KAN-27 [EM REVISÃO]\nComparar TotalSpend entre planetas de origem\nAtual: Daniela | Rev: Renatta", fillcolor="#FEF7E0", color="#F29900", style="rounded,filled"];
     "KAN-28" [label="KAN-28 [A FAZER]\nCriar tabela-resumo dos testes de hipóteses\nAtual: Daniela | Rev: Renatta", fillcolor="#F8FAFC", color="#64748B", style="rounded,filled"];
     "KAN-29" [label="KAN-29 [A FAZER]\nPublicar conclusões dos testes em Markdown\nAtual: Daniela | Rev: Renatta", fillcolor="#F8FAFC", color="#64748B", style="rounded,filled"];
     "KAN-30" [label="KAN-30 [A FAZER]\nAnalisar correlações e diagramas de dispersão\nAtual: Renatta | Rev: Gustavo", fillcolor="#F8FAFC", color="#64748B", style="rounded,filled"];

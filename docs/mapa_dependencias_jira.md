@@ -71,7 +71,7 @@ flowchart TD
             KAN-24["<b>KAN-24</b> [EM REVISÃO]<br/>Definir hipóteses estatísticas antes dos testes<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::revisao
             KAN-25["<b>KAN-25</b> [EM REVISÃO]<br/>Testar associação entre variáveis categóricas<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::revisao
             KAN-26["<b>KAN-26</b> [EM REVISÃO]<br/>Comparar TotalSpend por Transported<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::revisao
-            KAN-27["<b>KAN-27</b> [A FAZER]<br/>Comparar TotalSpend entre planetas de origem<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::afazer
+            KAN-27["<b>KAN-27</b> [EM REVISÃO]<br/>Comparar TotalSpend entre planetas de origem<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::revisao
             KAN-28["<b>KAN-28</b> [A FAZER]<br/>Criar tabela-resumo dos testes de hipóteses<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::afazer
             KAN-29["<b>KAN-29</b> [A FAZER]<br/>Publicar conclusões dos testes em Markdown<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::afazer
         end
@@ -206,7 +206,7 @@ flowchart TD
 | [`KAN-24`](https://megamatic.atlassian.net/browse/KAN-24) | Definir hipóteses estatísticas antes dos testes | **In Review** | Daniela | Daniela | Renatta | `KAN-12` |
 | [`KAN-25`](https://megamatic.atlassian.net/browse/KAN-25) | Testar associação entre variáveis categóricas | **In Review** | Daniela | Daniela | Renatta | `KAN-24` |
 | [`KAN-26`](https://megamatic.atlassian.net/browse/KAN-26) | Comparar TotalSpend por Transported | **In Review** | Daniela | Daniela | Renatta | `KAN-22`, `KAN-24` |
-| [`KAN-27`](https://megamatic.atlassian.net/browse/KAN-27) | Comparar TotalSpend entre planetas de origem | **A fazer** | Daniela | Daniela | Renatta | `KAN-22`, `KAN-24` |
+| [`KAN-27`](https://megamatic.atlassian.net/browse/KAN-27) | Comparar TotalSpend entre planetas de origem | **In Review** | Daniela | Daniela | Renatta | `KAN-22`, `KAN-24` |
 | [`KAN-28`](https://megamatic.atlassian.net/browse/KAN-28) | Criar tabela-resumo dos testes de hipóteses | **A fazer** | Daniela | Daniela | Renatta | `KAN-25`, `KAN-26`, `KAN-27` |
 | [`KAN-29`](https://megamatic.atlassian.net/browse/KAN-29) | Publicar conclusões dos testes em Markdown | **A fazer** | Daniela | Daniela | Renatta | `KAN-28` |
 | [`KAN-30`](https://megamatic.atlassian.net/browse/KAN-30) | Analisar correlações e diagramas de dispersão | **A fazer** | Renatta | Renatta | Gustavo | `KAN-12` |

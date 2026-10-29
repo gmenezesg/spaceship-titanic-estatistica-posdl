@@ -156,7 +156,7 @@ TICKETS_JIRA = {'KAN-4': {'summary': 'Preparar criação do repositório GitHub'
             'rev': 'Renatta',
             'deps': ['KAN-22', 'KAN-24']},
  'KAN-27': {'summary': 'Comparar TotalSpend entre planetas de origem',
-            'status': 'A fazer',
+            'status': 'In Review',
             'assignee': 'Daniela',
             'resp': 'Daniela',
             'rev': 'Renatta',
