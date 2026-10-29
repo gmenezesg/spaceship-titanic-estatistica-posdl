@@ -16,8 +16,8 @@ Uso (a partir da raiz do repositório):
     # Validar todos os mapeamentos de tickets Jira em notebooks/consolidacao.json
     python src/consolidar_notebooks.py --validar-mapa
 
-    # Prévia com os notebooks que já existem na branch atual
-    python src/consolidar_notebooks.py --permitir-faltantes --forcar --executar
+    # Prévia com os notebooks que já existem na branch atual (sem tocar no 00_)
+    python src/consolidar_notebooks.py --permitir-faltantes --forcar --executar --saida notebooks/_previa_consolidado.ipynb
 
     # Gerar e executar o notebook final oficial (quando todos os notebooks existirem)
     python src/consolidar_notebooks.py --forcar --executar
@@ -154,12 +154,13 @@ def consultar_ticket(manifesto: dict, ticket: str) -> int:
             print(f"Notebook-Alvo    : {nb_alvo}")
             if extras:
                 print(f"Artefatos Extras : {', '.join(extras)}")
-            print(f"Notebook Mestre  : {saida_mestre} (NÃO EDITAR À MÃO)")
+            print(f"Notebook Mestre  : {saida_mestre} (NÃO EDITAR À MÃO / CONSOLIDAR APENAS SOB DEMANDA EM KAN-37)")
             print(
-                "\nFluxo Obrigatório:\n"
-                f"  1. Implemente as alterações exclusivamente em `{nb_alvo}`.\n"
-                f"  2. Ao concluir o ticket {ticket}, consolide executando:\n"
-                f"     python src/consolidar_notebooks.py --permitir-faltantes --forcar --executar"
+                "\nFluxo de Conformidade:\n"
+                f"  1. Implemente as alterações exclusivamente em `{nb_alvo}` (sem tocar no `{saida_mestre}`).\n"
+                "  2. Garanta zero caminhos absolutos (no código e nos outputs), seed(42) e execução limpa.\n"
+                "  3. Valide o manifesto com: python src/consolidar_notebooks.py --validar-mapa\n"
+                "  4. A consolidação em `00_projeto_final_estatistica.ipynb` só deve ser rodada sob demanda no final do projeto (KAN-37)."
             )
             return 0
 
@@ -178,8 +179,8 @@ def consultar_ticket(manifesto: dict, ticket: str) -> int:
         if info.get("notebook_origem"):
             print(f"Notebook Base    : {info.get('notebook_origem')}")
         print(
-            "\nLembrete: Caso qualquer ajuste seja feito no notebook base, "
-            "execute a consolidação (`python src/consolidar_notebooks.py --permitir-faltantes --forcar --executar`)."
+            "\nNota: Mantenha os artefatos sem caminhos absolutos. "
+            "A consolidação em `00_projeto_final_estatistica.ipynb` é executada apenas sob demanda no final do projeto (KAN-37)."
         )
         return 0
 
