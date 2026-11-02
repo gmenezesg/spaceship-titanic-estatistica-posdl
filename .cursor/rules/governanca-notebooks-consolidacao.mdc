@@ -1,5 +1,5 @@
 ---
-description: Governança de notebooks por ticket Jira e proteção estrita do notebook consolidado 00_projeto_final_estatistica.ipynb.
+description: Governança de notebooks por ticket Jira, conformidade de commits e consolidação sob demanda do notebook 00_projeto_final_estatistica.ipynb (KAN-37).
 globs: "**/*"
 alwaysApply: true
 ---

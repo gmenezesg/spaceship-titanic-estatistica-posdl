@@ -8,6 +8,6 @@ Todo agente operando neste repositório deve **planejar antes de executar qualqu
 2. **Alinhamento com o T3:** Verifique como a tarefa atende aos objetivos de `docs/T3 Projeto Final Estatística PosDL.docx` (qualidade técnica 30%, clareza e objetividade 50%, organização e reprodutibilidade do notebook 20%).
 3. **Plano Explícito:** Formule e apresente um plano de ação objetivo contendo:
    - Escopo e ticket Jira (`KAN-XX`);
-   - Arquivo(s) de origem que serão criados ou editados (garantindo que `notebooks/00_projeto_final_estatistica.ipynb` não seja editado manualmente);
-   - Etapas de implementação e verificação;
-   - Etapa final de consolidação via Skill `consolidar-notebooks` (`src/consolidar_notebooks.py`).
+   - Arquivo(s) de origem que serão criados ou editados (garantindo que `notebooks/00_projeto_final_estatistica.ipynb` não seja editado manualmente nem alterado em PRs de tickets individuais);
+   - Etapas de implementação e verificação de conformidade (zero caminhos absolutos no código e nas saídas, `seed(42)` fixada, `python src/consolidar_notebooks.py --validar-mapa`);
+   - Consolidação em `notebooks/00_projeto_final_estatistica.ipynb` via Skill `consolidar-notebooks` **apenas sob demanda** (no final do projeto em `KAN-37` / `KAN-43` ou quando explicitamente solicitado pelo usuário).

@@ -52,12 +52,12 @@ flowchart TD
 
     subgraph FASE3["FASE 3 — Trilhas Analíticas Paralelas"]
         subgraph T0["Trilha 0: Preparação (Gustavo)"]
-            KAN-13["<b>KAN-13</b> [A FAZER]<br/>Publicar conclusões de preparação em Markdown<br/><i>Atual: Gustavo | Rev: Helton</i>"]:::afazer
+            KAN-13["<b>KAN-13</b> [EM REVISÃO]<br/>Publicar conclusões de preparação em Markdown<br/><i>Atual: Helton | Rev: Helton</i>"]:::revisao
         end
         subgraph T1["Trilha 1: Estatística Descritiva (Helton)"]
             KAN-14["<b>KAN-14</b> [A FAZER]<br/>Produzir resumos de variáveis categóricas<br/><i>Atual: Helton | Rev: Luciana</i>"]:::afazer
             KAN-15["<b>KAN-15</b> [CONCLUÍDO]<br/>Produzir resumos de variáveis quantitativas<br/><i>Atual: Helton | Rev: Luciana</i>"]:::concluido
-            KAN-16["<b>KAN-16</b> [EM PROGRESSO]<br/>Criar gráficos descritivos candidatos ao relatório<br/><i>Atual: Helton | Rev: Luciana</i>"]:::progresso
+            KAN-16["<b>KAN-16</b> [CONCLUÍDO]<br/>Criar gráficos descritivos candidatos ao relatório<br/><i>Atual: Helton | Rev: Luciana</i>"]:::concluido
             KAN-17["<b>KAN-17</b> [CONCLUÍDO]<br/>Documentar valores extremos sem remoção automática<br/><i>Atual: Helton | Rev: Luciana</i>"]:::concluido
             KAN-18["<b>KAN-18</b> [A FAZER]<br/>Publicar conclusões descritivas em Markdown<br/><i>Atual: Helton | Rev: Luciana</i>"]:::afazer
         end
@@ -192,10 +192,10 @@ flowchart TD
 | [`KAN-10`](https://megamatic.atlassian.net/browse/KAN-10) | Criar inventário e dicionário de dados | **Concluído** | Helton | Gustavo | Helton | `KAN-9` |
 | [`KAN-11`](https://megamatic.atlassian.net/browse/KAN-11) | Analisar valores ausentes e duplicados | **Concluído** | Helton | Gustavo | Helton | `KAN-10` |
 | [`KAN-12`](https://megamatic.atlassian.net/browse/KAN-12) | Criar variáveis derivadas do Spaceship Titanic | **Concluído** | Helton | Gustavo | Helton | `KAN-11` |
-| [`KAN-13`](https://megamatic.atlassian.net/browse/KAN-13) | Publicar conclusões de preparação em Markdown | **A fazer** | Gustavo | Gustavo | Helton | `KAN-12` |
+| [`KAN-13`](https://megamatic.atlassian.net/browse/KAN-13) | Publicar conclusões de preparação em Markdown | **In Review** | Helton | Gustavo | Helton | `KAN-12` |
 | [`KAN-14`](https://megamatic.atlassian.net/browse/KAN-14) | Produzir resumos de variáveis categóricas | **A fazer** | Helton | Helton | Luciana | `KAN-12` |
 | [`KAN-15`](https://megamatic.atlassian.net/browse/KAN-15) | Produzir resumos de variáveis quantitativas | **Concluído** | Helton | Helton | Luciana | `KAN-12` |
-| [`KAN-16`](https://megamatic.atlassian.net/browse/KAN-16) | Criar gráficos descritivos candidatos ao relatório | **Em Progresso** | Helton | Helton | Luciana | `KAN-14`, `KAN-15` |
+| [`KAN-16`](https://megamatic.atlassian.net/browse/KAN-16) | Criar gráficos descritivos candidatos ao relatório | **Concluído** | Helton | Helton | Luciana | `KAN-14`, `KAN-15` |
 | [`KAN-17`](https://megamatic.atlassian.net/browse/KAN-17) | Documentar valores extremos sem remoção automática | **Concluído** | Helton | Helton | Luciana | `KAN-15` |
 | [`KAN-18`](https://megamatic.atlassian.net/browse/KAN-18) | Publicar conclusões descritivas em Markdown | **A fazer** | Helton | Helton | Luciana | `KAN-16`, `KAN-17` |
 | [`KAN-19`](https://megamatic.atlassian.net/browse/KAN-19) | Estudar variáveis aleatórias e distribuições | **Concluído** | Luciana | Luciana | Daniela | `KAN-9` |
