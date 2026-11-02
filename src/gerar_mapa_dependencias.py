@@ -3,15 +3,16 @@
 Gerador Automatizado do Mapa de Dependências, Estados e Responsáveis do Jira (Projeto KAN).
 
 Este script gera:
-1. docs/mapa_dependencias_jira.png (Imagem em alta resolução 200 DPI)
+1. docs/mapa_dependencias_jira.png (Imagem em alta resolução 300 DPI)
 2. docs/mapa_dependencias_jira.mmd (DSL Mermaid.js para GitHub, Draw.io, Lucidchart, Mermaid Live. Use a extensão https://marketplace.visualstudio.com/items?itemName=MermaidChart.vscode-mermaid-chart para visualizar o arquivo .md)
 3. docs/mapa_dependencias_jira.dot (DSL Graphviz DOT para Draw.io, Graphviz, Gephi)
 
 Uso:
-    python src/gerar_mapa_dependencias.py
+    python src/gerar_mapa_dependencias.py [--dpi 300]
 """
 
 from pathlib import Path
+import argparse
 import textwrap
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -78,7 +79,7 @@ TICKETS_JIRA = {'KAN-4': {'summary': 'Preparar criação do repositório GitHub'
             'rev': 'Helton',
             'deps': ['KAN-12']},
  'KAN-14': {'summary': 'Produzir resumos de variáveis categóricas',
-            'status': 'A fazer',
+            'status': 'In Review',
             'assignee': 'Helton',
             'resp': 'Helton',
             'rev': 'Luciana',
@@ -102,7 +103,7 @@ TICKETS_JIRA = {'KAN-4': {'summary': 'Preparar criação do repositório GitHub'
             'rev': 'Luciana',
             'deps': ['KAN-15']},
  'KAN-18': {'summary': 'Publicar conclusões descritivas em Markdown',
-            'status': 'A fazer',
+            'status': 'In Review',
             'assignee': 'Helton',
             'resp': 'Helton',
             'rev': 'Luciana',
@@ -174,37 +175,37 @@ TICKETS_JIRA = {'KAN-4': {'summary': 'Preparar criação do repositório GitHub'
             'rev': 'Renatta',
             'deps': ['KAN-28']},
  'KAN-30': {'summary': 'Analisar correlações e diagramas de dispersão',
-            'status': 'A fazer',
+            'status': 'Concluído',
             'assignee': 'Renatta',
             'resp': 'Renatta',
             'rev': 'Gustavo',
             'deps': ['KAN-12']},
  'KAN-31': {'summary': 'Desenvolver regressão linear para TotalSpend',
-            'status': 'A fazer',
+            'status': 'Em Progresso',
             'assignee': 'Renatta',
             'resp': 'Renatta',
             'rev': 'Gustavo',
             'deps': ['KAN-30']},
  'KAN-32': {'summary': 'Criar baseline para classificação de Transported',
-            'status': 'A fazer',
+            'status': 'Concluído',
             'assignee': 'Renatta',
             'resp': 'Renatta',
             'rev': 'Gustavo',
             'deps': ['KAN-12']},
  'KAN-33': {'summary': 'Desenvolver regressão logística para Transported',
-            'status': 'A fazer',
+            'status': 'Concluído',
             'assignee': 'Renatta',
             'resp': 'Renatta',
             'rev': 'Gustavo',
             'deps': ['KAN-32']},
  'KAN-34': {'summary': 'Avaliar e interpretar o modelo logístico',
-            'status': 'A fazer',
+            'status': 'Concluído',
             'assignee': 'Renatta',
             'resp': 'Renatta',
             'rev': 'Gustavo',
             'deps': ['KAN-33']},
  'KAN-35': {'summary': 'Publicar conclusões de correlação e regressões',
-            'status': 'A fazer',
+            'status': 'Concluído',
             'assignee': 'Renatta',
             'resp': 'Renatta',
             'rev': 'Gustavo',
@@ -306,7 +307,7 @@ POSICOES = {
 }
 
 
-def gerar_png(docs_dir: Path) -> Path:
+def gerar_png(docs_dir: Path, dpi: int = 300) -> Path:
     status_styles = {
         'Concluído':    {'bg': '#E6F4EA', 'border': '#1E8E3E', 'badge_bg': '#1E8E3E', 'badge_fg': '#FFFFFF', 'label': 'CONCLUÍDO'},
         'In Review':    {'bg': '#FEF7E0', 'border': '#F29900', 'badge_bg': '#F29900', 'badge_fg': '#FFFFFF', 'label': 'EM REVISÃO (PR)'},
@@ -322,7 +323,7 @@ def gerar_png(docs_dir: Path) -> Path:
         'Renatta': '#EA580C',
     }
 
-    fig, ax = plt.subplots(figsize=(26, 31), dpi=200)
+    fig, ax = plt.subplots(figsize=(26, 31), dpi=dpi)
     fig.patch.set_facecolor('#F8FAFC')
     ax.set_facecolor('#F8FAFC')
 
@@ -409,15 +410,55 @@ def gerar_png(docs_dir: Path) -> Path:
         ax.text(x0 + 0.03, y0 + 0.11, f"Atual: {assignee_name}", fontsize=7.8, fontweight='bold', color=p_col, ha='left', va='center', zorder=4)
         ax.text(x0 + box_w - 0.03, y0 + 0.11, f"Rev: {rev_short}", fontsize=7.3, color='#475569', ha='right', va='center', zorder=4)
 
+    # Header e Títulos
     ax.text(2.0, 18.05, "MAPA DE DEPENDÊNCIAS, ESTADOS E RESPONSÁVEIS — JIRA (PROJETO KAN)", fontsize=18, fontweight='bold', color='#0F172A', ha='center', va='center')
     ax.text(2.0, 17.62, "Spaceship Titanic — Estatística (Pós-Graduação em Deep Learning - CIn/UFPE)", fontsize=12, color='#475569', ha='center', va='center')
 
+    # Métricas agregadas e legenda de status
+    total_cards = len(TICKETS_JIRA)
+    status_counts = {}
+    for info in TICKETS_JIRA.values():
+        s = info['status']
+        status_counts[s] = status_counts.get(s, 0) + 1
+
+    concluidos = status_counts.get('Concluído', 0)
+    in_review = status_counts.get('In Review', 0)
+    progresso = status_counts.get('Em Progresso', 0)
+    afazer = status_counts.get('A fazer', 0)
+    cancelados = status_counts.get('Cancelado', 0)
+
+    legend_items = [
+        ('Concluído', f'Concluído ({concluidos})', status_styles['Concluído']),
+        ('In Review', f'Em Revisão ({in_review})', status_styles['In Review']),
+        ('Em Progresso', f'Em Progresso ({progresso})', status_styles['Em Progresso']),
+        ('A fazer', f'A Fazer ({afazer})', status_styles['A fazer']),
+        ('Cancelado', f'Cancelado ({cancelados})', status_styles['Cancelado']),
+    ]
+    xs = [0.0, 1.0, 2.0, 3.0, 4.0]
+    for x, (s_name, s_txt, s_style) in zip(xs, legend_items):
+        ls = '--' if s_name == 'Cancelado' else '-'
+        ax.text(
+            x, 17.15, s_txt, fontsize=9.2, fontweight='bold', color=s_style['badge_fg'],
+            ha='center', va='center',
+            bbox=dict(boxstyle='round,pad=0.35,rounding_size=0.15', facecolor=s_style['badge_bg'], edgecolor=s_style['border'], lw=1.5, linestyle=ls),
+            zorder=4
+        )
+
+    pronto_review_pct = (concluidos + in_review) / total_cards * 100
+    subtext_metricas = (
+        f"Status Geral ({total_cards} Cards): {concluidos} Concluídos ({concluidos/total_cards*100:.0f}%) | "
+        f"{in_review} Em Revisão ({in_review/total_cards*100:.0f}%) | "
+        f"{progresso} Em Progresso | {afazer} A Fazer | {cancelados} Cancelado • "
+        f"Concluídos + Em Revisão: {pronto_review_pct:.1f}%"
+    )
+    ax.text(2.0, 16.68, subtext_metricas, fontsize=10.0, fontweight='bold', color='#334155', ha='center', va='center')
+
     ax.set_xlim(-0.65, 4.65)
-    ax.set_ylim(-6.2, 18.4)
+    ax.set_ylim(-6.2, 18.5)
     ax.axis('off')
     plt.tight_layout()
     out_file = docs_dir / "mapa_dependencias_jira.png"
-    plt.savefig(out_file, dpi=200, bbox_inches='tight')
+    plt.savefig(out_file, dpi=dpi, bbox_inches='tight')
     plt.close(fig)
     return out_file
 
@@ -631,10 +672,14 @@ O bloco abaixo utiliza a DSL **Mermaid (`flowchart TD`)** e é renderizado inter
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Gerar mapa de dependências do Jira em PNG de alta definição, Mermaid, DOT e Markdown.")
+    parser.add_argument("--dpi", type=int, default=300, help="Resolução DPI para a imagem PNG (padrão: 300 DPI)")
+    args = parser.parse_args()
+
     root_dir = Path(__file__).resolve().parent.parent
     docs_dir = root_dir / "docs"
-    out_png = gerar_png(docs_dir)
+    out_png = gerar_png(docs_dir, dpi=args.dpi)
     mmd_str = gerar_mmd(docs_dir)
     out_dot = gerar_dot(docs_dir)
     out_md = gerar_md(docs_dir, mmd_str)
-    print(f"Arquivos gerados com sucesso em: {docs_dir}")
+    print(f"Arquivos gerados com sucesso em: {docs_dir} (DPI={args.dpi})")
