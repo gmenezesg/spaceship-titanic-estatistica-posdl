@@ -9,7 +9,7 @@
 - **Notebook Base da Trilha:** [`notebooks/02_estatistica_descritiva.ipynb`](../../notebooks/02_estatistica_descritiva.ipynb)
 - **Notebook Mestre Consolidado:** [`notebooks/00_projeto_final_estatistica.ipynb`](../../notebooks/00_projeto_final_estatistica.ipynb)
 - **Base de Dados:** `data/processed/spaceship_titanic_clean.csv` — 8.693 passageiros × 22 colunas, 0 valores ausentes
-- **Artefatos Visuais:** `report/figures/desc_01_homeplanet_transported.png` a `desc_06_cabindeck_transported.png` (PNG a 300 DPI)
+- **Artefatos Visuais:** `report/figures/fig_01_transporte_por_planeta.png` a `fig_06_passageiros_por_deck.png` (PNG a 300 DPI)
 - **Responsável Principal:** Helton Gomes Soares de Lima
 - **Revisora Dedicada:** Luciana Almeida
 
@@ -196,43 +196,43 @@ A auditoria da imputação (KAN-11), centralizada na Seção 5.5.1 do notebook 0
 
 ## 4. Galeria de Gráficos Selecionados para o Relatório Final
 
-Todas as figuras foram geradas no notebook 02 (Parte II) e exportadas a **300 DPI** em `report/figures/`. A seleção e a numeração definitiva (`fig_01_...` etc.) ficam para a KAN-38; aqui os arquivos mantêm o prefixo provisório `desc_`.
+Todas as figuras foram geradas no notebook 02 (Parte II) e exportadas a **300 DPI** em `report/figures/`. Os nomes e a numeração estão alinhados ao [catálogo da KAN-38](../catalogo_figuras.md).
 
 ### Figura 1 — Taxa de transporte por planeta de origem
 
 **O que mostra:** a proporção de transportados em cada planeta, com a taxa global (50,36%) marcada por linha tracejada. **Leitura:** Europa tem a maior taxa (**66,05%**) e a Terra, a menor (**42,33%**); Marte fica próxima da média (**52,44%**). Como a origem está entrelaçada com o deck (Seção 1.3), a figura descreve um perfil, não um efeito.
 
-![Taxa de transporte por planeta de origem](../../report/figures/desc_01_homeplanet_transported.png)
+![Taxa de transporte por planeta de origem](../../report/figures/fig_01_transporte_por_planeta.png)
 
 ### Figura 2 — Taxa de transporte por criossono
 
 **O que mostra:** a mesma lógica de barras 100% empilhadas, aplicada ao estado durante a viagem. **Leitura:** **81,47%** dos passageiros em criossono foram transportados, contra **32,82%** dos acordados — a maior diferença observada no conjunto de dados.
 
-![Taxa de transporte por criossono](../../report/figures/desc_02_cryosleep_transported.png)
+![Taxa de transporte por criossono](../../report/figures/fig_02_transporte_por_criossono.png)
 
 ### Figura 3 — Distribuição de idade
 
 **O que mostra:** histograma com intervalos de 2 anos e curva de densidade (KDE), com linhas para a média (28,8 anos) e a mediana (27) e faixa sombreada para crianças de até 12 anos. **Leitura:** distribuição aproximadamente simétrica, concentrada entre 20 e 37 anos, com **9,3% de crianças** e um pico visível em idade 0 (bebês).
 
-![Distribuição de idade](../../report/figures/desc_03_age_hist_kde.png)
+![Distribuição de idade](../../report/figures/fig_03_idade_distribuicao.png)
 
 ### Figura 4 — Gasto total a bordo por desfecho
 
 **O que mostra:** boxplots de `TotalSpend` para transportados e não transportados, com mediana, média (losango) e valores extremos; eixo em escala symlog para acomodar a massa de zeros. **Leitura:** entre os transportados, a mediana é **zero** e **65,5%** não gastaram nada; entre os não transportados, apenas **18,0%** têm gasto zero e a mediana é de **US$ 907,00**. A linha tracejada marca o limite global de US$ 3.610,00 (KAN-17).
 
-![Gasto total por desfecho](../../report/figures/desc_04_totalspend_box_transported.png)
+![Gasto total por desfecho](../../report/figures/fig_04_gasto_por_transporte.png)
 
 ### Figura 5 — Gasto total a bordo por planeta de origem
 
 **O que mostra:** a mesma construção da Figura 4, agora comparando os três planetas. **Leitura:** Europa concentra os maiores gastos (**mediana de US$ 1.914,00** e média de US$ 3.444,00), contra **US$ 705,00** na Terra e **US$ 950,00** em Marte — apesar de ser o grupo com mais passageiros sem consumo (48,1%). Os pontos acima do bigode são valores extremos mantidos na base.
 
-![Gasto total por planeta de origem](../../report/figures/desc_05_totalspend_box_homeplanet.png)
+![Gasto total por planeta de origem](../../report/figures/fig_05_gasto_por_planeta.png)
 
 ### Figura 6 — Passageiros por deck da cabine e taxa de transporte
 
 **O que mostra:** barras empilhadas com o número absoluto de passageiros por deck e a taxa de transporte anotada em cada barra. **Leitura:** os decks **F e G concentram 62,76%** dos passageiros; **B (72,95%)** e **C (68,07%)** têm as maiores taxas. O deck T (n = 5) está sinalizado como **amostra insuficiente**.
 
-![Passageiros por deck da cabine](../../report/figures/desc_06_cabindeck_transported.png)
+![Passageiros por deck da cabine](../../report/figures/fig_06_passageiros_por_deck.png)
 
 ---
 
@@ -263,10 +263,10 @@ A tabela mapeia as **18 células** do notebook base [`notebooks/02_estatistica_d
 | **08** | `fdd72ae2` | `markdown` | `KAN-14` | 1.4 | Interpretação das tabelas: perfil, associações e cautelas. |
 | **09** | `79e8a4d1` | `markdown` | `KAN-16` | Parte II | Abertura da Parte II e padrão visual das figuras. |
 | **10** | `fda9d511` | `code` | `KAN-16` | 2.0 | Função `barras_100_empilhadas()` usada nas Figuras 1, 2 e 6. |
-| **11** | `2598f142` | `code` | `KAN-16` | Figura 1 | `desc_01_homeplanet_transported.png`. |
-| **12** | `dfdd436d` | `code` | `KAN-16` | Figura 2 | `desc_02_cryosleep_transported.png`. |
-| **13** | `9e54921e` | `code` | `KAN-16` | Figura 3 | `desc_03_age_hist_kde.png`. |
-| **14** | `f48f6c2b` | `code` | `KAN-16` | Figuras 4 e 5 | `desc_04_totalspend_box_transported.png` e `desc_05_totalspend_box_homeplanet.png`; tabelas `resumo_box` e `resumo_box_planeta`. |
-| **15** | `7165bedf` | `code` | `KAN-16` | Figura 6 | `desc_06_cabindeck_transported.png`. |
+| **11** | `2598f142` | `code` | `KAN-16` | Figura 1 | `fig_01_transporte_por_planeta.png`. |
+| **12** | `dfdd436d` | `code` | `KAN-16` | Figura 2 | `fig_02_transporte_por_criossono.png`. |
+| **13** | `9e54921e` | `code` | `KAN-16` | Figura 3 | `fig_03_idade_distribuicao.png`. |
+| **14** | `f48f6c2b` | `code` | `KAN-16` | Figuras 4 e 5 | `fig_04_gasto_por_transporte.png` e `fig_05_gasto_por_planeta.png`; tabelas `resumo_box` e `resumo_box_planeta`. |
+| **15** | `7165bedf` | `code` | `KAN-16` | Figura 6 | `fig_06_passageiros_por_deck.png`. |
 | **16** | `28e205e6` | `code` | `KAN-16` | Conferência | Auditoria de DPI e de dimensões das figuras exportadas. |
 | **17** | `8ffb7ebf` | `markdown` | `KAN-16` | 2.1 | Leitura sintética das seis figuras e observações metodológicas. |
