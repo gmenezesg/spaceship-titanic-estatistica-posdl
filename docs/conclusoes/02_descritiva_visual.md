@@ -86,15 +86,15 @@ O alvo `Transported` está praticamente dividido ao meio: **50,36% transportados
 
 ## 2. Padrões de Consumo e Gastos a Bordo
 
-O consumo a bordo é medido por cinco rubricas (`RoomService`, `FoodCourt`, `ShoppingMall`, `Spa`, `VRDeck`) e pelo gasto total (`TotalSpend`), todas em dólares. A característica dominante — e que condiciona toda a análise — é a **zero-inflação**: a maioria dos passageiros não usou nenhum dos serviços.
+O consumo a bordo é medido por cinco rubricas (`RoomService`, `FoodCourt`, `ShoppingMall`, `Spa`, `VRDeck`) e pelo gasto total (`TotalSpend`), todas em dólares. A característica dominante — e que condiciona toda a análise — é a **zero-inflação**: a maioria não consumiu em cada rubrica individual; considerando o conjunto dos serviços, 41,9% não consumiram nada e 58,1% tiveram algum gasto.
 
 | Rubrica | % de zeros | Mediana (US$) | Média (US$) | Assimetria | Coef. de variação | Média entre consumidores (US$) | Média ÷ média geral |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | `RoomService` | 65,2 | 0 | 221,58 | 6,38 | 298,2% | 637,39 | 2,9× |
 | `FoodCourt` | 63,8 | 0 | 451,40 | 7,17 | 353,6% | 1.248,10 | 2,8× |
-| `ShoppingMall` | 65,8 | 0 | 170,03 | 12,77 | 351,8% | 496,91 | 2,9× |
-| `Spa` | 62,3 | 0 | 305,39 | 7,72 | 368,5% | 809,28 | 2,6× |
-| `VRDeck` | 64,4 | 0 | 299,14 | 7,90 | 379,2% | 840,11 | 2,8× |
+| `ShoppingMall` | 65,8 | 0 | 169,95 | 12,77 | 351,8% | 496,93 | 2,9× |
+| `Spa` | 62,3 | 0 | 305,45 | 7,72 | 368,5% | 809,28 | 2,6× |
+| `VRDeck` | 64,4 | 0 | 299,09 | 7,90 | 379,2% | 840,05 | 2,8× |
 
 ### 2.1. A maioria não consome — e mediana zero não significa "gasto baixo"
 
@@ -102,7 +102,7 @@ Em cada rubrica, **entre 62,3% e 65,8% dos passageiros gastaram exatamente zero*
 
 ### 2.2. As médias são puxadas por poucos consumidores
 
-As médias populacionais variam de **US$ 170,03 (ShoppingMall) a US$ 451,40 (FoodCourt)**, mas com assimetrias entre **6,38 e 12,77** e coeficientes de variação entre **298,2% e 379,2%**. Ou seja, a média não representa o passageiro típico: ela é inflada por uma minoria de consumo intenso.
+As médias populacionais variam de **US$ 169,95 (ShoppingMall) a US$ 451,40 (FoodCourt)**, mas com assimetrias entre **6,38 e 12,77** e coeficientes de variação entre **298,2% e 379,2%**. Ou seja, a média não representa o passageiro típico: ela é inflada por uma minoria de consumo intenso.
 
 **Recomendação de reporte:** toda rubrica de gasto deve ser apresentada com **mediana, média e percentual de zeros em conjunto**. A mediana isolada esconde a receita concentrada; a média isolada sugere um consumo que a maioria não teve.
 
@@ -110,11 +110,11 @@ As médias populacionais variam de **US$ 170,03 (ShoppingMall) a US$ 451,40 (Foo
 
 Restringindo a análise a quem gastou algo em cada rubrica, a média fica **2,6 a 2,9 vezes acima da média populacional**. FoodCourt tem o maior ticket médio (**US$ 1.248,10**), e **Spa concentra a maior desigualdade entre consumidores**: média de **US$ 809,28** contra mediana de **US$ 210,00** — razão de 3,9, contra 2,1 em RoomService. Em outras palavras, dentro do grupo que usa o Spa há poucos passageiros com gastos muito acima do padrão dos demais.
 
-### 2.4. Gasto total: metade consome, mas a média é dominada pela metade que consome
+### 2.4. Gasto total: 58,1% consomem, com média influenciada pelos grandes gastos
 
-Em `TotalSpend`, a média é de **US$ 1.447,50** e a mediana, de **US$ 717,00** — razão de aproximadamente 2. **41,9% (3.644 passageiros) não gastaram nada**. Entre os **5.049 que gastaram**, a média sobe para **US$ 2.492,10** e a mediana, para **US$ 1.192,00**.
+Em `TotalSpend`, a média é de **US$ 1.447,46** e a mediana, de **US$ 717,00** — razão de aproximadamente 2. **41,9% (3.644 passageiros) não gastaram nada**. Entre os **5.049 que gastaram**, a média sobe para **US$ 2.492,13** e a mediana, para **US$ 1.192,00**.
 
-O indicador mais informativo, portanto, é a combinação de três números (41,9% / US$ 717 / US$ 1.447,50): eles descrevem, ao mesmo tempo, a parcela que não consome, o padrão de quem consome e o efeito dos grandes gastadores sobre a média.
+O indicador mais informativo, portanto, é a combinação de três números (41,9% / US$ 717 / US$ 1.447,46): eles descrevem, ao mesmo tempo, a parcela que não consome, o padrão de quem consome e o efeito dos grandes gastadores sobre a média.
 
 ### 2.5. Quem usa um serviço tende a usar outros
 
@@ -172,7 +172,7 @@ A taxa global de transporte é de **50,36%** e funciona como referência para to
 
 ### 3.1. Quatro leituras principais
 
-**1. Criossono é o sinal mais forte do conjunto de dados.** **81,47%** dos passageiros em criossono foram transportados, contra **32,82%** dos acordados — diferença de **49,0 pontos percentuais** (31,10 acima e 17,54 abaixo da média). Nenhuma outra variável categórica isolada produz afastamento dessa ordem.
+**1. Criossono é o sinal mais forte do conjunto de dados.** **81,47%** dos passageiros em criossono foram transportados, contra **32,82%** dos acordados — diferença de **48,65 pontos percentuais** (31,10 acima e 17,54 abaixo da média). Nenhuma outra variável categórica isolada produz afastamento dessa ordem.
 
 **2. Origem e deck estão entrelaçados e não podem ser lidos isoladamente.** Europa (66,05%) e os decks B (72,95%) e C (68,07%) apresentam as maiores taxas, mas **72,6% dos europeus ocupam justamente os decks B e C**. A descrição não permite separar o que é "origem" do que é "deck": os dois recortes identificam, em boa medida, o mesmo grupo de passageiros. O mesmo vale no sentido oposto: o deck E (36,05%) concentra passageiros da Terra, que têm a menor taxa (42,33%, −8,03 p.p.).
 
@@ -182,9 +182,9 @@ A taxa global de transporte é de **50,36%** e funciona como referência para to
 
 ### 3.2. Robustez à imputação
 
-A imputação pela moda (KAN-11) alterou as proporções das categorias em **no máximo 0,64 p.p.** (TRAPPIST-1e, a moda de `Destination`) e as taxas de transporte por categoria em **no máximo 0,77 p.p.** (deck A). As conclusões desta seção, portanto, **valem tanto para a base tratada quanto para a base bruta sem os ausentes** — a imputação não cria nem apaga os padrões descritos.
+A auditoria da imputação (KAN-11), centralizada na Seção 5.5.1 do notebook 01, encontrou alterações de proporção das categorias de **no máximo 0,64 p.p.** (TRAPPIST-1e, a moda de `Destination`) e as taxas de transporte por categoria em **no máximo 0,77 p.p.** (deck A). Essas diferenças pequenas apoiam a estabilidade dos padrões entre a base tratada e os registros observados da base bruta, sem demonstrar ausência de viés de imputação. O máximo de taxa considera categorias com pelo menos 30 passageiros; o deck T (n = 5) fica fora desse resumo.
 
-*(fonte: [notebook 02, Seção 1.3](../../notebooks/02_estatistica_descritiva.ipynb#13-sensibilidade-à-imputação))*
+*(fonte: [notebook 01, Seção 5.5.1](../../notebooks/01_preparacao_dados.ipynb#551-sensibilidade-das-categorias-e-taxas-de-transporte-à-imputação); resumo no notebook 02, Seção 1.3)*
 
 ### 3.3. Recomendações para as próximas etapas
 
@@ -258,8 +258,8 @@ A tabela mapeia as **18 células** do notebook base [`notebooks/02_estatistica_d
 | **03** | `6b742183` | `code` | `KAN-14` | 1.1 | `tabelas_freq` e `frequencias`: n e % das 7 variáveis categóricas. |
 | **04** | `698c3c50` | `markdown` | `KAN-14` | 1.2 | Explicação das tabelas cruzadas e da coluna de diferença em p.p. |
 | **05** | `2aae6bb8` | `code` | `KAN-14` | 1.2 | `tabelas_cruzadas`, ranking das categorias com n ≥ 30. |
-| **06** | `9f22fe4c` | `markdown` | `KAN-14` | 1.3 | Justificativa da checagem de sensibilidade à imputação. |
-| **07** | `02ec76cf` | `code` | `KAN-14` | 1.3 | `sensibilidade`: base tratada vs. base bruta sem ausentes. |
+| **06** | `9f22fe4c` | `markdown` | `KAN-14` | 1.3 | Referência à auditoria de sensibilidade centralizada no notebook 01. |
+| **07** | `02ec76cf` | `markdown` | `KAN-14` | 1.3 | Resultado e cautelas da sensibilidade; os cálculos estão na Seção 5.5.1 do notebook 01. |
 | **08** | `fdd72ae2` | `markdown` | `KAN-14` | 1.4 | Interpretação das tabelas: perfil, associações e cautelas. |
 | **09** | `79e8a4d1` | `markdown` | `KAN-16` | Parte II | Abertura da Parte II e padrão visual das figuras. |
 | **10** | `fda9d511` | `code` | `KAN-16` | 2.0 | Função `barras_100_empilhadas()` usada nas Figuras 1, 2 e 6. |
