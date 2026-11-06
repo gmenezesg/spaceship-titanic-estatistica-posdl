@@ -182,7 +182,7 @@ A taxa global de transporte é de **50,36%** e funciona como referência para to
 
 ### 3.2. Robustez à imputação
 
-A auditoria da imputação (KAN-11), centralizada na Seção 5.5.1 do notebook 01, encontrou alterações de proporção das categorias de **no máximo 0,64 p.p.** (TRAPPIST-1e, a moda de `Destination`) e as taxas de transporte por categoria em **no máximo 0,77 p.p.** (deck A). Essas diferenças pequenas apoiam a estabilidade dos padrões entre a base tratada e os registros observados da base bruta, sem demonstrar ausência de viés de imputação. O máximo de taxa considera categorias com pelo menos 30 passageiros; o deck T (n = 5) fica fora desse resumo.
+A auditoria da imputação (KAN-11), centralizada na Seção 5.5.1 do notebook 01, encontrou mudanças de **no máximo 0,64 p.p.** nas proporções das categorias (TRAPPIST-1e, a moda de `Destination`) e de **no máximo 0,77 p.p.** nas taxas de transporte por categoria (deck A). Essas diferenças pequenas apoiam a estabilidade dos padrões entre a base tratada e os registros observados da base bruta, sem demonstrar ausência de viés de imputação. O máximo de taxa considera categorias com pelo menos 30 passageiros; o deck T (n = 5) fica fora desse resumo.
 
 *(fonte: [notebook 01, Seção 5.5.1](../../notebooks/01_preparacao_dados.ipynb#551-sensibilidade-das-categorias-e-taxas-de-transporte-à-imputação); resumo no notebook 02, Seção 1.3)*
 
