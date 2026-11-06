@@ -6,7 +6,7 @@
 - **Documento de Referência:** [`docs/conclusoes/02_descritiva_visual.md`](conclusoes/02_descritiva_visual.md)
 - **Base de Dados:** `data/processed/spaceship_titanic_clean.csv` — 8.693 passageiros × 22 colunas, 0 valores ausentes
 - **Responsável:** Helton Gomes Soares de Lima · **Revisoras:** Luciana Almeida e Daniela
-- **Status:** 8 figuras selecionadas e exportadas (faixa de 8 a 12 do Jira atendida) e 4 tabelas selecionadas, das quais 3 já estão publicadas em notebook e 1 depende da KAN-15.
+- **Status:** 8 figuras selecionadas e exportadas (faixa de 8 a 12 do Jira atendida) e 4 tabelas selecionadas; a T2 está disponível no PR #9 (KAN-15), com integração à main pendente.
 
 > **Convenção.** Os arquivos seguem o padrão `fig_XX_nome_descritivo.png`, com `XX` em dois dígitos, nome em minúsculas, sem acentos e sem espaços. Todas as figuras têm **300 DPI**, pelo menos 1.700 px de largura e legenda autossuficiente (a imagem deve ser compreensível sem o texto ao redor). Os títulos embutidos nas imagens não trazem numeração: a numeração existe apenas neste catálogo e no documento do relatório.
 
@@ -16,14 +16,14 @@
 
 | Arquivo | Figura | Legenda formal | Seção do relatório | Origem | Dimensões | DPI |
 | :--- | :---: | :--- | :--- | :--- | ---: | ---: |
-| [`fig_01_transporte_por_planeta.png`](../report/figures/fig_01_transporte_por_planeta.png) | 1 | Taxa de transporte por planeta de origem (n = 8.693). Europa 66,05%, Marte 52,44% e Terra 42,33%; linha tracejada = taxa global de 50,36%. | 2.1 Perfil demográfico | notebook 02, célula 11 (`2598f142`, KAN-16) | 2.075 × 1.373 | 300 |
-| [`fig_02_transporte_por_criossono.png`](../report/figures/fig_02_transporte_por_criossono.png) | 2 | Taxa de transporte por estado de criossono: 81,47% entre os passageiros em criossono contra 32,82% entre os acordados. | 2.3 Relação com `Transported` | notebook 02, célula 12 (`dfdd436d`, KAN-16) | 1.775 × 1.374 | 300 |
-| [`fig_03_idade_distribuicao.png`](../report/figures/fig_03_idade_distribuicao.png) | 3 | Distribuição da idade dos passageiros (n = 8.693), com média de 28,8 anos e mediana de 27; 9,3% têm até 12 anos. | 2.1 Perfil demográfico | notebook 02, célula 13 (`9e54921e`, KAN-16) | 2.375 × 1.318 | 300 |
-| [`fig_04_gasto_por_transporte.png`](../report/figures/fig_04_gasto_por_transporte.png) | 4 | Gasto total a bordo (US$) por desfecho, em escala symlog: mediana zero entre transportados (65,5% sem consumo) e US$ 907,00 entre não transportados. | 2.3 Relação com `Transported` | notebook 02, célula 14 (`f48f6c2b`, KAN-16) | 2.079 × 1.442 | 300 |
-| [`fig_05_gasto_por_planeta.png`](../report/figures/fig_05_gasto_por_planeta.png) | 5 | Gasto total a bordo (US$) por planeta de origem: medianas de US$ 1.914,00 (Europa), US$ 950,00 (Marte) e US$ 705,00 (Terra). | 2.2 Consumo e gastos | notebook 02, célula 14 (`f48f6c2b`, KAN-16) | 2.379 × 1.442 | 300 |
-| [`fig_06_passageiros_por_deck.png`](../report/figures/fig_06_passageiros_por_deck.png) | 6 | Passageiros por deck da cabine e taxa de transporte; os decks F e G concentram 62,76% da amostra e o deck T (n = 5) está sinalizado como amostra insuficiente. | 2.1 Perfil demográfico | notebook 02, célula 15 (`7165bedf`, KAN-16) | 2.676 × 1.470 | 300 |
-| [`fig_07_idade_normal_ajustada.png`](../report/figures/fig_07_idade_normal_ajustada.png) | 7 | Idade observada × Normal ajustada (μ = 28,8 anos; σ = 14,4): a curva acompanha o centro da distribuição e subestima as caudas, sobretudo a concentração em idade 0. | 3. Probabilidade e distribuições | notebook 05, célula 14 (`eee78901`, KAN-19) | 2.341 × 990 | 300 |
-| [`fig_08_gasto_zero_e_log_normal.png`](../report/figures/fig_08_gasto_zero_e_log_normal.png) | 8 | Painel esquerdo: proporção de passageiros com gasto zero por rubrica e no total (41,9%). Painel direito: gasto positivo em escala logarítmica com Log-Normal ajustada (ln: μ = 7,33; σ = 0,96). | 3. Probabilidade e distribuições | notebook 05, célula 17 (`830812c4`, KAN-19) | 3.575 × 1.049 | 300 |
+| [`fig_01_transporte_por_planeta.png`](../report/figures/fig_01_transporte_por_planeta.png) | 1 | Taxa de transporte por planeta de origem (n = 8.693). Europa 66,05%, Marte 52,44% e Terra 42,33%; linha tracejada = taxa global de 50,36%. | 2.1 Perfil demográfico | notebook 02, célula 11 (`2598f142`, KAN-16) | 2.070 × 1.375 | 300 |
+| [`fig_02_transporte_por_criossono.png`](../report/figures/fig_02_transporte_por_criossono.png) | 2 | Taxa de transporte por estado de criossono: 81,47% entre os passageiros em criossono contra 32,82% entre os acordados. | 2.3 Relação com `Transported` | notebook 02, célula 12 (`dfdd436d`, KAN-16) | 1.770 × 1.375 | 300 |
+| [`fig_03_idade_distribuicao.png`](../report/figures/fig_03_idade_distribuicao.png) | 3 | Distribuição da idade dos passageiros (n = 8.693), com média de 28,8 anos e mediana de 27; 9,3% têm até 12 anos. | 2.1 Perfil demográfico | notebook 02, célula 13 (`9e54921e`, KAN-16) | 2.369 × 1.319 | 300 |
+| [`fig_04_gasto_por_transporte.png`](../report/figures/fig_04_gasto_por_transporte.png) | 4 | Gasto total a bordo (US$) por desfecho, em escala symlog: mediana zero entre transportados (65,5% sem consumo) e US$ 907,00 entre não transportados. | 2.3 Relação com `Transported` | notebook 02, célula 14 (`f48f6c2b`, KAN-16) | 2.069 × 1.442 | 300 |
+| [`fig_05_gasto_por_planeta.png`](../report/figures/fig_05_gasto_por_planeta.png) | 5 | Gasto total a bordo (US$) por planeta de origem: medianas de US$ 1.914,00 (Europa), US$ 950,00 (Marte) e US$ 705,00 (Terra). | 2.2 Consumo e gastos | notebook 02, célula 14 (`f48f6c2b`, KAN-16) | 2.369 × 1.442 | 300 |
+| [`fig_06_passageiros_por_deck.png`](../report/figures/fig_06_passageiros_por_deck.png) | 6 | Passageiros por deck da cabine e taxa de transporte; os decks F e G concentram 62,76% da amostra e o deck T (n = 5) está sinalizado como amostra insuficiente. | 2.1 Perfil demográfico | notebook 02, célula 15 (`7165bedf`, KAN-16) | 2.669 × 1.468 | 300 |
+| [`fig_07_idade_normal_ajustada.png`](../report/figures/fig_07_idade_normal_ajustada.png) | 7 | Idade observada × Normal ajustada (μ = 28,8 anos; σ = 14,4): a curva acompanha o centro da distribuição e subestima as caudas, sobretudo a concentração em idade 0. | 3. Probabilidade e distribuições | notebook 05, célula 14 (`eee78901`, KAN-19) | 2.342 × 985 | 300 |
+| [`fig_08_gasto_zero_e_log_normal.png`](../report/figures/fig_08_gasto_zero_e_log_normal.png) | 8 | Painel esquerdo: proporção de passageiros com gasto zero por rubrica e no total (41,9%). Painel direito: gasto positivo em escala logarítmica com Log-Normal ajustada (ln: μ = 7,33; σ = 0,96). | 3. Probabilidade e distribuições | notebook 05, célula 17 (`830812c4`, KAN-19) | 3.568 × 1.045 | 300 |
 
 ### 1.1. Legendas completas para o relatório
 
@@ -58,11 +58,11 @@ Painel esquerdo: proporção de passageiros com gasto zero em cada uma das cinco
 | Tabela | Conteúdo | Seção do relatório | Origem | Status |
 | :--- | :--- | :--- | :--- | :--- |
 | **T1** | Composição da amostra nas 7 variáveis categóricas (n e %), com `Transported` no topo | 2.1 Perfil demográfico | notebook 02, célula 03 (`6b742183`, KAN-14) | Publicada |
-| **T2** | Resumo das 5 rubricas de gasto: % de zeros, mediana, média, assimetria e coeficiente de variação | 2.2 Consumo e gastos | KAN-15 (resumos quantitativos) | Prevista |
+| **T2** | Resumo das 5 rubricas de gasto: % de zeros, mediana, média, assimetria e coeficiente de variação | 2.2 Consumo e gastos | [PR #9 — KAN-15](https://github.com/gmenezesg/spaceship-titanic-estatistica-posdl/pull/9), notebook `04_kan15_resumos_quantitativos.ipynb` | Disponível no PR #9 |
 | **T3** | Ranking das categorias com n ≥ 30 mais afastadas da taxa global de transporte | 2.3 Relação com `Transported` | notebook 02, célula 05 (`2aae6bb8`, KAN-14) | Publicada |
 | **T4** | Gasto total por desfecho e por planeta: n, % de zeros, mediana e média | 2.2 e 2.3 | notebook 02, célula 14 (`f48f6c2b`, KAN-16) | Publicada |
 
-> **Sobre a T2.** A tabela depende do notebook da KAN-15, ainda não publicado no repositório; até lá, o conteúdo equivalente pode ser reproduzido a partir das colunas de gasto da base tratada. As tabelas entram no relatório numeradas como **T1** a **T4**; qualquer tabela nova passa a ser **T5** em diante, sem renumerar as anteriores.
+> **Sobre a T2.** A tabela está publicada no notebook da KAN-15 no PR #9, ainda pendente de integração à main. Os valores citados no documento de conclusões foram recalculados diretamente da base tratada e conferidos com esse notebook. As tabelas entram no relatório numeradas como **T1** a **T4**; qualquer tabela nova passa a ser **T5** em diante, sem renumerar as anteriores.
 
 ---
 
