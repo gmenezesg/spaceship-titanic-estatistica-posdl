@@ -257,7 +257,7 @@ A bateria de validação automatizada na Célula `30` (`kan12_validation_code`) 
 
 ## 4. Links e Referências Diretas para as Células do Notebook `01_preparacao_dados.ipynb`
 
-A tabela abaixo fornece o mapeamento completo e auditável de todas as **36 células (`Célula 00` a `Célula 35`)** do notebook base [`notebooks/01_preparacao_dados.ipynb`](../../notebooks/01_preparacao_dados.ipynb) (que compõem a **Seção 1** do notebook consolidado [`notebooks/00_projeto_final_estatistica.ipynb`](../../notebooks/00_projeto_final_estatistica.ipynb)), permitindo navegação direta para o código-fonte, tabelas geradas e documentação associada:
+A tabela abaixo fornece o mapeamento completo e auditável de todas as **38 células (`Célula 00` a `Célula 37`)** do notebook base [`notebooks/01_preparacao_dados.ipynb`](../../notebooks/01_preparacao_dados.ipynb) (que compõem a **Seção 1** do notebook consolidado [`notebooks/00_projeto_final_estatistica.ipynb`](../../notebooks/00_projeto_final_estatistica.ipynb)), permitindo navegação direta para o código-fonte, tabelas geradas e documentação associada:
 
 | Índice da Célula | ID da Célula (`.ipynb`) | Tipo | Ticket Jira | Seção / Referência Direta no Notebook `01_preparacao_dados.ipynb` | Descrição Técnica da Célula e Artefatos Associados |
 | :---: | :--- | :---: | :---: | :--- | :--- |
