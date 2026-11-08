@@ -5,6 +5,8 @@
 > prováveis e as respostas. Pode ser lido do começo ao fim na véspera e consultado durante
 > o ensaio. A versão curta de bolso é [`roteiro_apresentacao.md`](roteiro_apresentacao.md).
 
+**Slides da banca:** [`report/apresentacao_final.pdf`](../../report/apresentacao_final.pdf) — 18 slides em 16:9, gerados por [`src/gerar_apresentacao.py`](../../src/gerar_apresentacao.py). Cada slide corresponde a um bloco deste guia.
+
 - **Disciplina:** Estatística Avançada e Fundamentos Probabilísticos para IA — Pós-Graduação em Deep Learning (CIn/UFPE)
 - **Entrega:** Trabalho Final (T3) — Relatório Técnico em PDF + Notebook Jupyter
 - **Tema:** *Spaceship Titanic* — o que distingue os passageiros transportados dos não transportados
