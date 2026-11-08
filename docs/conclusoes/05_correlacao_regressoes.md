@@ -20,7 +20,7 @@
 - **A relação negativa mais forte, `Age` × `GroupSize`, é fraca** (r = −0,18).
 - **Multicolinearidade das preditoras da regressão linear** [§8]:
   - `Age`, `GroupSize` e `VIP` mostram pouca evidência de multicolinearidade (VIF de 1,05 a 1,13);
-  - `HomePlanet` e `CabinDeck` se sobrepõem: os decks A, B, C e T só têm passageiros de Europa, e o G só tem de Earth. GVIF equivalente de 3,22 e 1,40; VIF de `HomePlanet_Europa` = 7,99.
+  - `HomePlanet` e `CabinDeck` se sobrepõem: os decks A, B, C e T só têm passageiros de Europa, e o G só tem de Earth. GVIF equivalente de 3,22 e 1,40; VIF de `HomePlanet_Europa` = 7,99 na amostra completa (o VIF recalculado no treino do KAN-31 é 7,98).
 
 Figuras: `report/figures/kan30_heatmap_pearson.png`, `kan30_heatmap_spearman.png`, `kan30_dispersao_*.png` e `kan30_pairplot.png`.
 
@@ -114,7 +114,7 @@ Teste (n = 1.739), com `Transported = True` como classe positiva. Os baselines e
 - O resultado vem de um único conjunto de teste, sem intervalo de incerteza.
 - A divisão é por passageiro, e não por grupo de viagem, o que pode deixar a avaliação otimista, em magnitude desconhecida.
 - O limiar 0,5 não foi otimizado. Outros limiares trocam recall por especificidade, e a escolha depende do custo de cada erro.
-- Pendência do KAN-31: VIF de 7,98 em `HomePlanet_Europa`.
+- Pendência do KAN-31: VIF de 7,98 em `HomePlanet_Europa` no treino.
 
 ---
 

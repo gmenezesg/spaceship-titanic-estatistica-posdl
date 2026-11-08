@@ -32,11 +32,11 @@ Na raiz do repositório, com o ambiente virtual ativo (`.venv`):
 
 | Objetivo | Comando |
 | :--- | :--- |
-| Consultar o notebook-alvo de um ticket Jira específico | `.venv/bin/python src/consolidar_notebooks.py --ticket KAN-19` |
-| Validar integridade, completude e existência dos arquivos do `notebooks/consolidacao.json` | `.venv/bin/python src/consolidar_notebooks.py --validar-mapa` |
-| Prévia com os notebooks já existentes (sem tocar no `00_`) | `.venv/bin/python src/consolidar_notebooks.py --permitir-faltantes --saida notebooks/_previa_consolidado.ipynb` |
-| Prévia executada com os notebooks disponíveis (sem tocar no `00_`) | `.venv/bin/python src/consolidar_notebooks.py --permitir-faltantes --forcar --executar --saida notebooks/_previa_consolidado.ipynb` |
-| Gerar o notebook final oficial completo (exige todos os notebooks presentes) | `.venv/bin/python src/consolidar_notebooks.py --forcar --executar` |
+| Consultar o notebook-alvo de um ticket Jira específico | `python src/consolidar_notebooks.py --ticket KAN-19` |
+| Validar integridade, completude e existência dos arquivos do `notebooks/consolidacao.json` | `python src/consolidar_notebooks.py --validar-mapa` |
+| Prévia com os notebooks já existentes (sem tocar no `00_`) | `python src/consolidar_notebooks.py --permitir-faltantes --saida notebooks/_previa_consolidado.ipynb` |
+| Prévia executada com os notebooks disponíveis (sem tocar no `00_`) | `python src/consolidar_notebooks.py --permitir-faltantes --forcar --executar --saida notebooks/_previa_consolidado.ipynb` |
+| Gerar o notebook final oficial completo (exige todos os notebooks presentes) | `python src/consolidar_notebooks.py --forcar --executar` |
 
 Arquivos de prévia (`notebooks/_previa*.ipynb`) servem apenas para conferência local e já estão ignorados no `.gitignore`.
 

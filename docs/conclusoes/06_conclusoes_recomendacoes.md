@@ -46,7 +46,7 @@ O conjunto das variáveis permite prever o desfecho com **77,9% de acurácia** n
 - **Divisão única de treino e teste**, sem intervalo de incerteza.
 - **Divisão por passageiro, não por grupo de viagem**: famílias podem aparecer dos dois lados, o que tende a deixar a avaliação otimista em magnitude desconhecida.
 - **Imputação pela moda** em 2,1% a 2,5% das categóricas; a sensibilidade documentada chega a 0,64 p.p. e não muda as conclusões.
-- **`HomePlanet_Europa` com VIF de 7,98**, pendência do KAN-31: os coeficientes dessa variável devem ser lidos com cautela.
+- **`HomePlanet_Europa` com VIF de 7,98 no treino**, pendência do KAN-31: os coeficientes dessa variável devem ser lidos com cautela.
 
 ## Próximo passo
 

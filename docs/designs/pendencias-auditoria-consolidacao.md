@@ -167,7 +167,7 @@ flowchart TD
 
 **D2 — Testes de aderência na amostra completa, com tamanho de efeito.** Não há subamostra. `Age` é testada com n = 8.693 e `log1p(TotalSpend)` com n = 5.049 (apenas `TotalSpend > 0`). Shapiro-Wilk reporta W; o `p` de Shapiro é impreciso acima de 5.000 observações e isso é declarado no texto. Lilliefors usa `pvalmethod="approx"`, porque o método padrão devolve o piso 0,001 para qualquer amostra grande. A decisão se apoia em W, D e leitura do QQ-plot, não no p. Nível de significância fixado em 0,05.
 
-**D3 — Merge cirúrgico na KAN-34.** Copiar as células 68 a 76 (índice 0-based) da branch, com `copy.deepcopy` para preservar `outputs` e `metadata`; regenerar `id` para evitar colisão; validar com `nbformat.validate`; conferir que as células 0 a 67 não mudaram por hash; executar o notebook e verificar que os símbolos `logit_pipeline`, `LOGIT_FEATURES`, `POSITIVE_CLASS`, `baselines`, `metric_rows`, `confusion_tables`, `fmt_int` existem. Não usar `git checkout` do arquivo inteiro.
+**D3 — Merge cirúrgico na KAN-34.** Copiar as células 68 a 76 (índice 0-based) da branch, com `copy.deepcopy` para preservar `outputs` e `metadata`; regenerar `id` para evitar colisão; validar com `nbformat.validate`; conferir que as células 0 a 67 não mudaram por hash; executar o notebook e verificar que os símbolos `logit_pipeline`, `LOGIT_FEATURES`, `POSITIVE_CLASS`, `baselines`, `metric_rows`, `confusion_tables`, `fmt_int` existem. Não usar `git checkout` do arquivo inteiro. **Exceção registrada na revisão:** a célula 61 (fonte, índice 0-based) foi alterada de propósito para envolver `logit_pipeline.fit(...)` em `warnings.catch_warnings()`, filtrando o `FutureWarning` do sklearn ≥ 1.8 que imprimia um caminho absoluto do ambiente virtual na saída. As demais células 0 a 67 são idênticas à `main`; apenas as saídas de 11, 13, 17, 20, 52 e 63 foram reexecutadas.
 
 **D4 — Seção 6 com notebook e Markdown próprios.** O T3 exige o bloco final, que hoje não existe. O notebook `06_conclusoes_recomendacoes.ipynb` é a fonte analítica; o Markdown `06_conclusoes_recomendacoes.md` é o insumo do `KAN-39`. Para conciliar com o manifesto 1:1, o `KAN-44` é mapeado ao notebook 06 e um novo campo `mapa_reparos` lista os arquivos que ele repara.
 
@@ -175,7 +175,7 @@ flowchart TD
 
 > **Nota de revisão (Luciana Almeida, 08/11/2026).** P5 e o critério de aceite 8 do ticket ainda pediam `KAN-14 → KAN-15 → KAN-17 → KAN-16`. A redação foi alinhada a esta decisão: o que se corrige é a ordem dos notebooks (`02` → `04_kan15` → `03_kan17`), não a ordem dos tickets, porque o notebook 02 concentra KAN-14 e KAN-16 e não será dividido. `notebooks/consolidacao.json` já estava nessa ordem e não foi alterado.
 
-**D6 — Validação de manifesto separada da execução.** A checagem de existência vive em uma função própria, `validar_existencia_artefatos()`, chamada somente no ramo `--validar-mapa`. `--permitir-faltantes` continua afetando apenas a consolidação. A validação cobre `secao["notebooks"]`, `conclusao_markdown`, `artefatos_extras`, `mapa_outros_tickets[*]["notebook_origem"]` e `mapa_reparos`. O campo `mapa_outros_tickets[*]["alvo"]` **não** é checado, porque aponta para entregáveis futuros (atas, relatório, PDF) que ainda não existem por desenho — checá-lo faria a validação falhar nos tickets KAN-9 e KAN-36 a KAN-42. O intervalo de cobertura vira constantes explícitas `TICKET_MIN = 4` e `TICKET_MAX = 44`, sem derivação tautológica.
+**D6 — Validação de manifesto separada da execução.** A checagem de existência vive em uma função própria, `validar_existencia_artefatos()`, chamada somente no ramo `--validar-mapa`. `--permitir-faltantes` continua afetando apenas a consolidação. A validação cobre `secao["notebooks"]`, `conclusao_markdown`, `artefatos_extras`, `mapa_outros_tickets[*]["notebook_origem"]` e `mapa_reparos`. O campo `mapa_outros_tickets[*]["alvo"]` **não** é checado, porque aponta para entregáveis futuros (atas, relatório, PDF) que ainda não existem por desenho — checá-lo faria a validação falhar nos tickets KAN-9 e KAN-36 a KAN-42. O intervalo de cobertura vira constantes explícitas `TICKET_MIN = 4` e `TICKET_MAX = 44`, sem derivação tautológica. A mesma função recusa caminhos absolutos ou tipos inesperados no manifesto, em vez de resolvê-los fora da raiz ou quebrar com traceback.
 
 **D7 — Nenhuma figura nova no catálogo.** Os QQ-plots são exibidos inline e não são gravados em `report/figures/`. O catálogo do relatório permanece com as 8 figuras fechadas no KAN-38 (`docs/catalogo_figuras.md:97`), que reserva `fig_09` ou superior para a revisão cruzada do KAN-40. As figuras `kan30_*`, `kan31_*` e `kan34_*` são artefatos de notebook a 150 DPI e continuam fora do catálogo do relatório.
 
@@ -354,7 +354,7 @@ Nenhum notebook reparado cria pipeline de limpeza. Todos leem `data/processed/sp
 
 *   **Escopo:** validação de existência e leitura de `mapa_reparos`.
 *   **Mudanças:**
-    *   Nova função `validar_existencia_artefatos(manifesto, raiz)` que percorre `secao["notebooks"]`, `secao["conclusao_markdown"]`, `mapeamento_tickets[*]["artefatos_extras"]`, `mapa_outros_tickets[*]["alvo"]`, `mapa_outros_tickets[*]["notebook_origem"]` e `mapa_reparos`. Erro no formato `Arquivo inexistente para KAN-XX: caminho`.
+    *   Nova função `validar_existencia_artefatos(manifesto, raiz)` que percorre `secao["notebooks"]`, `secao["conclusao_markdown"]`, `mapeamento_tickets[*]["artefatos_extras"]`, `mapa_outros_tickets[*]["notebook_origem"]` e `mapa_reparos` (descartando `mapa_outros_tickets[*]["alvo"]`, que aponta para entregáveis futuros). Recusa caminhos absolutos no manifesto e valores com tipo inesperado (`mapa_reparos` que não seja lista, entradas de mapeamento que não sejam objeto). Erro no formato `Arquivo inexistente para KAN-XX: caminho` ou `Caminho absoluto não permitido para KAN-XX: caminho`.
     *   Chamada apenas no ramo `if args.validar_mapa`, depois de `validar_manifesto`.
     *   `TICKET_MIN = 4` e `TICKET_MAX = 44`; mensagem de erro atualizada para `KAN-4..KAN-44`.
     *   `consultar_ticket` imprime `Arquivos reparados` quando `mapa_reparos` tiver o ticket.
@@ -362,7 +362,7 @@ Nenhum notebook reparado cria pipeline de limpeza. Todos leem `data/processed/sp
 
 #### 9. `docs/guia_consolidacao.md` (Modify)
 
-*   **Mudanças:** incluir a Seção 6 na tabela, os novos comandos com `.venv/bin/python`, a nota de que `--validar-mapa` verifica existência e o novo total de tickets (KAN-4 a KAN-44).
+*   **Mudanças:** incluir a Seção 6 na tabela, os comandos com `python` (ambiente virtual ativo), a nota de que `--validar-mapa` verifica existência e o novo total de tickets (KAN-4 a KAN-44).
 
 #### 10. `docs/catalogo_figuras.md` (No change)
 
@@ -395,16 +395,16 @@ O antigo commit de catálogo de figuras foi cancelado pela decisão Q2. C3 e C4 
 
 ### Verification Plan
 
-*   **Build/ambiente:** na raiz do projeto, `.venv/bin/python -c "import scipy, statsmodels, nbformat; print(scipy.__version__, statsmodels.__version__, nbformat.__version__)"` deve imprimir `1.18.1 0.15.0 4.5.x`.
-*   **Manifesto:** `.venv/bin/python src/consolidar_notebooks.py --validar-mapa` deve sair com 0, imprimir `Seções analíticas T3 : 6` e `Tickets de notebook : 22`, sem linha `ERRO`.
+*   **Build/ambiente:** na raiz do projeto, `python -c "import scipy, statsmodels, nbformat; print(scipy.__version__, statsmodels.__version__, nbformat.__version__)"` deve imprimir `1.18.1 0.15.0 4.5.x`.
+*   **Manifesto:** `python src/consolidar_notebooks.py --validar-mapa` deve sair com 0, imprimir `Seções analíticas T3 : 6` e `Tickets de notebook : 22`, sem linha `ERRO`.
 *   **Teste negativo:** copiar o manifesto para `/tmp/kan44_negativo.json`, apontar `artefatos_extras` de KAN-10 para `docs/nao_existe.md` e rodar com `--manifesto /tmp/kan44_negativo.json --validar-mapa`; esperar código 1 e mensagem nomeando o arquivo.
 *   **Consulta por ticket:** `--ticket KAN-20` deve mostrar `notebooks/03_probabilidade_distribuicoes.ipynb`; `--ticket KAN-44` deve mostrar `6. Conclusões e Recomendações Práticas` e a lista de reparos.
-*   **Execução limpa:** `.venv/bin/jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=600 notebooks/<arquivo>.ipynb` para cada notebook alterado; esperar código 0 e nenhuma célula com `output_type == "error"`.
-*   **Prévia executada:** `.venv/bin/python src/consolidar_notebooks.py --permitir-faltantes --forcar --executar --timeout 600 --saida notebooks/_previa_consolidado.ipynb`; esperar código 0, `faltantes = 0`, `duplicadas = 0`, `puladas_tag = 0` e nenhuma célula de erro.
+*   **Execução limpa:** `jupyter nbconvert --to notebook --execute --inplace --ExecutePreprocessor.timeout=600 notebooks/<arquivo>.ipynb` para cada notebook alterado; esperar código 0 e nenhuma célula com `output_type == "error"`.
+*   **Prévia executada:** `python src/consolidar_notebooks.py --permitir-faltantes --forcar --executar --timeout 600 --saida notebooks/_previa_consolidado.ipynb`; esperar código 0, `faltantes = 0`, `duplicadas = 0`, `puladas_tag = 0` e nenhuma célula de erro.
 *   **Contagem de células:** registrar o total e a composição por notebook. A conta esperada é `191 + 9 (Seção 13) + N3 + N6 + 1 (cabeçalho da Seção 6)`, com `N3` e `N6` registrados no commit.
 *   **Sem figuras novas:** `git status --porcelain report/figures` não deve listar PNG novo; `git diff --name-only docs/catalogo_figuras.md` deve ser vazio (decisão Q2).
 *   **Sensibilidade `Age > 0`:** a tabela de aderência do notebook 03 deve conter a linha de sensibilidade, e a conclusão da Seção 3 deve explicar que a rejeição da Normal decorre da discretização e da concentração entre 20 e 40 anos — retirar os zeros piora a aderência (decisão Q1).
-*   **Caminhos absolutos:** `.venv/bin/python src/consolidar_notebooks.py ... 2>&1 | rg 'caminhos absolutos'` não deve retornar aviso; complementar com `rg -n '/home/|/Users/|/mnt/|/content/drive/|[A-Za-z]:[\\/]|file://' notebooks/*.ipynb`.
+*   **Caminhos absolutos:** `python src/consolidar_notebooks.py ... 2>&1 | rg 'caminhos absolutos'` não deve retornar aviso; a varredura cobre código, saídas e markdown dos notebooks, e o `--validar-mapa` recusa caminho absoluto no manifesto. Complementar com `rg -n '/home/|/Users/|/mnt/|/content/drive/|[A-Za-z]:[\\/]|file://' notebooks/*.ipynb`.
 *   **Integridade do merge:** o script da seção 3 deste plano deve concluir sem `AssertionError`.
 *   **Mestre intocado:** `git diff --name-only` não pode listar `notebooks/00_projeto_final_estatistica.ipynb`.
 *   **Tamanho:** `stat -c %s notebooks/_previa_consolidado.ipynb` deve ficar abaixo de 4.194.304 bytes.

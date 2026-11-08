@@ -46,13 +46,13 @@ TICKET_MAX = 44
 
 # Padrões de caminho absoluto que quebram a reprodutibilidade em outra máquina.
 PADRAO_CAMINHO_ABSOLUTO = re.compile(
-    r"""["'](?:[A-Za-z]:[\\/]|/home/|/Users/|/mnt/|/content/drive/)"""
+    r"""["'](?:[A-Za-z]:[\\/]|/home/|/Users/|/mnt/|/content/drive/|file://)"""
 )
 
 # Caminhos absolutos em textos de saída não vêm necessariamente entre aspas
 # (ex.: "Diretório resolvido: /home/usuario/projeto/data").
 PADRAO_CAMINHO_ABSOLUTO_TEXTO = re.compile(
-    r"(?:(?<![A-Za-z0-9])[A-Za-z]:[\\/]|/home/|/Users/|/mnt/|/content/drive/)"
+    r"(?:(?<![A-Za-z0-9])[A-Za-z]:[\\/]|/home/|/Users/|/mnt/|/content/drive/|file://)"
 )
 
 # Padrão de semente aleatória para auditoria de reprodutibilidade (KAN-37 / T3).
@@ -92,11 +92,33 @@ def validar_manifesto(manifesto: dict) -> tuple[bool, list[str], list[str]]:
     outros_tickets = manifesto.get("mapa_outros_tickets", {})
     tickets_secoes: dict[str, str] = {}
 
+    # O manifesto é JSON editado à mão: tipos errados devem gerar erro legível,
+    # não exceção não tratada.
+    if not isinstance(mapa_global, dict):
+        erros.append("'mapa_tickets_notebooks' deve ser um objeto.")
+        mapa_global = {}
+    if not isinstance(outros_tickets, dict):
+        erros.append("'mapa_outros_tickets' deve ser um objeto.")
+        outros_tickets = {}
+
     for secao in manifesto.get("secoes", []):
+        if not isinstance(secao, dict):
+            erros.append("Cada item de 'secoes' deve ser um objeto.")
+            continue
         titulo_secao = secao.get("titulo", "<sem título>")
         tickets = secao.get("tickets", [])
         notebooks = secao.get("notebooks", [])
         mapeamento = secao.get("mapeamento_tickets", {})
+
+        if not isinstance(tickets, list):
+            erros.append(f"'tickets' da seção '{titulo_secao}' deve ser uma lista.")
+            tickets = []
+        if not isinstance(notebooks, list):
+            erros.append(f"'notebooks' da seção '{titulo_secao}' deve ser uma lista.")
+            notebooks = []
+        if not isinstance(mapeamento, dict):
+            erros.append(f"'mapeamento_tickets' da seção '{titulo_secao}' deve ser um objeto.")
+            mapeamento = {}
 
         if not tickets:
             erros.append(f"Seção '{titulo_secao}' não possui tickets vinculados.")
@@ -113,6 +135,9 @@ def validar_manifesto(manifesto: dict) -> tuple[bool, list[str], list[str]]:
             if mapeamento and t not in mapeamento:
                 erros.append(f"Ticket {t} listado na seção '{titulo_secao}', mas ausente em 'mapeamento_tickets'.")
             elif mapeamento and t in mapeamento:
+                if not isinstance(mapeamento[t], dict):
+                    erros.append(f"mapeamento_tickets de {t} deve ser um objeto.")
+                    continue
                 nb_map = mapeamento[t].get("notebook")
                 if nb_map not in notebooks:
                     erros.append(
@@ -127,7 +152,11 @@ def validar_manifesto(manifesto: dict) -> tuple[bool, list[str], list[str]]:
 
         for nb in notebooks:
             if mapeamento:
-                usados = {info.get("notebook") for info in mapeamento.values()}
+                usados = {
+                    info.get("notebook")
+                    for info in mapeamento.values()
+                    if isinstance(info, dict)
+                }
                 if nb not in usados:
                     erros.append(f"Notebook '{nb}' na seção '{titulo_secao}' não está associado a nenhum ticket.")
 
@@ -164,6 +193,12 @@ def validar_existencia_artefatos(manifesto: dict, raiz: Path) -> list[str]:
         if caminho in verificados:
             return
         verificados.add(caminho)
+        # Um caminho absoluto no manifesto resolve fora da raiz e mascara a
+        # falta de portabilidade (mesma regra aplicada às células dos notebooks).
+        # A regex cobre também formatos de outro sistema operacional.
+        if Path(caminho).is_absolute() or PADRAO_CAMINHO_ABSOLUTO_TEXTO.search(caminho):
+            erros.append(f"Caminho absoluto não permitido para {contexto}: {caminho}")
+            return
         if not (raiz / caminho).exists():
             erros.append(f"Arquivo inexistente para {contexto}: {caminho}")
 
@@ -173,14 +208,28 @@ def validar_existencia_artefatos(manifesto: dict, raiz: Path) -> list[str]:
             checar(notebook, contexto_secao)
         checar(secao.get("conclusao_markdown"), f"{contexto_secao} (conclusão)")
         for ticket, info in (secao.get("mapeamento_tickets") or {}).items():
+            if not isinstance(info, dict):
+                erros.append(f"mapeamento_tickets inválido para {ticket}: esperado objeto")
+                continue
             checar(info.get("notebook"), f"{ticket} (notebook)")
             for extra in info.get("artefatos_extras") or []:
                 checar(extra, f"{ticket} (artefato extra)")
 
     for ticket, info in (manifesto.get("mapa_outros_tickets") or {}).items():
+        if not isinstance(info, dict):
+            erros.append(f"mapa_outros_tickets inválido para {ticket}: esperado objeto")
+            continue
         checar(info.get("notebook_origem"), f"{ticket} (notebook de origem)")
 
     for ticket, arquivos in (manifesto.get("mapa_reparos") or {}).items():
+        # O manifesto é editado à mão: um valor escalar aqui viraria iteração
+        # sobre caracteres e produziria erros enganosos.
+        if not isinstance(arquivos, list):
+            erros.append(
+                f"mapa_reparos inválido para {ticket}: esperada lista, "
+                f"recebido {type(arquivos).__name__}"
+            )
+            continue
         for arquivo in arquivos:
             checar(arquivo, f"{ticket} (reparo)")
 
@@ -421,6 +470,13 @@ def copiar_celulas(
                 texto = texto_limpo
             if not texto or texto == "---":
                 continue
+            # O markdown também é copiado para o notebook final: caminhos absolutos
+            # em texto (links, instruções, prints colados) quebram a portabilidade.
+            for linha in texto.splitlines():
+                if PADRAO_CAMINHO_ABSOLUTO_TEXTO.search(linha):
+                    registrar_caminho_absoluto(
+                        relatorio, f"{caminho.name} (markdown): {linha.strip()}"
+                    )
             copiadas.append(new_markdown_cell(texto))
             relatorio["total_markdown"] += 1
         # células "raw" são descartadas: não fazem parte da análise
