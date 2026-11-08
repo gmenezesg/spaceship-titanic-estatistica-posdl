@@ -45,17 +45,17 @@ Foram investigadas três hipóteses de independência bivariada em relação ao 
 - **Estatística do Teste:** $\chi^2(2) = 338{,}82$, $p = 2{,}663 \times 10^{-74}$ (Rejeita $H_0$).
 - **Tamanho do Efeito:** $V \text{ de Cramér} = 0{,}197$ (Associação de força média).
 - **Taxas Empíricas de Teletransporte:**
-  - **Europa:** $65{,}94\%$ teletransportados ($1.436$ de $2.174$).
-  - **Marte:** $52{,}33\%$ teletransportados ($946$ de $1.804$).
-  - **Terra:** $42{,}39\%$ teletransportados ($1.996$ de $4.715$).
+  - **Europa:** $66{,}05\%$ teletransportados ($1.436$ de $2.174$).
+  - **Marte:** $52{,}44\%$ teletransportados ($946$ de $1.804$).
+  - **Terra:** $42{,}33\%$ teletransportados ($1.996$ de $4.715$).
 - **Significado de Negócio:** Passageiros provenientes de Europa foram os mais atingidos, enquanto os da Terra tiveram taxa inferior à média global da nave ($50{,}36\%$). A segregação espacial das cabines por origem planetária concentrou determinados grupos em conveses mais expostos à anomalia.
 
 ### 3.2. Criossono (`CryoSleep`) vs Teletransporte (`Transported`)
 - **Estatística do Teste:** $\chi^2(1) = 1.897{,}71$, $p < 10^{-300}$ (Rejeita $H_0$).
 - **Tamanho do Efeito:** $V \text{ de Cramér} = 0{,}467$ ($\phi = 0{,}467$, Associação de magnitude muito forte).
 - **Taxas Empíricas de Teletransporte:**
-  - **Em Criossono:** $81{,}75\%$ teletransportados ($2.563$ de $3.135$).
-  - **Acordados (Não em sono):** $32{,}90\%$ teletransportados ($1.815$ de $5.558$).
+  - **Em Criossono:** $81{,}47\%$ teletransportados ($2.554$ de $3.135$).
+  - **Acordados (Não em sono):** $32{,}82\%$ teletransportados ($1.824$ de $5.558$).
 - **Significado de Negócio:** O estado de criossono é a **variável individual de maior poder preditivo** no conjunto de dados. Passageiros isolados nas cápsulas criogênicas não tiveram capacidade de resposta evasiva ou de evacuação de emergência perante o alarme do incidente, ficando totalmente vulneráveis ao evento dimensional.
 
 ### 3.3. Status VIP (`VIP`) vs Teletransporte (`Transported`)
@@ -160,7 +160,7 @@ Um princípio basilar de inferência estatística, que deve orientar qualquer le
 ### 7.1. O Mecanismo Interveniente do Criossono (`CryoSleep`)
 A constatação de que passageiros não teletransportados gastaram muito mais ($\Delta = +\$1.120{,}74$) **não significa** que realizar compras a bordo gerou um escudo protetor contra o teletransporte. 
 - O passageiro em criossono é **mecanicamente impedido de consumir amenidades** ($TotalSpend = \$0$).
-- Ao mesmo tempo, passageiros em criossono estavam fisicamente confinados em compartimentos específicos da nave e sofreram teletransporte em $81{,}75\%$ dos casos.
+- Ao mesmo tempo, passageiros em criossono estavam fisicamente confinados em compartimentos específicos da nave e sofreram teletransporte em $81{,}47\%$ dos casos.
 - Logo, a variável `CryoSleep` atua como um **fator de confusão e mediação fundamental** na relação aparente entre despesas e sobrevivência.
 
 ### 7.2. Segregação Espacial e Rota de Viagem
