@@ -46,9 +46,9 @@
       "ticket_conclusao": "KAN-18",
       "conclusao_markdown": "docs/conclusoes/02_descritiva_visual.md",
       "notebooks": [
+        "notebooks/02_estatistica_descritiva.ipynb",
         "notebooks/04_kan15_resumos_quantitativos.ipynb",
-        "notebooks/03_kan17_valores_extremos.ipynb",
-        "notebooks/02_estatistica_descritiva.ipynb"
+        "notebooks/03_kan17_valores_extremos.ipynb"
       ],
       "mapeamento_tickets": {
         "KAN-14": {
@@ -182,6 +182,24 @@
           "artefatos_extras": []
         }
       }
+    },
+    {
+      "id": "secao_6",
+      "titulo": "6. Conclusões e Recomendações Práticas",
+      "objetivo_t3": "Conclusões e Recomendações Práticas: principais insights acionáveis, pontos de atenção e próximos passos compreensíveis por alguém sem formação técnica, apoiando o Resumo Executivo de 1 página e o Relatório Técnico de 10 a 15 páginas.",
+      "tickets": ["KAN-44"],
+      "ticket_conclusao": "KAN-44",
+      "conclusao_markdown": "docs/conclusoes/06_conclusoes_recomendacoes.md",
+      "notebooks": [
+        "notebooks/06_conclusoes_recomendacoes.ipynb"
+      ],
+      "mapeamento_tickets": {
+        "KAN-44": {
+          "resumo": "Consolidar conclusões e recomendações práticas da Seção 6",
+          "notebook": "notebooks/06_conclusoes_recomendacoes.ipynb",
+          "artefatos_extras": []
+        }
+      }
     }
   ],
   "mapa_tickets_notebooks": {
@@ -205,7 +223,18 @@
     "KAN-31": "notebooks/05_correlacao_regressoes.ipynb",
     "KAN-32": "notebooks/05_correlacao_regressoes.ipynb",
     "KAN-33": "notebooks/05_correlacao_regressoes.ipynb",
-    "KAN-34": "notebooks/05_correlacao_regressoes.ipynb"
+    "KAN-34": "notebooks/05_correlacao_regressoes.ipynb",
+    "KAN-44": "notebooks/06_conclusoes_recomendacoes.ipynb"
+  },
+  "mapa_reparos": {
+    "KAN-44": [
+      "notebooks/03_probabilidade_distribuicoes.ipynb",
+      "docs/conclusoes/03_probabilidade_distribuicoes.md",
+      "notebooks/05_correlacao_regressoes.ipynb",
+      "docs/conclusoes/05_correlacao_regressoes.md",
+      "report/figures/kan34_matriz_confusao.png",
+      "report/figures/kan34_curvas_roc_pr.png"
+    ]
   },
   "mapa_outros_tickets": {
     "KAN-4": {"tipo": "governanca", "alvo": "README.md", "resumo": "Preparar criação do repositório GitHub"},
