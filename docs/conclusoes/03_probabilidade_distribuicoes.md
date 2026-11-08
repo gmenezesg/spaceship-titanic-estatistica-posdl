@@ -47,7 +47,7 @@ O erro mais comum em testes de aderência é testar a variável errada. `TotalSp
 
 ## 3. Evidência visual: QQ-plots [§4]
 
-**`Age` contra a Normal.** O trecho central fica acima da reta, indicando mais passageiros entre 20 e 40 anos do que a Normal prevê. À esquerda, há um patamar horizontal em 0 anos — o pico discreto dos 178 bebês, que nenhuma densidade contínua representa. À direita, os pontos terminam ligeiramente abaixo da reta: a amostra para em 79 anos, enquanto a Normal extrapola idades mais altas. O padrão é de **concentração no centro e extremos mais curtos** que os da Normal, não de cauda pesada.
+**`Age` contra a Normal.** Na faixa central (quantis teóricos entre −1 e 1), **4.685 dos 5.935 pontos ficam abaixo da reta** — e não acima. A mediana observada (27 anos) é menor que a prevista pelo ajuste (28,8 anos): o miolo da distribuição real está em idades mais baixas do que a Normal desloca. À esquerda, um patamar horizontal em 0 anos marca o pico discreto dos 178 bebês e mantém os pontos **acima** da reta. Acima de 1, os pontos voltam a ficar **acima** (1.353 de 1.379), e o desenho fecha em S. O padrão combina **átomo em 0, discretização e concentração entre 20 e 40 anos** (55,3% dos passageiros, contra 51,3% previstos); não é de cauda pesada, como confirmam a curtose 0,16 e o W de 0,980.
 
 **`log1p(TotalSpend)` contra a Normal.** O desvio mais forte está à esquerda: abaixo de −2,3, os pontos despencam quase na vertical, de 4 para 0,7, o que corresponde a gastos positivos mínimos (US$ 1 a US$ 30) muito mais numerosos do que o modelo prevê. No corpo, os pontos ficam levemente abaixo da reta; no trecho superior, acima; no extremo direito, voltam à reta. Esse S com perna vertical à esquerda é a assinatura da curtose 4,93.
 
@@ -80,7 +80,7 @@ A explicação é que o pico em 0 ocupa uma região em que a Normal ajustada ain
 | :--- | :--- | :--- | :--- |
 | `Age` | Normal aproximada (D = 0,076) | Média com $t$ de Welch; Mann-Whitney como salvaguarda | Assimetria moderada e $n$ grande sustentam a média; o teste de postos protege grupos pequenos |
 | `TotalSpend` (todos) | Mistura *hurdle*: Bernoulli × Log-Normal | Levene → $t$ de Welch + Mann-Whitney | Heterocedasticidade severa e 41,92% de zeros: a média engana, mediana e postos são obrigatórios |
-| `log1p(TotalSpend) \| > 0` | Log-Normal (corpo) com caudas pesadas | `log1p` na regressão linear, com erro-padrão HC3 | A transformação corrige a assimetria; a curtose 4,93 pede variância robusta |
+| `log1p(TotalSpend) \| > 0` | Log-Normal (corpo) com caudas pesadas | `log1p` na regressão linear, com erro-padrão HC3 | A transformação corrige a assimetria (−0,19); o HC3 entra pela heterocedasticidade dos resíduos, **não** pela curtose |
 | Gastos por serviço | Log-Normal grosseira; assimetria 4,1 a 8,5 | Mann-Whitney ou Kruskal-Wallis; nunca $t$ de Student | Caudas muito longas mesmo entre quem gastou |
 | Categóricas (`HomePlanet`, `CryoSleep`, `VIP`) | Bernoulli / multinomial | Qui-quadrado de Pearson, com Yates quando $df = 1$ | Normalidade não é pressuposto; o pressuposto é frequência esperada ≥ 5, atendido em 100% das células |
 
@@ -93,13 +93,14 @@ Essa tabela foi conferida contra `docs/conclusoes/04_testes_hipoteses_anova.md` 
 3. **O $p$ do Shapiro é impreciso acima de 5.000 observações.** Ele é reportado por transparência, mas não sustenta nenhuma decisão.
 4. **A curtose 4,93 dos gastos positivos não é corrigida pelo log.** A Log-Normal é modelo de trabalho, não descrição exata.
 5. **Aderência não é causalidade.** Nada aqui autoriza afirmar que a idade ou o gasto *causam* o transporte.
+6. **Normalidade de `Age` não é pré-requisito para usá-la como preditora.** A aderência aproximada à Normal descreve a variável isolada e sustenta a comparação de médias; regressão linear e logística não exigem preditoras normais. No modelo, o que se avalia é a especificação da relação e o comportamento dos resíduos.
 
 ## 8. Síntese para o cliente
 
 - **A idade se comporta aproximadamente como uma Normal**, com desvio pequeno (W = 0,980; D = 0,076). É seguro usá-la como variável contínua, desde que se reconheça que a distribuição real tem um pico de bebês e valores inteiros.
 - **O gasto a bordo não é uma variável só.** Quatro em cada dez passageiros não gastaram nada (41,92%); entre os que gastaram, a distribuição tem cauda longa dos dois lados. Relatar **mediana e proporção de gasto zero** é mais honesto do que relatar a média.
 - **O logaritmo melhora muito a leitura dos gastos, mas não resolve tudo.** A assimetria cai de 4,40 para −0,19; as caudas continuam pesadas (curtose 4,93).
-- **Os testes escolhidos na Seção 4 estão justificados pelos dados**, não por convenção: Welch e Mann-Whitney para gastos, qui-quadrado para categóricas, `log1p` com HC3 na regressão.
+- **Os testes escolhidos na Seção 4 estão justificados pelos dados**, não por convenção: Welch e Mann-Whitney para gastos, qui-quadrado para categóricas, `log1p` com HC3 para heterocedasticidade na regressão.
 
 ---
 
