@@ -73,13 +73,13 @@ TICKETS_JIRA = {'KAN-4': {'summary': 'Preparar criação do repositório GitHub'
             'rev': 'Helton',
             'deps': ['KAN-11']},
  'KAN-13': {'summary': 'Publicar conclusões de preparação em Markdown',
-            'status': 'In Review',
+            'status': 'Concluído',
             'assignee': 'Helton',
             'resp': 'Gustavo',
             'rev': 'Helton',
             'deps': ['KAN-12']},
  'KAN-14': {'summary': 'Produzir resumos de variáveis categóricas',
-            'status': 'In Review',
+            'status': 'Concluído',
             'assignee': 'Helton',
             'resp': 'Helton',
             'rev': 'Luciana',
@@ -103,7 +103,7 @@ TICKETS_JIRA = {'KAN-4': {'summary': 'Preparar criação do repositório GitHub'
             'rev': 'Luciana',
             'deps': ['KAN-15']},
  'KAN-18': {'summary': 'Publicar conclusões descritivas em Markdown',
-            'status': 'In Review',
+            'status': 'Concluído',
             'assignee': 'Helton',
             'resp': 'Helton',
             'rev': 'Luciana',
@@ -139,37 +139,37 @@ TICKETS_JIRA = {'KAN-4': {'summary': 'Preparar criação do repositório GitHub'
             'rev': 'Daniela',
             'deps': ['KAN-22']},
  'KAN-24': {'summary': 'Definir hipóteses estatísticas antes dos testes',
-            'status': 'In Review',
+            'status': 'Concluído',
             'assignee': 'Daniela',
             'resp': 'Daniela',
             'rev': 'Renatta',
             'deps': ['KAN-12']},
  'KAN-25': {'summary': 'Testar associação entre variáveis categóricas',
-            'status': 'In Review',
+            'status': 'Concluído',
             'assignee': 'Daniela',
             'resp': 'Daniela',
             'rev': 'Renatta',
             'deps': ['KAN-24']},
  'KAN-26': {'summary': 'Comparar TotalSpend por Transported',
-            'status': 'In Review',
+            'status': 'Concluído',
             'assignee': 'Daniela',
             'resp': 'Daniela',
             'rev': 'Renatta',
             'deps': ['KAN-22', 'KAN-24']},
  'KAN-27': {'summary': 'Comparar TotalSpend entre planetas de origem',
-            'status': 'In Review',
+            'status': 'Concluído',
             'assignee': 'Daniela',
             'resp': 'Daniela',
             'rev': 'Renatta',
             'deps': ['KAN-22', 'KAN-24']},
  'KAN-28': {'summary': 'Criar tabela-resumo dos testes de hipóteses',
-            'status': 'In Review',
+            'status': 'Concluído',
             'assignee': 'Daniela',
             'resp': 'Daniela',
             'rev': 'Renatta',
             'deps': ['KAN-25', 'KAN-26', 'KAN-27']},
  'KAN-29': {'summary': 'Publicar conclusões dos testes em Markdown',
-            'status': 'In Review',
+            'status': 'Concluído',
             'assignee': 'Daniela',
             'resp': 'Daniela',
             'rev': 'Renatta',
@@ -181,7 +181,7 @@ TICKETS_JIRA = {'KAN-4': {'summary': 'Preparar criação do repositório GitHub'
             'rev': 'Gustavo',
             'deps': ['KAN-12']},
  'KAN-31': {'summary': 'Desenvolver regressão linear para TotalSpend',
-            'status': 'Em Progresso',
+            'status': 'Concluído',
             'assignee': 'Renatta',
             'resp': 'Renatta',
             'rev': 'Gustavo',
@@ -211,19 +211,19 @@ TICKETS_JIRA = {'KAN-4': {'summary': 'Preparar criação do repositório GitHub'
             'rev': 'Gustavo',
             'deps': ['KAN-34', 'KAN-31']},
  'KAN-36': {'summary': 'Preparar apresentações cruzadas da Reunião 2',
-            'status': 'A fazer',
+            'status': 'Em Progresso',
             'assignee': 'Gustavo',
             'resp': 'Todos (Coordenação: Gustavo)',
             'rev': 'Pares de Revisão Cruzada',
             'deps': ['KAN-13', 'KAN-18', 'KAN-23', 'KAN-29', 'KAN-35']},
  'KAN-37': {'summary': 'Consolidar os notebooks num notebook final',
-            'status': 'A fazer',
+            'status': 'Em Progresso',
             'assignee': 'Gustavo',
             'resp': 'Gustavo',
             'rev': 'Todos os membros',
-            'deps': ['KAN-36']},
+            'deps': ['KAN-36', 'KAN-44']},
  'KAN-38': {'summary': 'Selecionar tabelas e gráficos do relatório',
-            'status': 'A fazer',
+            'status': 'Concluído',
             'assignee': 'Helton',
             'resp': 'Helton',
             'rev': 'Luciana e Daniela',
@@ -257,7 +257,13 @@ TICKETS_JIRA = {'KAN-4': {'summary': 'Preparar criação do repositório GitHub'
             'assignee': 'Gustavo',
             'resp': 'Gustavo',
             'rev': 'Todos os membros',
-            'deps': ['KAN-42']}}
+            'deps': ['KAN-42']},
+ 'KAN-44': {'summary': 'Fechar pendências de conteúdo e consolidação apontadas pela auditoria',
+            'status': 'In Review',
+            'assignee': 'Daniela',
+            'resp': 'Gustavo',
+            'rev': 'Daniela',
+            'deps': []}}
 
 POSICOES = {
     # Fase 1: Governança GitHub & Jira
@@ -304,6 +310,7 @@ POSICOES = {
     'KAN-41': (2.0, -5.3),
     'KAN-42': (3.0, -5.3),
     'KAN-43': (4.0, -5.3),
+    'KAN-44': (0.0, -2.4),
 }
 
 
@@ -542,7 +549,7 @@ def gerar_mmd(docs_dir: Path) -> str:
         "",
         '    subgraph FASE4["FASE 4 — Consolidação, Validação Cruzada e Entrega Final"]',
     ]
-    for k in ['KAN-36', 'KAN-37', 'KAN-38', 'KAN-39', 'KAN-40', 'KAN-41', 'KAN-42', 'KAN-43']:
+    for k in ['KAN-36', 'KAN-37', 'KAN-38', 'KAN-39', 'KAN-40', 'KAN-41', 'KAN-42', 'KAN-43', 'KAN-44']:
         lines.append(f"        {_mmd_node(k)}")
     lines += [
         "    end",
@@ -608,7 +615,7 @@ def gerar_md(docs_dir: Path, mmd_content: str) -> Path:
     table_body = "\n".join(rows)
     md_content = f"""# Mapa de Dependências, Estados e Responsáveis — Jira (`KAN`)
 
-Este documento consolida a arquitetura de dependências (DAG), o estado atual e a governança de responsáveis/revisores dos **40 tickets operacionais (`KAN-4` a `KAN-43`)** do projeto **Spaceship Titanic — Estatística (CIn/UFPE)**.
+Este documento consolida a arquitetura de dependências (DAG), o estado atual e a governança de responsáveis/revisores dos **41 tickets operacionais (`KAN-4` a `KAN-44`)** do projeto **Spaceship Titanic — Estatística (CIn/UFPE)**.
 
 - **Painel Oficial no Jira:** [https://megamatic.atlassian.net/jira/software/projects/KAN/boards](https://megamatic.atlassian.net/jira/software/projects/KAN/boards)
 - **Arquivos DSL Open-Source para Edição e Visualização:**
@@ -660,7 +667,7 @@ O bloco abaixo utiliza a DSL **Mermaid (`flowchart TD`)** e é renderizado inter
 
 ---
 
-## 4. Tabela Completa de Rastreabilidade dos Tickets (`KAN-4` a `KAN-43`)
+## 4. Tabela Completa de Rastreabilidade dos Tickets (`KAN-4` a `KAN-44`)
 
 | Ticket | Resumo da Tarefa | Estado Atual | Assignee Atual (Jira) | Responsável Principal | Revisor Dedicado | Dependências Diretas |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |

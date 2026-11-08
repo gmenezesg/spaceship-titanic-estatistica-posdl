@@ -1,6 +1,6 @@
 # Mapa de Dependências, Estados e Responsáveis — Jira (`KAN`)
 
-Este documento consolida a arquitetura de dependências (DAG), o estado atual e a governança de responsáveis/revisores dos **40 tickets operacionais (`KAN-4` a `KAN-43`)** do projeto **Spaceship Titanic — Estatística (CIn/UFPE)**.
+Este documento consolida a arquitetura de dependências (DAG), o estado atual e a governança de responsáveis/revisores dos **41 tickets operacionais (`KAN-4` a `KAN-44`)** do projeto **Spaceship Titanic — Estatística (CIn/UFPE)**.
 
 - **Painel Oficial no Jira:** [https://megamatic.atlassian.net/jira/software/projects/KAN/boards](https://megamatic.atlassian.net/jira/software/projects/KAN/boards)
 - **Arquivos DSL Open-Source para Edição e Visualização:**
@@ -52,14 +52,14 @@ flowchart TD
 
     subgraph FASE3["FASE 3 — Trilhas Analíticas Paralelas"]
         subgraph T0["Trilha 0: Preparação (Gustavo)"]
-            KAN-13["<b>KAN-13</b> [EM REVISÃO]<br/>Publicar conclusões de preparação em Markdown<br/><i>Atual: Helton | Rev: Helton</i>"]:::revisao
+            KAN-13["<b>KAN-13</b> [CONCLUÍDO]<br/>Publicar conclusões de preparação em Markdown<br/><i>Atual: Helton | Rev: Helton</i>"]:::concluido
         end
         subgraph T1["Trilha 1: Estatística Descritiva (Helton)"]
-            KAN-14["<b>KAN-14</b> [EM REVISÃO]<br/>Produzir resumos de variáveis categóricas<br/><i>Atual: Helton | Rev: Luciana</i>"]:::revisao
+            KAN-14["<b>KAN-14</b> [CONCLUÍDO]<br/>Produzir resumos de variáveis categóricas<br/><i>Atual: Helton | Rev: Luciana</i>"]:::concluido
             KAN-15["<b>KAN-15</b> [CONCLUÍDO]<br/>Produzir resumos de variáveis quantitativas<br/><i>Atual: Helton | Rev: Luciana</i>"]:::concluido
             KAN-16["<b>KAN-16</b> [CONCLUÍDO]<br/>Criar gráficos descritivos candidatos ao relatório<br/><i>Atual: Helton | Rev: Luciana</i>"]:::concluido
             KAN-17["<b>KAN-17</b> [CONCLUÍDO]<br/>Documentar valores extremos sem remoção automática<br/><i>Atual: Helton | Rev: Luciana</i>"]:::concluido
-            KAN-18["<b>KAN-18</b> [EM REVISÃO]<br/>Publicar conclusões descritivas em Markdown<br/><i>Atual: Helton | Rev: Luciana</i>"]:::revisao
+            KAN-18["<b>KAN-18</b> [CONCLUÍDO]<br/>Publicar conclusões descritivas em Markdown<br/><i>Atual: Helton | Rev: Luciana</i>"]:::concluido
         end
         subgraph T2["Trilha 2: Distribuições e QQ-Plots (Luciana)"]
             KAN-20["<b>KAN-20</b> [CONCLUÍDO]<br/>Analisar distribuições de idade e despesas<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::concluido
@@ -68,16 +68,16 @@ flowchart TD
             KAN-23["<b>KAN-23</b> [CONCLUÍDO]<br/>Publicar conclusões de distribuições em Markdown<br/><i>Atual: Luciana | Rev: Daniela</i>"]:::concluido
         end
         subgraph T3["Trilha 3: Testes de Hipóteses (Daniela)"]
-            KAN-24["<b>KAN-24</b> [EM REVISÃO]<br/>Definir hipóteses estatísticas antes dos testes<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::revisao
-            KAN-25["<b>KAN-25</b> [EM REVISÃO]<br/>Testar associação entre variáveis categóricas<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::revisao
-            KAN-26["<b>KAN-26</b> [EM REVISÃO]<br/>Comparar TotalSpend por Transported<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::revisao
-            KAN-27["<b>KAN-27</b> [EM REVISÃO]<br/>Comparar TotalSpend entre planetas de origem<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::revisao
-            KAN-28["<b>KAN-28</b> [EM REVISÃO]<br/>Criar tabela-resumo dos testes de hipóteses<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::revisao
-            KAN-29["<b>KAN-29</b> [EM REVISÃO]<br/>Publicar conclusões dos testes em Markdown<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::revisao
+            KAN-24["<b>KAN-24</b> [CONCLUÍDO]<br/>Definir hipóteses estatísticas antes dos testes<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::concluido
+            KAN-25["<b>KAN-25</b> [CONCLUÍDO]<br/>Testar associação entre variáveis categóricas<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::concluido
+            KAN-26["<b>KAN-26</b> [CONCLUÍDO]<br/>Comparar TotalSpend por Transported<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::concluido
+            KAN-27["<b>KAN-27</b> [CONCLUÍDO]<br/>Comparar TotalSpend entre planetas de origem<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::concluido
+            KAN-28["<b>KAN-28</b> [CONCLUÍDO]<br/>Criar tabela-resumo dos testes de hipóteses<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::concluido
+            KAN-29["<b>KAN-29</b> [CONCLUÍDO]<br/>Publicar conclusões dos testes em Markdown<br/><i>Atual: Daniela | Rev: Renatta</i>"]:::concluido
         end
         subgraph T4["Trilha 4: Correlação e Regressões (Renatta)"]
             KAN-30["<b>KAN-30</b> [CONCLUÍDO]<br/>Analisar correlações e diagramas de dispersão<br/><i>Atual: Renatta | Rev: Gustavo</i>"]:::concluido
-            KAN-31["<b>KAN-31</b> [EM PROGRESSO]<br/>Desenvolver regressão linear para TotalSpend<br/><i>Atual: Renatta | Rev: Gustavo</i>"]:::progresso
+            KAN-31["<b>KAN-31</b> [CONCLUÍDO]<br/>Desenvolver regressão linear para TotalSpend<br/><i>Atual: Renatta | Rev: Gustavo</i>"]:::concluido
             KAN-32["<b>KAN-32</b> [CONCLUÍDO]<br/>Criar baseline para classificação de Transported<br/><i>Atual: Renatta | Rev: Gustavo</i>"]:::concluido
             KAN-33["<b>KAN-33</b> [CONCLUÍDO]<br/>Desenvolver regressão logística para Transported<br/><i>Atual: Renatta | Rev: Gustavo</i>"]:::concluido
             KAN-34["<b>KAN-34</b> [CONCLUÍDO]<br/>Avaliar e interpretar o modelo logístico<br/><i>Atual: Renatta | Rev: Gustavo</i>"]:::concluido
@@ -86,14 +86,15 @@ flowchart TD
     end
 
     subgraph FASE4["FASE 4 — Consolidação, Validação Cruzada e Entrega Final"]
-        KAN-36["<b>KAN-36</b> [A FAZER]<br/>Preparar apresentações cruzadas da Reunião 2<br/><i>Atual: Gustavo | Rev: Pares de Revisão Cruzada</i>"]:::afazer
-        KAN-37["<b>KAN-37</b> [A FAZER]<br/>Consolidar os notebooks num notebook final<br/><i>Atual: Gustavo | Rev: Todos os membros</i>"]:::afazer
-        KAN-38["<b>KAN-38</b> [A FAZER]<br/>Selecionar tabelas e gráficos do relatório<br/><i>Atual: Helton | Rev: Luciana e Daniela</i>"]:::afazer
+        KAN-36["<b>KAN-36</b> [EM PROGRESSO]<br/>Preparar apresentações cruzadas da Reunião 2<br/><i>Atual: Gustavo | Rev: Pares de Revisão Cruzada</i>"]:::progresso
+        KAN-37["<b>KAN-37</b> [EM PROGRESSO]<br/>Consolidar os notebooks num notebook final<br/><i>Atual: Gustavo | Rev: Todos os membros</i>"]:::progresso
+        KAN-38["<b>KAN-38</b> [CONCLUÍDO]<br/>Selecionar tabelas e gráficos do relatório<br/><i>Atual: Helton | Rev: Luciana e Daniela</i>"]:::concluido
         KAN-39["<b>KAN-39</b> [A FAZER]<br/>Consolidar texto técnico do relatório<br/><i>Atual: Daniela | Rev: Luciana e Gustavo</i>"]:::afazer
         KAN-40["<b>KAN-40</b> [A FAZER]<br/>Rever coerência metodológica do relatório<br/><i>Atual: Luciana | Rev: Daniela e Renatta</i>"]:::afazer
         KAN-41["<b>KAN-41</b> [A FAZER]<br/>Executar validação numérica cruzada<br/><i>Atual: Daniela | Rev: Todos os membros</i>"]:::afazer
         KAN-42["<b>KAN-42</b> [A FAZER]<br/>Gerar e rever o PDF final<br/><i>Atual: Renatta | Rev: Todos os membros</i>"]:::afazer
         KAN-43["<b>KAN-43</b> [A FAZER]<br/>Preparar pacote final de entrega<br/><i>Atual: Gustavo | Rev: Todos os membros</i>"]:::afazer
+        KAN-44["<b>KAN-44</b> [EM REVISÃO]<br/>Fechar pendências de conteúdo e consolidação apontadas pela auditoria<br/><i>Atual: Daniela | Rev: Daniela</i>"]:::revisao
     end
 
     %% Arestas de Dependência (Origem --> Destino)
@@ -142,6 +143,7 @@ flowchart TD
     KAN-29 --> KAN-36
     KAN-35 --> KAN-36
     KAN-36 --> KAN-37
+    KAN-44 --> KAN-37
     KAN-36 --> KAN-38
     KAN-37 --> KAN-39
     KAN-38 --> KAN-39
@@ -179,7 +181,7 @@ flowchart TD
 
 ---
 
-## 4. Tabela Completa de Rastreabilidade dos Tickets (`KAN-4` a `KAN-43`)
+## 4. Tabela Completa de Rastreabilidade dos Tickets (`KAN-4` a `KAN-44`)
 
 | Ticket | Resumo da Tarefa | Estado Atual | Assignee Atual (Jira) | Responsável Principal | Revisor Dedicado | Dependências Diretas |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -192,34 +194,35 @@ flowchart TD
 | [`KAN-10`](https://megamatic.atlassian.net/browse/KAN-10) | Criar inventário e dicionário de dados | **Concluído** | Helton | Gustavo | Helton | `KAN-9` |
 | [`KAN-11`](https://megamatic.atlassian.net/browse/KAN-11) | Analisar valores ausentes e duplicados | **Concluído** | Helton | Gustavo | Helton | `KAN-10` |
 | [`KAN-12`](https://megamatic.atlassian.net/browse/KAN-12) | Criar variáveis derivadas do Spaceship Titanic | **Concluído** | Helton | Gustavo | Helton | `KAN-11` |
-| [`KAN-13`](https://megamatic.atlassian.net/browse/KAN-13) | Publicar conclusões de preparação em Markdown | **In Review** | Helton | Gustavo | Helton | `KAN-12` |
-| [`KAN-14`](https://megamatic.atlassian.net/browse/KAN-14) | Produzir resumos de variáveis categóricas | **In Review** | Helton | Helton | Luciana | `KAN-12` |
+| [`KAN-13`](https://megamatic.atlassian.net/browse/KAN-13) | Publicar conclusões de preparação em Markdown | **Concluído** | Helton | Gustavo | Helton | `KAN-12` |
+| [`KAN-14`](https://megamatic.atlassian.net/browse/KAN-14) | Produzir resumos de variáveis categóricas | **Concluído** | Helton | Helton | Luciana | `KAN-12` |
 | [`KAN-15`](https://megamatic.atlassian.net/browse/KAN-15) | Produzir resumos de variáveis quantitativas | **Concluído** | Helton | Helton | Luciana | `KAN-12` |
 | [`KAN-16`](https://megamatic.atlassian.net/browse/KAN-16) | Criar gráficos descritivos candidatos ao relatório | **Concluído** | Helton | Helton | Luciana | `KAN-14`, `KAN-15` |
 | [`KAN-17`](https://megamatic.atlassian.net/browse/KAN-17) | Documentar valores extremos sem remoção automática | **Concluído** | Helton | Helton | Luciana | `KAN-15` |
-| [`KAN-18`](https://megamatic.atlassian.net/browse/KAN-18) | Publicar conclusões descritivas em Markdown | **In Review** | Helton | Helton | Luciana | `KAN-16`, `KAN-17` |
+| [`KAN-18`](https://megamatic.atlassian.net/browse/KAN-18) | Publicar conclusões descritivas em Markdown | **Concluído** | Helton | Helton | Luciana | `KAN-16`, `KAN-17` |
 | [`KAN-19`](https://megamatic.atlassian.net/browse/KAN-19) | Estudar variáveis aleatórias e distribuições | **Concluído** | Luciana | Luciana | Daniela | `KAN-9` |
 | [`KAN-20`](https://megamatic.atlassian.net/browse/KAN-20) | Analisar distribuições de idade e despesas | **Concluído** | Luciana | Luciana | Daniela | `KAN-12`, `KAN-19` |
 | [`KAN-21`](https://megamatic.atlassian.net/browse/KAN-21) | Criar e interpretar QQ-plots | **Concluído** | Luciana | Luciana | Daniela | `KAN-20` |
 | [`KAN-22`](https://megamatic.atlassian.net/browse/KAN-22) | Relacionar distribuições com a escolha dos testes inferenciais | **Concluído** | Luciana | Luciana | Daniela | `KAN-21` |
 | [`KAN-23`](https://megamatic.atlassian.net/browse/KAN-23) | Publicar conclusões de distribuições em Markdown | **Concluído** | Luciana | Luciana | Daniela | `KAN-22` |
-| [`KAN-24`](https://megamatic.atlassian.net/browse/KAN-24) | Definir hipóteses estatísticas antes dos testes | **In Review** | Daniela | Daniela | Renatta | `KAN-12` |
-| [`KAN-25`](https://megamatic.atlassian.net/browse/KAN-25) | Testar associação entre variáveis categóricas | **In Review** | Daniela | Daniela | Renatta | `KAN-24` |
-| [`KAN-26`](https://megamatic.atlassian.net/browse/KAN-26) | Comparar TotalSpend por Transported | **In Review** | Daniela | Daniela | Renatta | `KAN-22`, `KAN-24` |
-| [`KAN-27`](https://megamatic.atlassian.net/browse/KAN-27) | Comparar TotalSpend entre planetas de origem | **In Review** | Daniela | Daniela | Renatta | `KAN-22`, `KAN-24` |
-| [`KAN-28`](https://megamatic.atlassian.net/browse/KAN-28) | Criar tabela-resumo dos testes de hipóteses | **In Review** | Daniela | Daniela | Renatta | `KAN-25`, `KAN-26`, `KAN-27` |
-| [`KAN-29`](https://megamatic.atlassian.net/browse/KAN-29) | Publicar conclusões dos testes em Markdown | **In Review** | Daniela | Daniela | Renatta | `KAN-28` |
+| [`KAN-24`](https://megamatic.atlassian.net/browse/KAN-24) | Definir hipóteses estatísticas antes dos testes | **Concluído** | Daniela | Daniela | Renatta | `KAN-12` |
+| [`KAN-25`](https://megamatic.atlassian.net/browse/KAN-25) | Testar associação entre variáveis categóricas | **Concluído** | Daniela | Daniela | Renatta | `KAN-24` |
+| [`KAN-26`](https://megamatic.atlassian.net/browse/KAN-26) | Comparar TotalSpend por Transported | **Concluído** | Daniela | Daniela | Renatta | `KAN-22`, `KAN-24` |
+| [`KAN-27`](https://megamatic.atlassian.net/browse/KAN-27) | Comparar TotalSpend entre planetas de origem | **Concluído** | Daniela | Daniela | Renatta | `KAN-22`, `KAN-24` |
+| [`KAN-28`](https://megamatic.atlassian.net/browse/KAN-28) | Criar tabela-resumo dos testes de hipóteses | **Concluído** | Daniela | Daniela | Renatta | `KAN-25`, `KAN-26`, `KAN-27` |
+| [`KAN-29`](https://megamatic.atlassian.net/browse/KAN-29) | Publicar conclusões dos testes em Markdown | **Concluído** | Daniela | Daniela | Renatta | `KAN-28` |
 | [`KAN-30`](https://megamatic.atlassian.net/browse/KAN-30) | Analisar correlações e diagramas de dispersão | **Concluído** | Renatta | Renatta | Gustavo | `KAN-12` |
-| [`KAN-31`](https://megamatic.atlassian.net/browse/KAN-31) | Desenvolver regressão linear para TotalSpend | **Em Progresso** | Renatta | Renatta | Gustavo | `KAN-30` |
+| [`KAN-31`](https://megamatic.atlassian.net/browse/KAN-31) | Desenvolver regressão linear para TotalSpend | **Concluído** | Renatta | Renatta | Gustavo | `KAN-30` |
 | [`KAN-32`](https://megamatic.atlassian.net/browse/KAN-32) | Criar baseline para classificação de Transported | **Concluído** | Renatta | Renatta | Gustavo | `KAN-12` |
 | [`KAN-33`](https://megamatic.atlassian.net/browse/KAN-33) | Desenvolver regressão logística para Transported | **Concluído** | Renatta | Renatta | Gustavo | `KAN-32` |
 | [`KAN-34`](https://megamatic.atlassian.net/browse/KAN-34) | Avaliar e interpretar o modelo logístico | **Concluído** | Renatta | Renatta | Gustavo | `KAN-33` |
 | [`KAN-35`](https://megamatic.atlassian.net/browse/KAN-35) | Publicar conclusões de correlação e regressões | **Concluído** | Renatta | Renatta | Gustavo | `KAN-34`, `KAN-31` |
-| [`KAN-36`](https://megamatic.atlassian.net/browse/KAN-36) | Preparar apresentações cruzadas da Reunião 2 | **A fazer** | Gustavo | Todos (Coordenação: Gustavo) | Pares de Revisão Cruzada | `KAN-13`, `KAN-18`, `KAN-23`, `KAN-29`, `KAN-35` |
-| [`KAN-37`](https://megamatic.atlassian.net/browse/KAN-37) | Consolidar os notebooks num notebook final | **A fazer** | Gustavo | Gustavo | Todos os membros | `KAN-36` |
-| [`KAN-38`](https://megamatic.atlassian.net/browse/KAN-38) | Selecionar tabelas e gráficos do relatório | **A fazer** | Helton | Helton | Luciana e Daniela | `KAN-36` |
+| [`KAN-36`](https://megamatic.atlassian.net/browse/KAN-36) | Preparar apresentações cruzadas da Reunião 2 | **Em Progresso** | Gustavo | Todos (Coordenação: Gustavo) | Pares de Revisão Cruzada | `KAN-13`, `KAN-18`, `KAN-23`, `KAN-29`, `KAN-35` |
+| [`KAN-37`](https://megamatic.atlassian.net/browse/KAN-37) | Consolidar os notebooks num notebook final | **Em Progresso** | Gustavo | Gustavo | Todos os membros | `KAN-36`, `KAN-44` |
+| [`KAN-38`](https://megamatic.atlassian.net/browse/KAN-38) | Selecionar tabelas e gráficos do relatório | **Concluído** | Helton | Helton | Luciana e Daniela | `KAN-36` |
 | [`KAN-39`](https://megamatic.atlassian.net/browse/KAN-39) | Consolidar texto técnico do relatório | **A fazer** | Daniela | Daniela e Renatta | Luciana e Gustavo | `KAN-37`, `KAN-38` |
 | [`KAN-40`](https://megamatic.atlassian.net/browse/KAN-40) | Rever coerência metodológica do relatório | **A fazer** | Luciana | Luciana | Daniela e Renatta | `KAN-39` |
 | [`KAN-41`](https://megamatic.atlassian.net/browse/KAN-41) | Executar validação numérica cruzada | **A fazer** | Daniela | Todos (Coordenação: Daniela) | Todos os membros | `KAN-40` |
 | [`KAN-42`](https://megamatic.atlassian.net/browse/KAN-42) | Gerar e rever o PDF final | **A fazer** | Renatta | Renatta | Todos os membros | `KAN-41` |
 | [`KAN-43`](https://megamatic.atlassian.net/browse/KAN-43) | Preparar pacote final de entrega | **A fazer** | Gustavo | Gustavo | Todos os membros | `KAN-42` |
+| [`KAN-44`](https://megamatic.atlassian.net/browse/KAN-44) | Fechar pendências de conteúdo e consolidação apontadas pela auditoria | **In Review** | Daniela | Gustavo | Daniela | — |
