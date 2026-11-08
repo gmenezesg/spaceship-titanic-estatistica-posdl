@@ -40,6 +40,10 @@ RAIZ = Path(__file__).resolve().parent.parent
 MANIFESTO_PADRAO = RAIZ / "notebooks" / "consolidacao.json"
 TAG_PULAR = "pular-consolidacao"
 
+# Faixa de tickets operacionais cobertos pelo manifesto (KAN-4 a KAN-44).
+TICKET_MIN = 4
+TICKET_MAX = 44
+
 # Padrões de caminho absoluto que quebram a reprodutibilidade em outra máquina.
 PADRAO_CAMINHO_ABSOLUTO = re.compile(
     r"""["'](?:[A-Za-z]:[\\/]|/home/|/Users/|/mnt/|/content/drive/)"""
@@ -127,14 +131,60 @@ def validar_manifesto(manifesto: dict) -> tuple[bool, list[str], list[str]]:
                 if nb not in usados:
                     erros.append(f"Notebook '{nb}' na seção '{titulo_secao}' não está associado a nenhum ticket.")
 
-    # Verifica cobertura de todos os 40 tickets operacionais do projeto (KAN-4 a KAN-43)
+    # Verifica cobertura de todos os tickets operacionais do projeto (KAN-4 a KAN-44)
     todos_mapeados = set(tickets_secoes.keys()) | set(mapa_global.keys()) | set(outros_tickets.keys())
-    esperados = {f"KAN-{i}" for i in range(4, 44)}
+    esperados = {f"KAN-{i}" for i in range(TICKET_MIN, TICKET_MAX + 1)}
     faltantes_jira = sorted(esperados - todos_mapeados, key=lambda x: int(x.split("-")[1]))
     if faltantes_jira:
-        erros.append(f"Tickets do Jira (KAN-4..KAN-43) sem mapeamento no manifesto: {', '.join(faltantes_jira)}")
+        erros.append(
+            f"Tickets do Jira (KAN-{TICKET_MIN}..KAN-{TICKET_MAX}) sem mapeamento "
+            f"no manifesto: {', '.join(faltantes_jira)}"
+        )
 
     return len(erros) == 0, erros, avisos
+
+
+def validar_existencia_artefatos(manifesto: dict, raiz: Path) -> list[str]:
+    """Verifica se os artefatos citados no manifesto existem no repositório.
+
+    Cobre apenas o que já deveria existir: notebooks e conclusões das seções
+    analíticas, artefatos extras por ticket, notebooks de origem de outros
+    tickets e arquivos reparados.
+
+    Não cobre `mapa_outros_tickets[*]["alvo"]`, que aponta para entregáveis
+    futuros (atas, relatório, PDF) criados por tickets ainda em aberto.
+    """
+    erros: list[str] = []
+    verificados: set[str] = set()
+
+    def checar(caminho: str | None, contexto: str) -> None:
+        if not caminho:
+            return
+        caminho = str(caminho)
+        if caminho in verificados:
+            return
+        verificados.add(caminho)
+        if not (raiz / caminho).exists():
+            erros.append(f"Arquivo inexistente para {contexto}: {caminho}")
+
+    for secao in manifesto.get("secoes", []):
+        contexto_secao = secao.get("id") or secao.get("titulo", "<seção>")
+        for notebook in secao.get("notebooks", []):
+            checar(notebook, contexto_secao)
+        checar(secao.get("conclusao_markdown"), f"{contexto_secao} (conclusão)")
+        for ticket, info in (secao.get("mapeamento_tickets") or {}).items():
+            checar(info.get("notebook"), f"{ticket} (notebook)")
+            for extra in info.get("artefatos_extras") or []:
+                checar(extra, f"{ticket} (artefato extra)")
+
+    for ticket, info in (manifesto.get("mapa_outros_tickets") or {}).items():
+        checar(info.get("notebook_origem"), f"{ticket} (notebook de origem)")
+
+    for ticket, arquivos in (manifesto.get("mapa_reparos") or {}).items():
+        for arquivo in arquivos:
+            checar(arquivo, f"{ticket} (reparo)")
+
+    return erros
 
 
 def consultar_ticket(manifesto: dict, ticket: str) -> int:
@@ -154,6 +204,9 @@ def consultar_ticket(manifesto: dict, ticket: str) -> int:
             print(f"Notebook-Alvo    : {nb_alvo}")
             if extras:
                 print(f"Artefatos Extras : {', '.join(extras)}")
+            reparos = (manifesto.get("mapa_reparos") or {}).get(ticket, [])
+            if reparos:
+                print(f"Arquivos Reparados: {', '.join(reparos)}")
             print(f"Notebook Mestre  : {saida_mestre} (NÃO EDITAR À MÃO / CONSOLIDAR APENAS SOB DEMANDA EM KAN-37)")
             print(
                 "\nFluxo de Conformidade:\n"
@@ -491,6 +544,12 @@ def main() -> int:
         if erros_mapa:
             print("ERRO na validação do manifesto:", file=sys.stderr)
             for e in erros_mapa:
+                print(f"  - {e}", file=sys.stderr)
+            return 1
+        erros_existencia = validar_existencia_artefatos(manifesto, RAIZ)
+        if erros_existencia:
+            print("ERRO na validação de existência de artefatos:", file=sys.stderr)
+            for e in erros_existencia:
                 print(f"  - {e}", file=sys.stderr)
             return 1
         print(f"Manifesto '{args.manifesto.name}' validado com sucesso!")
