@@ -13,9 +13,6 @@ def test_notebook_kan28_execution_and_summary_table():
     client = NotebookClient(nb, timeout=240, kernel_name="python3")
     client.execute()
     
-    # Salvar notebook executado com todos os outputs pré-renderizados
-    nbformat.write(nb, notebook_path)
-    
     # Coletar todo o texto das saídas de stream e display_data/execute_result
     outputs_text = []
     for cell in nb.cells:
@@ -57,6 +54,12 @@ def test_notebook_kan28_execution_and_summary_table():
     assert "0.1714" in full_text  # eta^2
     assert "271.97" in full_text  # H Kruskal-Wallis
     assert "2768.76" in full_text  # Games-Howell Europa vs Earth
+    assert "Pearson sem correção de continuidade" in full_text
+    assert "13,846,861.5 (Z = 39.09)" in full_text
+    assert "r de Rosenthal = 0.419" in full_text
+    assert "q = 37.60 (df = 2226.6)" in full_text
+    assert "q = 31.15 (df = 2573.3)" in full_text
+    assert "q = 16.12 (df = 2290.6)" in full_text
     assert "--- KAN-28: Tabela Exportada em Formato Markdown ---" in full_text
 
 if __name__ == "__main__":
