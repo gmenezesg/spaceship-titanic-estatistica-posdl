@@ -7,6 +7,8 @@
 
 **Slides da banca:** [`report/apresentacao_final.pdf`](../../report/apresentacao_final.pdf) — 18 slides em 16:9, gerados por [`src/gerar_apresentacao.py`](../../src/gerar_apresentacao.py). Cada slide corresponde a um bloco deste guia.
 
+**Teleprompter:** [`report/teleprompter_apresentacao.pdf`](../../report/teleprompter_apresentacao.pdf) — roteiro de fala página a página, em fonte grande, gerado a partir de [`teleprompter_apresentacao.md`](teleprompter_apresentacao.md) por [`src/gerar_teleprompter.py`](../../src/gerar_teleprompter.py).
+
 - **Disciplina:** Estatística Avançada e Fundamentos Probabilísticos para IA — Pós-Graduação em Deep Learning (CIn/UFPE)
 - **Entrega:** Trabalho Final (T3) — Relatório Técnico em PDF + Notebook Jupyter
 - **Tema:** *Spaceship Titanic* — o que distingue os passageiros transportados dos não transportados
@@ -418,8 +420,8 @@ gastos; sem regularização; ajustada só no treino. Divisão 80/20 estratificad
 
 **Desempenho no teste (n = 1.739; limiar 0,5 fixado a priori).** VP = 697, VN = 657,
 FP = 206, FN = 179. Acurácia 0,779; precisão 0,772; recall 0,796; especificidade 0,761;
-F1 0,784; ROC-AUC 0,862; Average Precision 0,880. Contra o baseline `most_frequent` (acurácia
-0,504, AUC 0,500), o ganho é de **+25,5 p.p. de acurácia** e **+0,338 de AUC**.
+F1 0,784; ROC-AUC 0,862; Average Precision 0,880. Contra o melhor baseline `stratified`
+(acurácia 0,524, AUC 0,524), o ganho é de **+25,5 p.p. de acurácia** e **+0,338 de AUC**.
 
 **Como ler os ORs.** São associações ajustadas pelas demais preditoras, não efeitos causais.
 O OR do criossono é medido já descontando os gastos — e nenhum passageiro em criossono gastou;
@@ -527,7 +529,7 @@ Porque o criossono confunde a relação: quem está em criossono não consome e 
 com muito mais frequência. O gasto é um *proxy* de vigília e mobilidade, não um fator protetor.
 
 **12. O modelo é bom?**
-Sim para triagem: 77,9% de acurácia, ROC-AUC 0,862 e F1 0,784, contra 50,4% do baseline. Mas a
+Sim para triagem: 77,9% de acurácia, ROC-AUC 0,862 e F1 0,784, contra 52,4% do melhor baseline. Mas a
 divisão é única, não há intervalo de incerteza e a separação é por passageiro, não por grupo.
 
 **13. Por que 77,9% e não 90%?**
