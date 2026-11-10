@@ -13,9 +13,6 @@ def test_notebook_kan27_execution_and_statistics():
     client = NotebookClient(nb, timeout=180, kernel_name="python3")
     client.execute()
     
-    # Salvar notebook executado com todos os outputs pré-renderizados
-    nbformat.write(nb, notebook_path)
-    
     # Coletar todo o texto das saídas de stream e display_data/execute_result
     outputs_text = []
     for cell in nb.cells:
@@ -46,6 +43,9 @@ def test_notebook_kan27_execution_and_statistics():
     assert "2768.76" in full_text, "Diferença absoluta Earth vs Europa esperada em 2768.76"
     assert "2384.27" in full_text, "Diferença absoluta Europa vs Mars esperada em 2384.27"
     assert "384.49" in full_text, "Diferença absoluta Earth vs Mars esperada em 384.49"
+    assert "2226.6" in full_text, "df Games-Howell Earth vs Europa esperado em 2226.6"
+    assert "2290.6" in full_text, "df Games-Howell Earth vs Mars esperado em 2290.6"
+    assert "2573.3" in full_text, "df Games-Howell Europa vs Mars esperado em 2573.3"
 
 if __name__ == "__main__":
     test_notebook_kan27_execution_and_statistics()
