@@ -109,7 +109,7 @@ class Wrapper:
         self._renderer = FigureCanvasAgg(self._fig).get_renderer()
 
     def width(self, text: str, size: float, weight: str = "normal", style: str = "normal") -> float:
-        prop = FontProperties(family="Lato", size=size, weight=weight, style=style)
+        prop = FontProperties(family=["Lato", "DejaVu Sans", "sans-serif"], size=size, weight=weight, style=style)
         return self._renderer.get_text_width_height_descent(text, prop, False)[0] / 72.0
 
     def wrap(self, text: str, size: float, max_w: float, weight: str = "normal", style: str = "normal") -> list[str]:

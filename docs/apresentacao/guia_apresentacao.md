@@ -152,7 +152,7 @@ tabela-resumo dos testes (Seção 4) e a célula da Seção 6 que recomputa os n
 > depois: se o passageiro estava em criossono, as despesas ausentes são zero; se era criança,
 > também; se a cabine aparece em outro membro do mesmo grupo, ela é recuperada. Só depois
 > entram mediana e moda. O resultado é uma base de **8.693 × 22, sem nenhum valor ausente**,
-> com **zero vazamento de dados**: todos os parâmetros foram estimados só no treino.”
+> com padronização e codificação isoladas no pipeline de treino.”
 
 **Números de apoio:** 2.324 células ausentes (1,91%); 24,01% das linhas com ausência; 10 etapas
 de imputação; 842 células recuperadas por regra determinística (36,23% das ausentes); mudança
@@ -376,7 +376,7 @@ O pressuposto de Cochran (frequência esperada ≥ 5) foi atendido em 100% das c
 (p = 3,407 × 10⁻³⁰), com desvio-padrão de US$ 3.142,61 nos não transportados contra
 US$ 2.302,98 nos transportados. Welch: t(7.906,3) = 18,94, p = 2,666 × 10⁻⁷⁸; médias
 US$ 2.011,89 × US$ 891,15; Δ = US$ 1.120,74 (IC 95% [1.004,76; 1.236,71]); d de Cohen = 0,407.
-Mann-Whitney: U = 13.846.862, Z = 37,62, r de Rosenthal = 0,404; medianas US$ 907,00 × US$ 0,00.
+Mann-Whitney: U = 13.846.861,5, Z = 39,09, r de Rosenthal = 0,419; medianas US$ 907,00 × US$ 0,00.
 
 **Gasto por planeta (ANOVA de Welch + Kruskal-Wallis).** Levene W = 1.592,08 (p < 10⁻³⁰⁰);
 razão de variâncias Europa/Terra > 37×. ANOVA de Welch: F(2; 3.000,9) = 407,57,

@@ -58,7 +58,7 @@ for _font in ("Lato", "Lato Semibold", "Lato Black", "DejaVu Sans"):
 
 plt.rcParams.update(
     {
-        "font.family": ["Lato", "DejaVu Sans"],
+        "font.family": ["Lato", "DejaVu Sans", "sans-serif"],
         "font.size": 12,
         "text.color": INK,
         "axes.edgecolor": BORDER,
@@ -697,14 +697,26 @@ def slide_14_odds(fig, ax, n):
         "Spa",
     ]
     vals = [3.97, 3.21, 1.48, 1.40, 1.24, 0.60, 0.55, 0.53, 0.48]
+    ci_low = [2.58, 2.61, 1.36, 1.14, 1.15, 0.53, 0.51, 0.44, 0.44]
+    ci_high = [6.10, 3.94, 1.60, 1.72, 1.32, 0.67, 0.59, 0.64, 0.51]
     colors = [TEAL_DARK if v >= 1 else CORAL for v in vals]
-    bars = axc.barh(labels[::-1], vals[::-1], color=colors[::-1], height=0.56)
-    for b, v in zip(bars, vals[::-1]):
-        shown = f"{v:.2f}".replace(".", ",")
-        axc.text(v + 0.07, b.get_y() + b.get_height() / 2, shown, va="center", fontsize=9, color=INK, fontweight="bold")
+    xerr_low = [v - l for v, l in zip(vals[::-1], ci_low[::-1])]
+    xerr_high = [u - v for v, u in zip(vals[::-1], ci_high[::-1])]
+    bars = axc.barh(
+        labels[::-1],
+        vals[::-1],
+        color=colors[::-1],
+        height=0.52,
+        xerr=[xerr_low, xerr_high],
+        capsize=3.5,
+        error_kw={"elinewidth": 1.2, "ecolor": INK, "capthick": 1.2},
+    )
+    for b, v, l, u in zip(bars, vals[::-1], ci_low[::-1], ci_high[::-1]):
+        shown = f"{v:.2f} [{l:.2f}–{u:.2f}]".replace(".", ",")
+        axc.text(u + 0.12, b.get_y() + b.get_height() / 2, shown, va="center", fontsize=7.8, color=INK, fontweight="bold")
     axc.axvline(1, color=INK, lw=1.2, ls="--")
-    axc.set_xlim(0, 4.55)
-    axc.set_xlabel("Odds Ratio (escala linear; 1 = sem associação)", fontsize=8.8, color=GRAY)
+    axc.set_xlim(0, 7.8)
+    axc.set_xlabel("Odds Ratio com IC 95% (escala linear; 1 = sem associação)", fontsize=8.8, color=GRAY)
     axc.tick_params(axis="both", labelsize=8.8)
     for s in ("top", "right"):
         axc.spines[s].set_visible(False)
@@ -739,17 +751,19 @@ def slide_15_conclusions(fig, ax, n):
         ("02", "Origem e deck", "66,05%", "Europa; Terra fica em 42,33%", "72,6% dos europeus nos decks B/C", GOLD),
         ("03", "Gasto", "41,92%", "não gastaram nada", "medianas: US$ 0 e US$ 907", TEAL_DARK),
     ]
+    card_w = 3.72
+    step = 4.10
     x = 0.68
     for num, title, value, desc, detail, color in items:
-        card(ax, x, 1.66, 3.88, 4.36, fc=WHITE, ec=BORDER, r=0.16)
-        ax.add_patch(Rectangle((x, 5.83), 3.88, 0.19, color=color, zorder=4))
+        card(ax, x, 1.66, card_w, 4.36, fc=WHITE, ec=BORDER, r=0.16)
+        ax.add_patch(Rectangle((x, 5.83), card_w, 0.19, color=color, zorder=4))
         text(ax, x + 0.24, 5.44, num, size=9.5, color=color, weight="bold")
         text(ax, x + 0.24, 5.0, title, size=14, color=INK, weight="bold", wrap=22)
         text(ax, x + 0.24, 4.04, value, size=30, color=color, weight="bold")
         text(ax, x + 0.24, 3.5, desc, size=9.6, color=GRAY, wrap=28)
-        ax.plot([x + 0.24, x + 3.62], [3.16, 3.16], color=BORDER, lw=1)
+        ax.plot([x + 0.24, x + card_w - 0.26], [3.16, 3.16], color=BORDER, lw=1)
         text(ax, x + 0.24, 2.86, detail, size=9, color=INK, wrap=30, lh=1.35)
-        x += 3.02
+        x += step
     text(ax, 0.7, 1.16, "Todas as leituras são observacionais. Nenhum achado autoriza afirmar causalidade.", size=10, color=GRAY)
     footer(ax, n)
 
