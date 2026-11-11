@@ -546,7 +546,7 @@ def slide_10_tests(fig, ax, n):
     rows = [
         ("Criossono × transporte", "Qui-quadrado", "χ² = 1.897,71", "< 0,001", "V = 0,467", "muito forte"),
         ("Planeta × transporte", "Qui-quadrado", "χ² = 338,82", "< 0,001", "V = 0,197", "moderada"),
-        ("VIP × transporte", "Qui-quadrado (Yates)", "χ² = 12,07", "0,0005", "V = 0,037", "desprezível"),
+        ("VIP × transporte", "Qui-quadrado (Pearson)", "χ² = 12,07", "0,0005", "V = 0,037", "desprezível"),
         ("Gasto × transporte", "t de Welch", "t = 18,94", "< 0,001", "d = 0,407", "moderado"),
         ("Gasto × planeta", "ANOVA de Welch", "F = 407,57", "< 0,001", "η² = 0,171", "grande"),
     ]
