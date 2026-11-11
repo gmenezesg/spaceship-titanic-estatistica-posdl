@@ -86,7 +86,7 @@ flowchart TD
     end
 
     subgraph FASE4["FASE 4 — Consolidação, Validação Cruzada e Entrega Final"]
-        KAN-36["<b>KAN-36</b> [EM PROGRESSO]<br/>Preparar apresentações cruzadas da Reunião 2<br/><i>Atual: Gustavo | Rev: Pares de Revisão Cruzada</i>"]:::progresso
+        KAN-36["<b>KAN-36</b> [CONCLUÍDO]<br/>Preparar apresentações cruzadas da Reunião 2<br/><i>Atual: Gustavo | Rev: Pares de Revisão Cruzada</i>"]:::concluido
         KAN-37["<b>KAN-37</b> [EM PROGRESSO]<br/>Consolidar os notebooks num notebook final<br/><i>Atual: Gustavo | Rev: Todos os membros</i>"]:::progresso
         KAN-38["<b>KAN-38</b> [CONCLUÍDO]<br/>Selecionar tabelas e gráficos do relatório<br/><i>Atual: Helton | Rev: Luciana e Daniela</i>"]:::concluido
         KAN-39["<b>KAN-39</b> [A FAZER]<br/>Consolidar texto técnico do relatório<br/><i>Atual: Daniela | Rev: Luciana e Gustavo</i>"]:::afazer
@@ -94,7 +94,7 @@ flowchart TD
         KAN-41["<b>KAN-41</b> [A FAZER]<br/>Executar validação numérica cruzada<br/><i>Atual: Daniela | Rev: Todos os membros</i>"]:::afazer
         KAN-42["<b>KAN-42</b> [A FAZER]<br/>Gerar e rever o PDF final<br/><i>Atual: Renatta | Rev: Todos os membros</i>"]:::afazer
         KAN-43["<b>KAN-43</b> [A FAZER]<br/>Preparar pacote final de entrega<br/><i>Atual: Gustavo | Rev: Todos os membros</i>"]:::afazer
-        KAN-44["<b>KAN-44</b> [EM REVISÃO]<br/>Fechar pendências de conteúdo e consolidação apontadas pela auditoria<br/><i>Atual: Daniela | Rev: Daniela</i>"]:::revisao
+        KAN-44["<b>KAN-44</b> [CONCLUÍDO]<br/>Fechar pendências de conteúdo e consolidação apontadas pela auditoria<br/><i>Atual: Daniela | Rev: Daniela</i>"]:::concluido
     end
 
     %% Arestas de Dependência (Origem --> Destino)
@@ -217,7 +217,7 @@ flowchart TD
 | [`KAN-33`](https://megamatic.atlassian.net/browse/KAN-33) | Desenvolver regressão logística para Transported | **Concluído** | Renatta | Renatta | Gustavo | `KAN-32` |
 | [`KAN-34`](https://megamatic.atlassian.net/browse/KAN-34) | Avaliar e interpretar o modelo logístico | **Concluído** | Renatta | Renatta | Gustavo | `KAN-33` |
 | [`KAN-35`](https://megamatic.atlassian.net/browse/KAN-35) | Publicar conclusões de correlação e regressões | **Concluído** | Renatta | Renatta | Gustavo | `KAN-34`, `KAN-31` |
-| [`KAN-36`](https://megamatic.atlassian.net/browse/KAN-36) | Preparar apresentações cruzadas da Reunião 2 | **Em Progresso** | Gustavo | Todos (Coordenação: Gustavo) | Pares de Revisão Cruzada | `KAN-13`, `KAN-18`, `KAN-23`, `KAN-29`, `KAN-35` |
+| [`KAN-36`](https://megamatic.atlassian.net/browse/KAN-36) | Preparar apresentações cruzadas da Reunião 2 | **Concluído** | Gustavo | Todos (Coordenação: Gustavo) | Pares de Revisão Cruzada | `KAN-13`, `KAN-18`, `KAN-23`, `KAN-29`, `KAN-35` |
 | [`KAN-37`](https://megamatic.atlassian.net/browse/KAN-37) | Consolidar os notebooks num notebook final | **Em Progresso** | Gustavo | Gustavo | Todos os membros | `KAN-36`, `KAN-44` |
 | [`KAN-38`](https://megamatic.atlassian.net/browse/KAN-38) | Selecionar tabelas e gráficos do relatório | **Concluído** | Helton | Helton | Luciana e Daniela | `KAN-36` |
 | [`KAN-39`](https://megamatic.atlassian.net/browse/KAN-39) | Consolidar texto técnico do relatório | **A fazer** | Daniela | Daniela e Renatta | Luciana e Gustavo | `KAN-37`, `KAN-38` |
@@ -225,4 +225,4 @@ flowchart TD
 | [`KAN-41`](https://megamatic.atlassian.net/browse/KAN-41) | Executar validação numérica cruzada | **A fazer** | Daniela | Todos (Coordenação: Daniela) | Todos os membros | `KAN-40` |
 | [`KAN-42`](https://megamatic.atlassian.net/browse/KAN-42) | Gerar e rever o PDF final | **A fazer** | Renatta | Renatta | Todos os membros | `KAN-41` |
 | [`KAN-43`](https://megamatic.atlassian.net/browse/KAN-43) | Preparar pacote final de entrega | **A fazer** | Gustavo | Gustavo | Todos os membros | `KAN-42` |
-| [`KAN-44`](https://megamatic.atlassian.net/browse/KAN-44) | Fechar pendências de conteúdo e consolidação apontadas pela auditoria | **In Review** | Daniela | Gustavo | Daniela | — |
+| [`KAN-44`](https://megamatic.atlassian.net/browse/KAN-44) | Fechar pendências de conteúdo e consolidação apontadas pela auditoria | **Concluído** | Daniela | Gustavo | Daniela | — |
