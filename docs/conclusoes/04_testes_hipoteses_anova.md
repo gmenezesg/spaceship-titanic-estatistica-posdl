@@ -45,24 +45,24 @@ Foram investigadas três hipóteses de independência bivariada em relação ao 
 - **Estatística do Teste:** $\chi^2(2) = 338{,}82$, $p = 2{,}663 \times 10^{-74}$ (Rejeita $H_0$).
 - **Tamanho do Efeito:** $V \text{ de Cramér} = 0{,}197$ (Associação de força média).
 - **Taxas Empíricas de Teletransporte:**
-  - **Europa:** $65{,}94\%$ teletransportados ($1.436$ de $2.174$).
-  - **Marte:** $52{,}33\%$ teletransportados ($946$ de $1.804$).
-  - **Terra:** $42{,}39\%$ teletransportados ($1.996$ de $4.715$).
+  - **Europa:** $66{,}05\%$ teletransportados ($1.436$ de $2.174$).
+  - **Marte:** $52{,}44\%$ teletransportados ($946$ de $1.804$).
+  - **Terra:** $42{,}33\%$ teletransportados ($1.996$ de $4.715$).
 - **Significado de Negócio:** Passageiros provenientes de Europa foram os mais atingidos, enquanto os da Terra tiveram taxa inferior à média global da nave ($50{,}36\%$). A segregação espacial das cabines por origem planetária concentrou determinados grupos em conveses mais expostos à anomalia.
 
 ### 3.2. Criossono (`CryoSleep`) vs Teletransporte (`Transported`)
 - **Estatística do Teste:** $\chi^2(1) = 1.897{,}71$, $p < 10^{-300}$ (Rejeita $H_0$).
 - **Tamanho do Efeito:** $V \text{ de Cramér} = 0{,}467$ ($\phi = 0{,}467$, Associação de magnitude muito forte).
 - **Taxas Empíricas de Teletransporte:**
-  - **Em Criossono:** $81{,}75\%$ teletransportados ($2.563$ de $3.135$).
-  - **Acordados (Não em sono):** $32{,}90\%$ teletransportados ($1.815$ de $5.558$).
+  - **Em Criossono:** $81{,}47\%$ teletransportados ($2.554$ de $3.135$).
+  - **Acordados (Não em sono):** $32{,}82\%$ teletransportados ($1.824$ de $5.558$).
 - **Significado de Negócio:** O estado de criossono é a **variável individual de maior poder preditivo** no conjunto de dados. Passageiros isolados nas cápsulas criogênicas não tiveram capacidade de resposta evasiva ou de evacuação de emergência perante o alarme do incidente, ficando totalmente vulneráveis ao evento dimensional.
 
 ### 3.3. Status VIP (`VIP`) vs Teletransporte (`Transported`)
 - **Estatística do Teste:** $\chi^2(1) = 12{,}07$, $p = 5{,}126 \times 10^{-4}$ (Rejeita $H_0$).
 - **Tamanho do Efeito:** $V \text{ de Cramér} = 0{,}037$ (Associação desprezível / negligível).
 - **Taxas Empíricas de Teletransporte:**
-  - **VIP:** $38{,}21\%$ teletransportados ($76$ de $199$).
+  - **VIP:** $38{,}19\%$ teletransportados ($76$ de $199$).
   - **Não VIP:** $50{,}65\%$ teletransportados ($4.302$ de $8.494$).
 - **Significado de Negócio:** Embora o teste aponte significância estatística em virtude do grande tamanho amostral ($p = 0{,}0005$), a magnitude prática é ínfima ($V = 0{,}037$). Conclui-se que o status VIP **não conferiu privilégio operacional mensurável** na proteção contra o teletransporte. Trata-se de um exemplo clássico em que significância estatística não se traduz em relevância operacional.
 
@@ -140,8 +140,8 @@ A tabela a seguir cumpre rigorosamente as 9 colunas normativas especificadas no 
 
 | Pergunta de Pesquisa / Relação Analisada | Hipótese Nula ($H_0$) e Alternativa ($H_1$) | Teste Estatístico Aplicado | Verificação dos Pressupostos | Valor da Estatística do Teste | Valor-$p$ Observado | Tamanho do Efeito | Decisão Estatística ($\alpha=0{,}05$) | Conclusão em Lógica de Negócio |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Pergunta 1:** Associação entre Planeta de Origem (`HomePlanet`) e Teletransporte (`Transported`) | $H_0$: `HomePlanet` e `Transported` são independentes ($p_{ij} = p_{i\cdot} p_{\cdot j}$)<br>$H_1$: Há associação estatística entre as variáveis | Teste Qui-Quadrado de Independência (Pearson) | Atendido: 100% das frequências esperadas $\ge 5$ (mínimo observado: $895{,}46$; $N = 8.693$) | $\chi^2 = 338{,}82$<br>($df = 2$) | $2{,}663 \times 10^{-74}$ | $V \text{ de Cramér} = 0{,}197$<br>(Associação moderada) | **Rejeita $H_0$** | Passageiros de Europa apresentam taxa de transporte superior ($65{,}9\%$) em relação à Terra ($42{,}4\%$) e Marte ($52{,}3\%$), indicando segmentação espacial do sinistro. |
-| **Pergunta 2:** Associação entre Criossono (`CryoSleep`) e Teletransporte (`Transported`) | $H_0$: `CryoSleep` e `Transported` são independentes<br>$H_1$: Há associação estatística entre as variáveis | Qui-Quadrado de Pearson sem correção de continuidade | Atendido: 100% das frequências esperadas $\ge 5$ (mínimo observado: $1.556{,}14$; $N = 8.693$) | $\chi^2 = 1.897{,}71$<br>($df = 1$) | $< 10^{-300}$ | $V \text{ de Cramér} = 0{,}467$<br>(Associação muito forte) | **Rejeita $H_0$** | O confinamento em criossono é o preditor isolado mais expressivo de teletransporte ($81{,}8\%$ vs $32{,}9\%$), definindo o perfil crítico de passageiros afetados. |
+| **Pergunta 1:** Associação entre Planeta de Origem (`HomePlanet`) e Teletransporte (`Transported`) | $H_0$: `HomePlanet` e `Transported` são independentes ($p_{ij} = p_{i\cdot} p_{\cdot j}$)<br>$H_1$: Há associação estatística entre as variáveis | Teste Qui-Quadrado de Independência (Pearson) | Atendido: 100% das frequências esperadas $\ge 5$ (mínimo observado: $895{,}46$; $N = 8.693$) | $\chi^2 = 338{,}82$<br>($df = 2$) | $2{,}663 \times 10^{-74}$ | $V \text{ de Cramér} = 0{,}197$<br>(Associação moderada) | **Rejeita $H_0$** | Passageiros de Europa apresentam taxa de transporte superior ($66{,}05\%$) em relação à Terra ($42{,}33\%$) e Marte ($52{,}44\%$), indicando segmentação espacial do sinistro. |
+| **Pergunta 2:** Associação entre Criossono (`CryoSleep`) e Teletransporte (`Transported`) | $H_0$: `CryoSleep` e `Transported` são independentes<br>$H_1$: Há associação estatística entre as variáveis | Qui-Quadrado de Pearson sem correção de continuidade | Atendido: 100% das frequências esperadas $\ge 5$ (mínimo observado: $1.556{,}14$; $N = 8.693$) | $\chi^2 = 1.897{,}71$<br>($df = 1$) | $< 10^{-300}$ | $V \text{ de Cramér} = 0{,}467$<br>(Associação muito forte) | **Rejeita $H_0$** | O confinamento em criossono é o preditor isolado mais expressivo de teletransporte ($81{,}47\%$ vs $32{,}82\%$), definindo o perfil crítico de passageiros afetados. |
 | **Pergunta 3:** Associação entre Status VIP (`VIP`) e Teletransporte (`Transported`) | $H_0$: `VIP` e `Transported` são independentes<br>$H_1$: Há associação estatística entre as variáveis | Qui-Quadrado de Pearson sem correção de continuidade | Atendido: 100% das frequências esperadas $\ge 5$ (mínimo observado: $98{,}78$; $N = 8.693$) | $\chi^2 = 12{,}07$<br>($df = 1$) | $5{,}126 \times 10^{-4}$ | $V \text{ de Cramér} = 0{,}037$<br>(Associação desprezível) | **Rejeita $H_0$** | Apesar da significância estatística proporcionada pelo $N$ elevado, a magnitude prática é irrelevante ($V = 0{,}037$; taxa VIP $38{,}2\%$ vs não-VIP $50{,}6\%$). |
 | **Pergunta 4 (Paramétrico):** Comparação de Gasto Total (`TotalSpend`) por Teletransporte (`Transported`) | $H_0$: $\mu_{\text{Não Transportado}} = \mu_{\text{Transportado}}$<br>$H_1$: $\mu_{\text{Não Transportado}} \neq \mu_{\text{Transportado}}$ | Teste $t$ de Welch para Amostras Independentes (Heterocedástico) | Heterocedasticidade confirmada via Levene ($W = 131{,}36$, $p < 0{,}001$); robustez assintótica garantida pelo TCL ($N = 8.693$) | $t = 18{,}94$<br>($df = 7.906{,}3$) | $2{,}666 \times 10^{-78}$ | $d \text{ de Cohen} = 0{,}407$<br>(Efeito moderado; $\Delta = +\$1.120{,}74$) | **Rejeita $H_0$** | Não teletransportados gastaram substancialmente mais ($\$2.011{,}89$ vs $\$891{,}15$); passageiros ativos em trânsito consom mais amenidades e evitam zonas críticas. |
 | **Pergunta 4 (Não Paramétrico):** Comparação de Postos de Gasto Total (`TotalSpend`) por Teletransporte | $H_0$: $P(X_{\text{Não}} > X_{\text{Sim}}) = 0{,}5$<br>$H_1$: Dominância estocástica de postos | Teste $U$ de Mann-Whitney (Soma de Postos de Wilcoxon) | Atendido: amostras independentes; aproximação assintótica com correção de empates e continuidade | $U = 13.846.861{,}5$<br>($Z = 39{,}09$) | $< 10^{-300}$ | $r \text{ de Rosenthal} = 0{,}419$<br>(Efeito moderado) | **Rejeita $H_0$** | Robusta corroboração não paramétrica de que o grupo transportado concentra distribuição estocasticamente inferior de gastos (mediana $\$0{,}00$ vs $\$907{,}00$). |
