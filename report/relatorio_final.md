@@ -36,7 +36,7 @@ As análises descritivas, inferenciais e multivariadas convergiram em três pila
 Um modelo linear supervisionado de Regressão Logística com padronização via *Pipeline* foi treinado em divisão estratificada de 80/20 ($N_{\text{teste}} = 1.739$, semente fixa $42$). O modelo atingiu:
 - **Acurácia de Teste:** **$77{,}9\%$**, representando um incremento substancial de **$+25{,}5$ pontos percentuais** sobre o classificador ingênuo estratificado de referência ($52{,}4\%$).
 - **Capacidade Discriminatória (ROC-AUC):** **$0{,}862$**, confirmando excelente separação estocástica.
-- **F1-Score Equilibrado:** **$0{,}784$** (Precisão de $0{,}773$ e Recall/Sensibilidade de $0{,}796$).
+- **F1-Score Equilibrado:** **$0{,}784$** (Precisão de $0{,}772$ e Recall/Sensibilidade de $0{,}796$).
 - **Controle Multivariado:** Após o ajuste conjunto pelas demais variáveis, o estado de criossono sustentou um *Odds Ratio* ajustado de **$3{,}21$** (IC 95%: $[2{,}61; 3{,}94]$) e a procedência de Europa exibiu $OR = 3{,}97$ (IC 95%: $[2{,}58; 6{,}10]$).
 
 ### 1.5. Quadro-Resumo Executivo de Indicadores
@@ -314,10 +314,10 @@ O modelo foi confrontado com o classificador ingênuo estratificado (*Dummy Clas
 | Métrica de Desempenho | Baseline Estratificado | Modelo Logístico Proposto | Ganho Operacional Absoluto |
 | :--- | :---: | :---: | :---: |
 | **Acurácia Global (*Accuracy*)** | $52{,}4\%$ | **$77{,}9\%$** | **$+25{,}5$ pontos percentuais** |
-| **Área sob a Curva ROC (ROC-AUC)** | $0{,}500$ | **$0{,}862$** | **$+0{,}362$ de separabilidade** |
-| **F1-Score Ponderado** | $0{,}524$ | **$0{,}784$** | **$+0{,}260$ de harmonia** |
-| **Sensibilidade / Revocação (*Recall*)** | $0{,}521$ | **$0{,}796$** | $+0{,}275$ de captura de sinistros |
-| **Precisão (*Precision*)** | $0{,}526$ | **$0{,}773$** | $+0{,}247$ de assertividade |
+| **Área sob a Curva ROC (ROC-AUC)** | $0{,}524$ | **$0{,}862$** | **$+0{,}338$ de separabilidade** |
+| **F1-Score Ponderado** | $0{,}525$ | **$0{,}784$** | **$+0{,}258$ de harmonia** |
+| **Sensibilidade / Revocação (*Recall*)** | $0{,}523$ | **$0{,}796$** | $+0{,}273$ de captura de sinistros |
+| **Precisão (*Precision*)** | $0{,}528$ | **$0{,}772$** | $+0{,}244$ de assertividade |
 | **Pseudo-$R^2$ de McFadden** | $0{,}000$ | **$0{,}311$** | Excelente ajuste multivariado |
 
 A matriz de confusão no teste ($N = 1.739$) confirma a solidez da triagem:
