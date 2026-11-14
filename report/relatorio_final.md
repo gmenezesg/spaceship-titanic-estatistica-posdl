@@ -12,16 +12,14 @@
 
 ## 1. Resumo Executivo
 
-O estudo analisa os registros de 8.693 passageiros da nave fictícia *Spaceship Titanic*. O objetivo é ajudar o Comando de Operações Espaciais a entender quais perfis tiveram as maiores taxas de transporte e avaliar se um modelo pode apoiar a triagem.
+O estudo analisa os registros de 8.693 passageiros da nave fictícia *Spaceship Titanic*. O objetivo é ajudar o Comando de Operações Espaciais a entender quais perfis tiveram as maiores taxas de transporte e avaliar se um modelo pode apoiar a triagem. A equipe tratou registros incompletos, comparou grupos de passageiros e avaliou um modelo de classificação em uma parte reservada da base.
 
-A equipe tratou registros incompletos, comparou grupos de passageiros e avaliou um modelo de classificação em uma parte reservada da base.
-
-- **Criossono.** Foram transportados 81,47% dos passageiros em criossono e 32,82% dos acordados. Essa foi a maior diferença entre os grupos categóricos destacados.
-- **Origem e cabine.** A taxa foi de 66,05% entre passageiros de Europa, 52,44% entre os de Marte e 42,33% entre os da Terra. Como origem e convés se sobrepõem, os dois registros devem ser investigados em conjunto.
+- **Criossono.** Foram transportados 81,47% dos passageiros em criossono e 32,82% dos acordados, a maior diferença entre os grupos comparados.
+- **Origem e cabine.** A taxa foi de 66,05% entre passageiros de Europa, 52,44% entre os de Marte e 42,33% entre os da Terra. Origem e convés se sobrepõem e devem ser investigados em conjunto.
 - **Gastos.** Cerca de 42% dos passageiros não registraram despesas. O gasto típico foi de US$ 0 entre os transportados e US$ 907 entre os não transportados.
-- **Triagem.** O modelo acertou 77,9% das classificações no teste interno, ante 52,4% do classificador de referência. O resultado precisa ser confirmado em novos grupos antes de uso operacional.
+- **Triagem.** O modelo acertou 77,9% das classificações no teste interno, ante 52,4% do classificador de referência.
 
-Recomenda-se conferir os registros de criossono e de cabine, comunicar os gastos com medianas e proporções de zeros e validar o modelo em novos grupos antes de definir regras de triagem. As diferenças observadas orientam a investigação dos perfis e locais a bordo. Suas causas permanecem em aberto.
+Recomenda-se conferir os registros de criossono e de cabine, comunicar os gastos com medianas e proporções de zeros e validar o modelo em novos grupos antes de definir regras de triagem; as causas das diferenças permanecem em aberto.
 
 ---
 
