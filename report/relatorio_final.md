@@ -52,7 +52,7 @@ O dataset original fornecido continha 8.693 linhas e 14 atributos heterogêneos.
 | `VIP` | Booleana | Contratação de serviço executivo/VIP de bordo | 203 | $2{,}34\%$ |
 | `RoomService` | Contínua | Despesa acumulada em serviço de quarto de cabine (US$) | 181 | $2{,}08\%$ |
 | `FoodCourt` | Contínua | Despesa acumulada na praça de alimentação e alta gastronomia | 183 | $2{,}11\%$ |
-| `ShoppingMall` | Contínua | Despesa acumulada nas lojas comerciais da nave | 188 | $2{,}16\%$ |
+| `ShoppingMall` | Contínua | Despesa acumulada nas lojas comerciais da nave | 208 | $2{,}39\%$ |
 | `Spa` | Contínua | Despesa acumulada em tratamentos estéticos e relaxamento | 183 | $2{,}11\%$ |
 | `VRDeck` | Contínua | Despesa acumulada em entretenimento por realidade virtual | 188 | $2{,}16\%$ |
 | `Name` | Texto | Nome de registro civil do passageiro | 200 | $2{,}30\%$ |
