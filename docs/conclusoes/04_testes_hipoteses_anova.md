@@ -160,7 +160,7 @@ Um princípio basilar de inferência estatística, que deve orientar qualquer le
 ### 7.1. O Mecanismo Interveniente do Criossono (`CryoSleep`)
 A constatação de que passageiros não teletransportados gastaram muito mais ($\Delta = +\$1.120{,}74$) **não significa** que realizar compras a bordo gerou um escudo protetor contra o teletransporte. 
 - O passageiro em criossono é **mecanicamente impedido de consumir amenidades** ($TotalSpend = \$0$).
-- Ao mesmo tempo, passageiros em criossono estavam fisicamente confinados em compartimentos específicos da nave e sofreram teletransporte em $81{,}75\%$ dos casos.
+- Ao mesmo tempo, passageiros em criossono estavam fisicamente confinados em compartimentos específicos da nave e sofreram teletransporte em $81{,}47\%$ dos casos.
 - Logo, a variável `CryoSleep` atua como um **fator de confusão e mediação fundamental** na relação aparente entre despesas e sobrevivência.
 
 ### 7.2. Segregação Espacial e Rota de Viagem
