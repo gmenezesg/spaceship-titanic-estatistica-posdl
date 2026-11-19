@@ -39,7 +39,7 @@ digraph JiraDependencyMap {
     "KAN-33" [label="KAN-33 [CONCLUÍDO]\nDesenvolver regressão logística para Transported\nAtual: Renatta | Rev: Gustavo", fillcolor="#E6F4EA", color="#1E8E3E", style="rounded,filled"];
     "KAN-34" [label="KAN-34 [CONCLUÍDO]\nAvaliar e interpretar o modelo logístico\nAtual: Renatta | Rev: Gustavo", fillcolor="#E6F4EA", color="#1E8E3E", style="rounded,filled"];
     "KAN-35" [label="KAN-35 [CONCLUÍDO]\nPublicar conclusões de correlação e regressões\nAtual: Renatta | Rev: Gustavo", fillcolor="#E6F4EA", color="#1E8E3E", style="rounded,filled"];
-    "KAN-36" [label="KAN-36 [EM PROGRESSO]\nPreparar apresentações cruzadas da Reunião 2\nAtual: Gustavo | Rev: Pares de Revisão Cruzada", fillcolor="#E8F0FE", color="#1967D2", style="rounded,filled"];
+    "KAN-36" [label="KAN-36 [CONCLUÍDO]\nPreparar apresentações cruzadas da Reunião 2\nAtual: Gustavo | Rev: Pares de Revisão Cruzada", fillcolor="#E6F4EA", color="#1E8E3E", style="rounded,filled"];
     "KAN-37" [label="KAN-37 [EM PROGRESSO]\nConsolidar os notebooks num notebook final\nAtual: Gustavo | Rev: Todos os membros", fillcolor="#E8F0FE", color="#1967D2", style="rounded,filled"];
     "KAN-38" [label="KAN-38 [CONCLUÍDO]\nSelecionar tabelas e gráficos do relatório\nAtual: Helton | Rev: Luciana e Daniela", fillcolor="#E6F4EA", color="#1E8E3E", style="rounded,filled"];
     "KAN-39" [label="KAN-39 [A FAZER]\nConsolidar texto técnico do relatório\nAtual: Daniela | Rev: Luciana e Gustavo", fillcolor="#F8FAFC", color="#64748B", style="rounded,filled"];
@@ -47,7 +47,7 @@ digraph JiraDependencyMap {
     "KAN-41" [label="KAN-41 [A FAZER]\nExecutar validação numérica cruzada\nAtual: Daniela | Rev: Todos os membros", fillcolor="#F8FAFC", color="#64748B", style="rounded,filled"];
     "KAN-42" [label="KAN-42 [A FAZER]\nGerar e rever o PDF final\nAtual: Renatta | Rev: Todos os membros", fillcolor="#F8FAFC", color="#64748B", style="rounded,filled"];
     "KAN-43" [label="KAN-43 [A FAZER]\nPreparar pacote final de entrega\nAtual: Gustavo | Rev: Todos os membros", fillcolor="#F8FAFC", color="#64748B", style="rounded,filled"];
-    "KAN-44" [label="KAN-44 [EM REVISÃO]\nFechar pendências de conteúdo e consolidação apontadas pela auditoria\nAtual: Daniela | Rev: Daniela", fillcolor="#FEF7E0", color="#F29900", style="rounded,filled"];
+    "KAN-44" [label="KAN-44 [CONCLUÍDO]\nFechar pendências de conteúdo e consolidação apontadas pela auditoria\nAtual: Daniela | Rev: Daniela", fillcolor="#E6F4EA", color="#1E8E3E", style="rounded,filled"];
 
     "KAN-4" -> "KAN-5";
     "KAN-5" -> "KAN-6";
